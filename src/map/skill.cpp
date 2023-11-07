@@ -18071,7 +18071,7 @@ bool skill_check_condition_castbegin(map_session_data* sd, uint16 skill_id, uint
 			default: // Skills that require spirit/coin spheres.
 				if (sd->spiritball < require.spiritball) {
 					if ((sd->class_&MAPID_BASEMASK) == MAPID_GUNSLINGER || (sd->class_&MAPID_UPPERMASK) == MAPID_REBELLION)
-						clif_skill_fail(sd, skill_id, USESKILL_FAIL_COINS, (require.spiritball == -1) ? 1 : require.spiritball);
+						clif_skill_fail(sd, skill_id, USESKILL_FAIL_COINTS, (require.spiritball == -1) ? 1 : require.spiritball);
 					else
 						clif_skill_fail(sd, skill_id, USESKILL_FAIL_SPIRITS, (require.spiritball == -1) ? 1 : require.spiritball);
 					return false;
