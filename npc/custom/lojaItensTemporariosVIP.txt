@@ -1,0 +1,38 @@
+// Criado por Alek Emundus
+// =======================
+// Vende itens temporários para VIP
+prontera,164,172,1	script	Arabella	611,{
+	mes "[Arabella]";
+	mes "Ola, seja muito bem vindo a Loja Temporaria VIP!";
+	mes "Por favor, escolha seu item para comprar.";
+	mes "Mas lembre-se, eles custam 100,000 Zeny e voce precisa ser VIP para adquirir...";
+	.@Custo = 100000; // Custo em Zeny
+	switch(select("- Fly Wing 12h:- Yggdrasil 12h")){
+		case 1:
+		if (Zeny >= .@Custo) {			
+			if ((getgroupid() == 1) || (getgroupid() == 99) || (getgroupid() == 5)) {
+				rentitem 601,43200;
+				Zeny -= .@Custo;
+				end;
+			}
+		} else {
+			clear;
+			mes "[Arabella]";
+			mes "Me parece que voce nao tem Zeny ou VIP...";
+			end;
+		}
+		case 2:
+		if (Zeny >= .@Custo) {
+			if ((getgroupid() == 1) || (getgroupid() == 99) || (getgroupid() == 5)) {
+				rentitem 607,43200;
+				Zeny -= .@Custo;
+				end;
+			}
+		} else {
+			clear;
+			mes "[Arabella]";
+			mes "Me parece que voce nao tem Zeny ou VIP...";
+			end;
+		}
+	}
+}

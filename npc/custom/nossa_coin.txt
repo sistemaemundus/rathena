@@ -1,0 +1,12 @@
+// Criado por Alek Emundus
+// comando @coins
+// mostra quanto de cash e nossaCoins o player tem
+
+-	script	NossaCoin	-1,{
+	OnInit:
+		bindatcmd "coins",strnpcinfo(3) + "::OnAtcommand";
+		end;
+	OnAtcommand:
+		dispbottom "Voce tem " + #CASHPOINTS + " Cash Points, e " + #NOSSACOIN + " NossaCoins.";
+		end;
+}

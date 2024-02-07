@@ -12,11 +12,13 @@
 //= 1.0 Initial script.
 //= 1.1 Aligned coordinates with @go.
 //============================================================
+//==== Edited by Alek Emundus ================================
+//= Added more buffs for VIP and GM Players
 
 -	script	Healer	-1,{
 
 	.@Price = 0;	// Zeny required for heal
-	.@Buffs = 0;	// Also buff players? (1: yes / 0: no)
+	.@Buffs = 1;	// Also buff players? (1: yes / 0: no)
 	.@Delay = 0;	// Heal delay, in seconds
 
 	if (@HD > gettimetick(2))
@@ -31,11 +33,22 @@
 	}
 	specialeffect2 EF_HEAL2;
 	percentheal 100,100;
+	healap 200;
+	identifyall;
+	repairall;
 	if (.@Buffs) {
 		specialeffect2 EF_INCAGILITY;
 		sc_start SC_INCREASEAGI,240000,10;
 		specialeffect2 EF_BLESSING;
 		sc_start SC_BLESSING,240000,10;
+	}
+	if ((getgroupid() == 1) || (getgroupid() == 99) || (getgroupid() == 5)) {
+		specialeffect2 EF_IMPOSITIO;
+		sc_start SC_IMPOSITIO,240000,5;
+		specialeffect2 EF_MAGNIFICAT;
+		sc_start SC_MAGNIFICAT,240000,5;
+		specialeffect2 EF_ASSUMPTIO;
+		sc_start SC_ASSUMPTIO,240000,5;
 	}
 	if (.@Delay)
 		@HD = gettimetick(2) + .@Delay;

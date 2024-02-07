@@ -216,11 +216,7 @@ public:
 
 		// Prevent excessive usage during loading
 		if( this->loaded ){
-			size_t cache_key = this->calculateCacheKey(key);
-			if (this->cache.size() <= cache_key) {
-				return;
-			}
-			this->cache[cache_key] = nullptr;
+			this->cache[this->calculateCacheKey( key )] = nullptr;
 		}
 	}
 
@@ -229,11 +225,7 @@ public:
 
 		// Prevent excessive usage during loading
 		if( this->loaded ){
-			size_t cache_key = this->calculateCacheKey(key);
-			if (this->cache.size() <= cache_key) {
-				this->cache.resize(cache_key + 1, nullptr);
-			}
-			this->cache[cache_key] = ptr;
+			this->cache[this->calculateCacheKey( key )] = ptr;
 		}
 	}
 };

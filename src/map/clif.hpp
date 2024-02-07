@@ -34,7 +34,7 @@ struct skill_unit;
 struct s_vending;
 struct party;
 struct party_data;
-struct mmo_guild;
+struct guild;
 struct s_battleground_data;
 struct quest;
 struct party_booking_ad_info;
@@ -484,8 +484,32 @@ enum useskill_fail_cause : uint8_t
 	USESKILL_FAIL_THERE_ARE_NPC_AROUND = 83,
 	USESKILL_FAIL_NEED_MORE_BULLET = 84,
 	USESKILL_FAIL_COINS = 85,
-	// 86-99 unknown
-	USESKILL_FAIL_AP_INSUFFICIENT = 100,
+	//#86 Unknown Usage MSG: Do you agree?
+	USESKILL_FAIL_MAP = 87,
+	USESKILL_FAIL_NEED_SUMMON_SP,
+	USESKILL_FAIL_SAME_VEND,
+	USESKILL_FAIL_NEED_BULLETS,
+	USESKILL_FAIL_NEED_ARROWS,
+	USESKILL_FAIL_NEED_PARTY,
+	USESKILL_FAIL_NEED_PARTY_LEADER,
+	USESKILL_FAIL_NEED_PARTNER_SP,
+	USESKILL_FAIL_NEED_WEAPON,
+	USESKILL_FAIL_NEED_ENERGY_SPHERE,
+	USESKILL_FAIL_NEED_WEAPON_BLOCKING,
+	USESKILL_FAIL_MAX_TRAPS,
+	USESKILL_FAIL_NEED_MAGIC_SPELLBOOK,
+	USESKILL_FAIL_AP_INSUFFICIENT,
+	USESKILL_FAIL_NEED_SERVANT_WEAPON,
+	USESKILL_FAIL_NEED_TWINKLING_GALAXY,
+	USESKILL_FAIL_NEED_SOUL_ENGERY,
+	USESKILL_FAIL_NEED_AMULET,
+	USESKILL_FAIL_NEED_GATLING_SHOTGUT,
+	USESKILL_FAIL_NEED_RIFLE_REVOLVER,
+	USESKILL_FAIL_NEED_GLAUNCHER_RIFLE,
+	USESKILL_FAIL_NEED_GATLING_REVOLVER,
+	USESKILL_FAIL_NEED_SHOTGUN_GLAUNCHER,
+	USESKILL_FAIL_NEED_SHIELD,
+	USESKILL_FAIL_TARGET_SHADOW_SPACE,
 	USESKILL_FAIL_MAX
 };
 
@@ -537,6 +561,7 @@ enum clif_messages : uint16_t {
 	SKILL_NEED_REVOLVER = 0x9fd,
 	SKILL_NEED_HOLY_BULLET = 0x9fe,
 	SKILL_NEED_GRENADE = 0xa01,
+	SKILL_FAIL_P_ALT_HEAT_B_MADNESSC = 0xa02,
 	GUILD_MASTER_WOE = 0xb93, /// <"Currently in WoE hours, unable to delegate Guild leader"
 	GUILD_MASTER_DELAY = 0xb94, /// <"You have to wait for one day before delegating a new Guild leader"
 	MSG_ATTENDANCE_DISABLED = 0xd92,
@@ -735,7 +760,7 @@ void clif_skillinfoblock(map_session_data *sd);
 void clif_skillup(map_session_data *sd, uint16 skill_id, int lv, int range, int upgradable);
 void clif_skillinfo(map_session_data *sd,int skill_id, int inf);
 void clif_addskill(map_session_data *sd, int skill_id);
-void clif_deleteskill(map_session_data *sd, int skill_id, bool skip_infoblock = false);
+void clif_deleteskill(map_session_data *sd, int skill_id);
 
 void clif_skillcasting(struct block_list* bl, int src_id, int dst_id, int dst_x, int dst_y, uint16 skill_id, uint16 skill_lv, int property, int casttime);
 void clif_skillcastcancel(struct block_list* bl);
@@ -848,17 +873,17 @@ void clif_guild_allianceinfo(map_session_data *sd);
 void clif_guild_memberlist( map_session_data& sd );
 void clif_guild_skillinfo(map_session_data* sd);
 void clif_guild_send_onlineinfo(map_session_data *sd); //[LuzZza]
-void clif_guild_memberlogin_notice(const struct mmo_guild &g,int idx,int flag);
-void clif_guild_invite(const map_session_data &sd, const struct mmo_guild &g);
+void clif_guild_memberlogin_notice(struct guild *g,int idx,int flag);
+void clif_guild_invite(map_session_data *sd,struct guild *g);
 void clif_guild_inviteack(map_session_data *sd,int flag);
 void clif_guild_leave(map_session_data *sd,const char *name,const char *mes);
 void clif_guild_expulsion(map_session_data* sd, const char* name, const char* mes, uint32 account_id);
-void clif_guild_positionchanged(const struct mmo_guild &g,int idx);
-void clif_guild_memberpositionchanged(const struct mmo_guild &g,int idx);
-void clif_guild_emblem(const map_session_data &sd, const struct mmo_guild &g);
+void clif_guild_positionchanged(struct guild *g,int idx);
+void clif_guild_memberpositionchanged(struct guild *g,int idx);
+void clif_guild_emblem(map_session_data *sd,struct guild *g);
 void clif_guild_emblem_area(struct block_list* bl);
 void clif_guild_notice(map_session_data* sd);
-void clif_guild_message(const struct mmo_guild &g,uint32 account_id,const char *mes,int len);
+void clif_guild_message(struct guild *g,uint32 account_id,const char *mes,int len);
 void clif_guild_reqalliance(map_session_data *sd,uint32 account_id,const char *name);
 void clif_guild_allianceack(map_session_data *sd,int flag);
 void clif_guild_delalliance(map_session_data *sd,int guild_id,int flag);
@@ -1015,7 +1040,7 @@ void clif_Auction_message(int fd, unsigned char flag);
 void clif_Auction_close(int fd, unsigned char flag);
 void clif_parse_Auction_cancelreg(int fd, map_session_data *sd);
 
-void clif_bossmapinfo( map_session_data& sd, mob_data* md, e_bossmap_info flag );
+void clif_bossmapinfo(map_session_data *sd, struct mob_data *md, enum e_bossmap_info flag);
 void clif_cashshop_show(map_session_data *sd, struct npc_data *nd);
 
 // ADOPTION
@@ -1181,8 +1206,7 @@ enum out_ui_type : int8 {
 	OUT_UI_STYLIST,
 	OUT_UI_CAPTCHA,
 	OUT_UI_MACRO,
-	OUT_UI_TIP = 5,
-	OUT_UI_QUEST,
+	OUT_UI_QUEST = 6,
 	OUT_UI_ATTENDANCE,
 	OUT_UI_ENCHANTGRADE,
 	OUT_UI_ENCHANT = 10,

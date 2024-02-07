@@ -1,0 +1,104 @@
+// Criado por Alek Emundus
+prontera,141,173,4	script	Aventureira Buuh	623,{
+	mes "[Aventureira Buuh]";
+	mes "O que voce gostaria de encantar?";
+	switch(select("- Head.:- Body.:- Robe.:- Shoes.:- Accessory 1.:- Accessory 2.:- Weapons.")) {
+		case 1: // Head
+			if ((countitem(420017) >= 1) || (countitem(420018) >= 1) || (countitem(420019) >= 1) || (countitem(420020) >= 1) || (countitem(420021) >= 1) || (countitem(420022) >= 1)) {
+				item_enchant 23;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Head pra encantar.";
+				end;
+			}
+		case 2: // Body
+			if ((countitem(450177) >= 1) || (countitem(450178) >= 1)) {
+				item_enchant 1;
+				end;
+			} else if ((countitem(450169) >= 1)) {
+				item_enchant 7;
+				end;
+			} else if ((countitem(450170) >= 1)) {
+				item_enchant 8;
+				end;
+			} else if ((countitem(450171) >= 1)) {
+				item_enchant 9;
+				end;
+			} else if ((countitem(450172) >= 1)) {
+				item_enchant 10;
+				end;
+			} else if ((countitem(450173) >= 1)) {
+				item_enchant 11;
+				end;
+			} else if ((countitem(450174) >= 1)) {
+				item_enchant 12;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Body pra encantar.";
+				end;
+			}
+		case 3: // Robe
+			if ((countitem(480090) >= 1) || (countitem(480091) >= 1)) {
+				item_enchant 2;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Robe pra encantar.";
+				end;
+			}
+		case 4: // Shoes
+			if ((countitem(470087) >= 1) || (countitem(470088) >= 1)) {
+				item_enchant 3;
+				end;
+			} else if ((countitem(470094) >= 1)) {
+				item_enchant 21;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Shoes pra encantar.";
+				end;
+			}
+		case 5: // Acessory 1
+			if ((countitem(490106) >= 1) || (countitem(490108) >= 1)) {
+				item_enchant 4;
+				end;
+			} else if ((countitem(490132) >= 1) || (countitem(490133) >= 1) || (countitem(490134) >= 1) || (countitem(490135) >= 1) || (countitem(490136) >= 1) || (countitem(490137) >= 1)) {
+				item_enchant 13;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Acessory 1 pra encantar.";
+				end;
+			}
+		case 6: // Acessory 2
+			if ((countitem(490107) >= 1) || (countitem(490109) >= 1)) {
+				item_enchant 5;
+				end;
+			} else if ((countitem(490163) >=1 )) {
+				item_enchant 20;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhum Acessory 2 pra encantar.";
+				end;
+			}
+		case 7: // Weapons
+			if ((countitem(21063) >= 1) || (countitem(640031) >= 1) || (countitem(540041) >= 1) || (countitem(530023) >= 1) || (countitem(550054) >= 1) || (countitem(510050) >= 1) || (countitem(500044) >= 1) || (countitem(550055) >= 1) || (countitem(610035) >= 1) || (countitem(590036) >= 1) || (countitem(510051) >= 1) || (countitem(500045) >= 1) || (countitem(620016) >= 1) || (countitem(540042) >= 1) || (countitem(550056) >= 1) || (countitem(510052) >= 1) || (countitem(570028) >= 1) || (countitem(580028) >= 1) || (countitem(560030) >= 1) || (countitem(700050) >= 1) || (countitem(800009) >= 1) || (countitem(810005) >= 1) || (countitem(820004) >= 1) || (countitem(830006) >= 1) || (countitem (840004) >= 1) || (countitem(650019) >= 1)) {
+				item_enchant 24;
+				end;
+			} else {
+				clear;
+				mes "[Aventureira Buuh]";
+				mes "Voce nao tem nenhuma Weapon pra encantar.";
+				end;
+			}
+	}
+}

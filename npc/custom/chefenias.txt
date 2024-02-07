@@ -1,0 +1,140 @@
+// Criado por Alek Emundus
+// Chefênia
+
+-	script	Master	-1,{
+	OnThisMobDeath:
+		getitem 671,1;
+	end;
+}
+
+prontera,143,206,3	script	Chefênia	3658,{
+	mes "^FF0000[Chefênia]^000000";
+	mes "Bem vindo, gostaria de ir para chefênia?";
+	mes "Vai lhe custar ^DAA52010.000.000^000000 Zeny";
+	switch(select("- Bora!:- Deixa pra depois..."))
+	{
+		case 1:
+			if(Zeny >=10000000)
+			{
+				clear;
+				mes "^FF0000[Chefênia]^000000";
+				mes "Selecione para qual nível gostaria de ir:";
+				switch(select("- Nível 1:- Nível 2:- Nível 3:- Nível 4:- Deixa pra lá!"))
+				{
+					case 1:
+						Zeny -= 10000000;
+						warp "bossnia_01",119,158;
+						end;
+					case 2:
+						Zeny -= 10000000;
+						warp "bossnia_02",41,198;
+						end;
+					case 3:
+						Zeny -= 10000000;
+						warp "bossnia_03",179,48;
+						end;
+					case 4:
+						clear;
+						mes "^FF0000[Chefênia]^000000";
+						mes "Esse nível ainda está em construção, volte depois.";
+						close;
+						//Zeny -= 10000000;
+						//warp "bossnia_04",157,65;
+						//end;
+					case 5:
+						clear;
+						mes "^FF0000[Chefênia]^000000";
+						mes "Tudo bem, até mais!";
+						close;
+				}
+			}
+			else
+			{
+				clear;
+				mes "^FF0000[Chefênia]^000000";
+				mes "Está tentando me enganar?";
+				mes "Onde está o Zeny?";
+				close;
+			}
+		case 2:
+			clear;
+			mes "^FF0000[Chefênia]^000000";
+			mes "Tudo bem, até mais!";
+			close;
+	}
+	
+	OnPCLogoutEvent:
+	getmapxy .@map$,.@x,.@y;
+	if (.@map$ == "bossnia_01")
+	{
+		warp "prontera",156,191;
+		end;
+	} else if(.@map$ == "bossnia_02")
+	{
+		warp "prontera",156,191;
+		end;
+	} else if(.@map$ == "bossnia_03")
+	{
+		warp "prontera",156,191;
+		end;
+	} else if(.@map$ == "bossnia_04")
+	{
+		warp "prontera",156,191;
+		end;
+	} else {
+		end;
+	}
+}
+
+// Chefênia lv1
+bossnia_01,0,0	monster	Mistress	1059,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Doppelganger	1046,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Tao Gunka	1583,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Gopinich	1885,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Leak	2156,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Osiris	1038,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Atroce	1785,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Dracula	1389,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Pharaoh	1157,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Hatii	1252,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Maya	1147,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Samurai Specter	1492,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Boitata	2068,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Drake	1112,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Moonlight Flower	1150,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Lord of the Dead	1373,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Thanatos Phantom	1708,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	RSX-0806	1623,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Stormy Knight	1251,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Phreeoni	1159,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	White Lady	1630,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Dark Lord	1272,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Orc Lord	1190,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Detardeurus	1719,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Egnigem Cenia	1658,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Turtle General	1312,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Lady Tanee	1688,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Orc Hero	1087,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Evil Snake Lord	1418,3,1000,1000,"Master::OnThisMobDeath"
+bossnia_01,0,0	monster	Eddga	1115,3,1000,1000,"Master::OnThisMobDeath"
+
+// Chefênia lv2
+
+
+// Mapflags
+bossnia_01	mapflag	noloot	on
+bossnia_01	mapflag	noteleport	on
+bossnia_01	mapflag	nosave	on
+bossnia_01	mapflag	nomemo	on
+bossnia_02	mapflag	noloot	on
+bossnia_02	mapflag	noteleport	on
+bossnia_02	mapflag	nosave	on
+bossnia_02	mapflag	nomemo	on
+bossnia_03	mapflag	noloot	on
+bossnia_03	mapflag	noteleport	on
+bossnia_03	mapflag	nosave	on
+bossnia_03	mapflag	nomemo	on
+bossnia_04	mapflag	noloot	on
+bossnia_04	mapflag	noteleport	on
+bossnia_04	mapflag	nosave	on
+bossnia_04	mapflag	nomemo	on

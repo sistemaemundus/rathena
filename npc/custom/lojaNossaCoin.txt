@@ -1,0 +1,38 @@
+// Criado por Alek Emundus
+// Vende itens, em Prontera, usando NossaCoin
+prontera,151,187,5	script	Nossa Loja	72,{
+	mes "[Nossa Loja]";
+	mes "Olá, escolha sua opção:";
+	switch(select("~ Trocar NossaCoin:~ Comprar Itens:~ Outras opções")) {
+		case 1: // Comprar NossaCoin
+		clear;
+		mes "[Nossa Loja]";
+		mes "Informe a quantidade de NossaCoins para trocar.";
+		mes "Você possui " + #NOSSACOIN + " NossaCoins";
+		input .@Value;
+		if(#NOSSACOIN >= .@Value){
+			set #NOSSACOIN, #NOSSACOIN - .@Value;
+			getitem 671,.@Value;
+			clear;
+			mes "[Nossa Loja]";
+			mes "Você trocou " + .@Value + " NossaCoins, volte sempre!";
+			mes "Você tem " + #NOSSACOIN + " NossaCoins restantes.";
+			close;
+		} else {
+			clear;
+			mes "Você não tem " + .@Value + " NossaCoins para trocar...";
+			mes "Você tem " + #NOSSACOIN + " NossaCoins.";
+			close;
+		}
+		case 2: // Comprar itens
+		clear;
+		mes "[Nossa Loja]";
+		mes "Ainda não temos itens para comprar...";
+		close;
+		case 3: // Outras opcoes
+		clear;
+		mes "[Nossa Loja]";
+		mes "Aqui estão as outras opções.";
+		close;
+	}
+}

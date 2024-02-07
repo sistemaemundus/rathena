@@ -1,0 +1,13 @@
+// Criado por Alek Emundus
+
+// Grey Wolf Field 01
+gw_fild01,0,0	monster	Ashhopper	21302,50,5000
+gw_fild01,0,0	monster	Ashring	21303,70,5000
+gw_fild01,0,0	monster	Grey Wolf	21304,35,5000
+
+// Grey Wolf Field 02
+gw_fild02,0,0	monster	Ashring	21303,15,5000
+gw_fild02,0,0	monster	Grey Wolf	21304,35,5000
+gw_fild02,0,0	monster	Tumblering	21305,60,5000
+gw_fild02,0,0	monster	Firewind Kite	21306,35,5000
+gw_fild02,0,0	monster	Phantom Wolf	21307,25,5000

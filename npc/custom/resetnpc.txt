@@ -11,31 +11,33 @@
 //=	Changed set -> setarray, Improved text with F_InsertPlural
 //= 1.5 Added sc_end_class to reset related status changes [sader1992]
 //============================================================
-prontera,150,193,4	script	Reset Girl	124,{
+//= Traduzido por Alek Emundus
+
+prontera,150,193,4	script	Resetadora	124,{
 	//	 		Skills,	Stats,	Both,	Limit
 	setarray .@Reset,	5000,	5000,	9000,	0;
-	mes "[Reset Girl]";
+	mes "[Resetadora]";
 	if(.@Reset[3] && reset_limit > .@Reset[3]) {
-		mes "Sorry you can only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life.";
+		mes "Voce so pode resetar "+callfunc("F_InsertPlural",.@Reset[3],"vezes")+" na sua vida.";
 		close;
 	}
-	mes "I am the Reset Girl.";
-	mes "Reset Stats: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
-	mes "Reset Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
-	mes "Reset Both: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
-	if(.@Reset[3]) mes "You may only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+", so use "+((.@Reset[3]>1)?"them":"it")+" wisely.";
-	mes "Please select the service you want:";
+	mes "Eu sou a Resetadora.";
+	mes "Resetar Status: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
+	mes "Resetar Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
+	mes "Resetar Ambos: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	if(.@Reset[3]) mes "Voce so pode resetar "+callfunc("F_InsertPlural",.@Reset[3],"vezes")+", entao use "+((.@Reset[3]>1)?"isso":"com")+" cautela.";
+	mes "Por favor selecione o servico que voce deseja:";
 	next;
-	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:Cancel"));
+	set .@i,(select("^FF3355Resetar Skills:Resetar Status:Resetar Ambos^000000:Cancelar"));
 	if(.@i > 3) close;
-	mes "[Reset Girl]";
+	mes "[Resetadora]";
 	if (Zeny < .@Reset[.@i-1]) {
-		mes "Sorry, you don't have enough Zeny.";
+		mes "Desculpe, voce nao tem Zeny o suficiente.";
 		close;
 	}
 	if(.@Reset[3]){
-		mes "You can only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life, are you sure?";
-		if(select("Let me think:That's fine") == 1) close;
+		mes "Voce so pode resetar "+callfunc("F_InsertPlural",.@Reset[3],"vezes")+" na sua vida, tem certeza?";
+		if(select("Me deixe pensar:Parece otimo") == 1) close;
 	}
 	set Zeny, Zeny-.@Reset[.@i-1];
 	if(.@i&1){
@@ -43,7 +45,7 @@ prontera,150,193,4	script	Reset Girl	124,{
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
-	mes "There you go!";
+	mes "Aqui vamos nos!";
 	if(.@Reset[3]) set reset_limit,reset_limit + 1;
 	close;
 }

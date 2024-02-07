@@ -1,0 +1,11 @@
+// Criado por Alek Emundus
+prontera,143,176,4	script	Encantador de Grade	620,{
+	mes "[Encantador de Grade]";
+	mes "Ola, gostaria de abrir a interface de encantamentos de grade?";
+	switch (select("Sim, por favor!:Nao, obrigado!")){
+		case 1:
+			enchantgradeui();
+		case 2:
+			close;
+	}
+}

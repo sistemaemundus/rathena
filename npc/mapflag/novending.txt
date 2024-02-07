@@ -1,0 +1,3 @@
+// Criado por Alek Emundus
+// Nao permite lojinhas nas cidades citadas
+prontera	mapflag	novending

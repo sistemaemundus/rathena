@@ -15,27 +15,29 @@
 //= 1.3 - Removed Duplicates
 //= 1.4 - Optimized, text edited [Euphy]
 //============================================================
+//= Editado por Alek Emundus
+//= Implementado sistema onde os mobs não dropam itens, mas dão 1 NossaCoin
 
 // Entrance
-prontera,154,197,3	script	MVP Warper	768,{
-	mes "[ ^0065DFMVP Warper^000000 ]";
-	mes "Would you like to enter";
-	mes "the MVP Arena?";
-	if (select("Yes!","No thanks.") == 2) close;
+prontera,157,197,3	script	Teletransportador MVP	768,{
+	mes "[ ^0065DFTeletransportador MVP^000000 ]";
+	mes "Gostaria de entrar";
+	mes "na Arena MVP?";
+	if (select("Sim!","Não, obrigado.") == 2) close;
 	warp "quiz_00",50,24;
 	close;
 }
 
 // Information
-quiz_00,49,31,4	script	MVP Arena Guide	778,{
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "Welcome and behold this sacred place. Here you will find out if you truly have what it takes to call yourself a warrior.";
+quiz_00,49,31,4	script	Guia da Arena MVP	778,{
+	mes "[ ^0065DFGuia da Arena MVP^000000 ]";
+	mes "Bem-vindo e contemple este lugar sagrado. Aqui você descobrirá se realmente tem o que é preciso para se chamar de guerreiro.";
 	next;
-	switch(select("Information","Heal me!","Return to Prontera","Cancel")) {
+	switch(select("Informação","Me cura!","Voltar para Prontera","Cancelar")) {
 	case 1:
-		mes "[ ^0065DFMVP Arena Guide^000000 ]";
-		mes "There are four Keepers, and each can spawn four different MVPs.";
-		mes "There are eight rooms per Keeper, and sixteen MVPs in total.";
+		mes "[ ^0065DGuia da Arena MVP^000000 ]";
+		mes "Existem quatro Guardiões e cada um pode gerar quatro MVPs diferentes.";
+		mes "Existem oito salas por Keeper e dezesseis MVPs no total.";
 		close;
 	case 2:
 		specialeffect2 EF_HEAL2;
@@ -53,14 +55,14 @@ quiz_00,49,31,4	script	MVP Arena Guide	778,{
 function	script	Keeper	{
 	set .@arg, getarg(0);
 	mes "[ ^0065DF"+strnpcinfo(1)+"^000000 ]";
-	mes "Which arena would you";
-	mes "like to enter?";
+	mes "Em qual arena você";
+	mes "gostaria de entrar?";
 	for(set .@i,1; .@i<9; set .@i,.@i+1)
 		set .@menu$, .@menu$+"Arena "+.@i+" ["+getmapusers("pvp_n_"+.@i+"-"+.@arg)+"/20]:";
 	set .@i, select(.@menu$);
 	if (getmapusers("pvp_n_"+.@i+"-"+ .@arg)>19) {
 		mes "[ ^0065DF"+strnpcinfo(1)+"^000000 ]";
-		mes "Sorry, this arena is full!";
+		mes "Desculpe, esta arena está cheia!";
 		close;
 	}
 	warp "pvp_n_"+.@i+"-"+ .@arg,102,102;
@@ -73,7 +75,7 @@ quiz_00,62,31,4	script	Epsilon MVP	776,{ callfunc "Keeper",5; }
 
 // Protectors
 function	script	Protector	{
-	switch(select(""+((getarg(0)=="")?"":"Harder Monsters")+":Heal:Exit")) {
+	switch(select(""+((getarg(0)=="")?"":"Monstros Difíceis")+":Heal:Sair")) {
 	case 1:
 		warp getarg(0),102,102;
 		end;
@@ -85,6 +87,11 @@ function	script	Protector	{
 		warp "prontera",156,179;
 		end;
 	}
+}
+-	script	Master	-1,{
+	OnThisMobDeath:
+		getitem 671,1;
+	end;
 }
 pvp_n_1-2,100,100,4	script	MVP-Protector#01	727,{ callfunc "Protector","pvp_n_2-2"; }
 pvp_n_2-2,100,100,4	script	MVP-Protector#02	727,{ callfunc "Protector","pvp_n_3-2"; }
@@ -120,126 +127,126 @@ pvp_n_7-5,100,100,4	script	MVP-Protector#31	727,{ callfunc "Protector","pvp_n_8-
 pvp_n_8-5,100,100,4	script	MVP-Protector#32	727,{ callfunc "Protector",""; }
 
 // Alpha
-pvp_n_1-2,0,0	monster	Eddga	1115,3,60000,66000
-pvp_n_1-2,0,0	monster	Mistress	1059,1,60000,66000
-pvp_n_2-2,0,0	monster	Mistress	1059,3,60000,66000
-pvp_n_2-2,0,0	monster	Moonlight	1150,1,60000,66000
-pvp_n_3-2,0,0	monster	Mistress	1059,1,60000,66000
-pvp_n_3-2,0,0	monster	Moonlight	1150,2,60000,66000
-pvp_n_3-2,0,0	monster	Maya	1147,1,60000,66000
-pvp_n_4-2,0,0	monster	Eddga	1115,1,60000,66000
-pvp_n_4-2,0,0	monster	Mistress	1059,1,60000,66000
-pvp_n_4-2,0,0	monster	Moonlight	1150,1,60000,66000
-pvp_n_4-2,0,0	monster	Maya	1147,1,60000,66000
-pvp_n_5-2,0,0	monster	Eddga	1115,1,60000,66000
-pvp_n_5-2,0,0	monster	Mistress	1059,2,60000,66000
-pvp_n_5-2,0,0	monster	Moonlight	1150,1,60000,66000
-pvp_n_5-2,0,0	monster	Maya	1147,2,60000,66000
-pvp_n_6-2,0,0	monster	Eddga	1115,2,60000,66000
-pvp_n_6-2,0,0	monster	Mistress	1059,3,60000,66000
-pvp_n_6-2,0,0	monster	Moonlight	1150,1,60000,66000
-pvp_n_6-2,0,0	monster	Maya	1147,2,60000,66000
-pvp_n_7-2,0,0	monster	Eddga	1115,3,60000,66000
-pvp_n_7-2,0,0	monster	Mistress	1059,3,60000,66000
-pvp_n_7-2,0,0	monster	Moonlight	1150,2,60000,66000
-pvp_n_7-2,0,0	monster	Maya	1147,2,60000,66000
-pvp_n_8-2,0,0	monster	Eddga	1115,3,60000,66000
-pvp_n_8-2,0,0	monster	Mistress	1059,3,60000,66000
-pvp_n_8-2,0,0	monster	Moonlight	1150,3,60000,66000
-pvp_n_8-2,0,0	monster	Maya	1147,3,60000,66000
+pvp_n_1-2,0,0	monster	Eddga	1115,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_1-2,0,0	monster	Mistress	1059,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-2,0,0	monster	Mistress	1059,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-2,0,0	monster	Moonlight	1150,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-2,0,0	monster	Mistress	1059,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-2,0,0	monster	Moonlight	1150,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-2,0,0	monster	Maya	1147,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-2,0,0	monster	Eddga	1115,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-2,0,0	monster	Mistress	1059,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-2,0,0	monster	Moonlight	1150,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-2,0,0	monster	Maya	1147,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-2,0,0	monster	Eddga	1115,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-2,0,0	monster	Mistress	1059,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-2,0,0	monster	Moonlight	1150,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-2,0,0	monster	Maya	1147,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-2,0,0	monster	Eddga	1115,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-2,0,0	monster	Mistress	1059,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-2,0,0	monster	Moonlight	1150,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-2,0,0	monster	Maya	1147,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-2,0,0	monster	Eddga	1115,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-2,0,0	monster	Mistress	1059,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-2,0,0	monster	Moonlight	1150,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-2,0,0	monster	Maya	1147,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-2,0,0	monster	Eddga	1115,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-2,0,0	monster	Mistress	1059,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-2,0,0	monster	Moonlight	1150,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-2,0,0	monster	Maya	1147,3,60000,66000,"Master::OnThisMobDeath"
 
 // Beta
-pvp_n_1-3,0,0	monster	Phreeoni	1159,3,60000,66000
-pvp_n_1-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_2-3,0,0	monster	Phreeoni	1159,2,60000,66000
-pvp_n_2-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_2-3,0,0	monster	Orc Hero	1087,1,60000,66000
-pvp_n_3-3,0,0	monster	Phreeoni	1159,1,60000,66000
-pvp_n_3-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_3-3,0,0	monster	Orc Hero	1087,1,60000,66000
-pvp_n_3-3,0,0	monster	Orc Lord	1190,1,60000,66000
-pvp_n_4-3,0,0	monster	Phreeoni	1159,2,60000,66000
-pvp_n_4-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_4-3,0,0	monster	Orc Hero	1087,1,60000,66000
-pvp_n_4-3,0,0	monster	Orc Lord	1190,1,60000,66000
-pvp_n_5-3,0,0	monster	Phreeoni	1159,1,60000,66000
-pvp_n_5-3,0,0	monster	Turtle General	1312,2,60000,66000
-pvp_n_5-3,0,0	monster	Orc Hero	1087,2,60000,66000
-pvp_n_5-3,0,0	monster	Orc Lord	1190,1,60000,66000
-pvp_n_6-3,0,0	monster	Phreeoni	1159,2,60000,66000
-pvp_n_6-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_6-3,0,0	monster	Orc Hero	1087,2,60000,66000
-pvp_n_6-3,0,0	monster	Orc Lord	1190,2,60000,66000
-pvp_n_7-3,0,0	monster	Phreeoni	1159,3,60000,66000
-pvp_n_7-3,0,0	monster	Turtle General	1312,1,60000,66000
-pvp_n_7-3,0,0	monster	Orc Hero	1087,2,60000,66000
-pvp_n_7-3,0,0	monster	Orc Lord	1190,3,60000,66000
-pvp_n_8-3,0,0	monster	Phreeoni	1159,3,60000,66000
-pvp_n_8-3,0,0	monster	Turtle General	1312,3,60000,66000
-pvp_n_8-3,0,0	monster	Orc Hero	1087,3,60000,66000
-pvp_n_8-3,0,0	monster	Orc Lord	1190,3,60000,66000
+pvp_n_1-3,0,0	monster	Phreeoni	1159,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_1-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-3,0,0	monster	Phreeoni	1159,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-3,0,0	monster	Orc Hero	1087,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-3,0,0	monster	Phreeoni	1159,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-3,0,0	monster	Orc Hero	1087,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-3,0,0	monster	Orc Lord	1190,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-3,0,0	monster	Phreeoni	1159,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-3,0,0	monster	Orc Hero	1087,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-3,0,0	monster	Orc Lord	1190,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-3,0,0	monster	Phreeoni	1159,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-3,0,0	monster	Turtle General	1312,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-3,0,0	monster	Orc Hero	1087,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-3,0,0	monster	Orc Lord	1190,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-3,0,0	monster	Phreeoni	1159,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-3,0,0	monster	Orc Hero	1087,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-3,0,0	monster	Orc Lord	1190,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-3,0,0	monster	Phreeoni	1159,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-3,0,0	monster	Turtle General	1312,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-3,0,0	monster	Orc Hero	1087,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-3,0,0	monster	Orc Lord	1190,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-3,0,0	monster	Phreeoni	1159,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-3,0,0	monster	Turtle General	1312,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-3,0,0	monster	Orc Hero	1087,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-3,0,0	monster	Orc Lord	1190,3,60000,66000,"Master::OnThisMobDeath"
 
 // Theta
-pvp_n_1-4,0,0	monster	Drake	1112,3,60000,66000
-pvp_n_1-4,0,0	monster	Osiris	1038,1,60000,66000
-pvp_n_2-4,0,0	monster	Drake	1112,2,60000,66000
-pvp_n_2-4,0,0	monster	Osiris	1038,1,60000,66000
-pvp_n_2-4,0,0	monster	Doppelganger	1046,1,60000,66000
-pvp_n_3-4,0,0	monster	Drake	1112,1,60000,66000
-pvp_n_3-4,0,0	monster	Osiris	1038,1,60000,66000
-pvp_n_3-4,0,0	monster	Doppelganger	1046,1,60000,66000
-pvp_n_3-4,0,0	monster	Lord of Death	1373,1,60000,66000
-pvp_n_4-4,0,0	monster	Drake	1112,2,60000,66000
-pvp_n_4-4,0,0	monster	Osiris	1038,1,60000,66000
-pvp_n_4-4,0,0	monster	Doppelganger	1046,2,60000,66000
-pvp_n_4-4,0,0	monster	Lord of Death	1373,1,60000,66000
-pvp_n_5-4,0,0	monster	Drake	1112,3,60000,66000
-pvp_n_5-4,0,0	monster	Osiris	1038,2,60000,66000
-pvp_n_5-4,0,0	monster	Doppelganger	1046,2,60000,66000
-pvp_n_5-4,0,0	monster	Lord of Death	1373,1,60000,66000
-pvp_n_6-4,0,0	monster	Drake	1112,3,60000,66000
-pvp_n_6-4,0,0	monster	Osiris	1038,2,60000,66000
-pvp_n_6-4,0,0	monster	Doppelganger	1046,2,60000,66000
-pvp_n_6-4,0,0	monster	Lord of Death	1373,2,60000,66000
-pvp_n_7-4,0,0	monster	Drake	1112,3,60000,66000
-pvp_n_7-4,0,0	monster	Osiris	1038,2,60000,66000
-pvp_n_7-4,0,0	monster	Doppelganger	1046,3,60000,66000
-pvp_n_7-4,0,0	monster	Lord of Death	1373,2,60000,66000
-pvp_n_8-4,0,0	monster	Drake	1112,3,60000,66000
-pvp_n_8-4,0,0	monster	Osiris	1038,3,60000,66000
-pvp_n_8-4,0,0	monster	Doppelganger	1046,3,60000,66000
-pvp_n_8-4,0,0	monster	Lord of Death	1373,3,60000,66000
+pvp_n_1-4,0,0	monster	Drake	1112,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_1-4,0,0	monster	Osiris	1038,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-4,0,0	monster	Drake	1112,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-4,0,0	monster	Osiris	1038,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-4,0,0	monster	Doppelganger	1046,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-4,0,0	monster	Drake	1112,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-4,0,0	monster	Osiris	1038,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-4,0,0	monster	Doppelganger	1046,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-4,0,0	monster	Lord of Death	1373,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-4,0,0	monster	Drake	1112,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-4,0,0	monster	Osiris	1038,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-4,0,0	monster	Doppelganger	1046,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-4,0,0	monster	Lord of Death	1373,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-4,0,0	monster	Drake	1112,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-4,0,0	monster	Osiris	1038,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-4,0,0	monster	Doppelganger	1046,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-4,0,0	monster	Lord of Death	1373,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-4,0,0	monster	Drake	1112,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-4,0,0	monster	Osiris	1038,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-4,0,0	monster	Doppelganger	1046,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-4,0,0	monster	Lord of Death	1373,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-4,0,0	monster	Drake	1112,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-4,0,0	monster	Osiris	1038,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-4,0,0	monster	Doppelganger	1046,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-4,0,0	monster	Lord of Death	1373,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-4,0,0	monster	Drake	1112,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-4,0,0	monster	Osiris	1038,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-4,0,0	monster	Doppelganger	1046,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-4,0,0	monster	Lord of Death	1373,3,60000,66000,"Master::OnThisMobDeath"
 
 // Epsilon
-pvp_n_1-5,0,0	monster	Incantation Samurai	1492,3,60000,66000
-pvp_n_1-5,0,0	monster	Pharoh	1157,1,60000,66000
-pvp_n_2-5,0,0	monster	Incantation Samurai	1492,2,60000,66000
-pvp_n_2-5,0,0	monster	Pharoh	1157,1,60000,66000
-pvp_n_2-5,0,0	monster	Dark Lord	1272,1,60000,66000
-pvp_n_3-5,0,0	monster	Incantation Samurai	1492,1,60000,66000
-pvp_n_3-5,0,0	monster	Pharoh	1157,1,60000,66000
-pvp_n_3-5,0,0	monster	Dark Lord	1272,1,60000,66000
-pvp_n_3-5,0,0	monster	Baphomet	1039,1,60000,66000
-pvp_n_4-5,0,0	monster	Incantation Samurai	1492,3,60000,66000
-pvp_n_4-5,0,0	monster	Pharoh	1157,1,60000,66000
-pvp_n_4-5,0,0	monster	Dark Lord	1272,1,60000,66000
-pvp_n_4-5,0,0	monster	Baphomet	1039,1,60000,66000
-pvp_n_5-5,0,0	monster	Incantation Samurai	1492,2,60000,66000
-pvp_n_5-5,0,0	monster	Pharoh	1157,2,60000,66000
-pvp_n_5-5,0,0	monster	Dark Lord	1272,2,60000,66000
-pvp_n_5-5,0,0	monster	Baphomet	1039,1,60000,66000
-pvp_n_6-5,0,0	monster	Incantation Samurai	1492,2,60000,66000
-pvp_n_6-5,0,0	monster	Pharoh	1157,2,60000,66000
-pvp_n_6-5,0,0	monster	Dark Lord	1272,2,60000,66000
-pvp_n_6-5,0,0	monster	Baphomet	1039,1,60000,66000
-pvp_n_7-5,0,0	monster	Incantation Samurai	1492,2,60000,66000
-pvp_n_7-5,0,0	monster	Pharoh	1157,2,60000,66000
-pvp_n_7-5,0,0	monster	Dark Lord	1272,2,60000,66000
-pvp_n_7-5,0,0	monster	Baphomet	1039,2,60000,66000
-pvp_n_8-5,0,0	monster	Incantation Samurai	1492,3,60000,66000
-pvp_n_8-5,0,0	monster	Pharoh	1157,2,60000,66000
-pvp_n_8-5,0,0	monster	Dark Lord	1272,2,60000,66000
-pvp_n_8-5,0,0	monster	Baphomet	1039,2,60000,66000
+pvp_n_1-5,0,0	monster	Incantation Samurai	1492,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_1-5,0,0	monster	Pharoh	1157,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-5,0,0	monster	Incantation Samurai	1492,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-5,0,0	monster	Pharoh	1157,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_2-5,0,0	monster	Dark Lord	1272,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-5,0,0	monster	Incantation Samurai	1492,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-5,0,0	monster	Pharoh	1157,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-5,0,0	monster	Dark Lord	1272,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_3-5,0,0	monster	Baphomet	1039,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-5,0,0	monster	Incantation Samurai	1492,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-5,0,0	monster	Pharoh	1157,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-5,0,0	monster	Dark Lord	1272,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_4-5,0,0	monster	Baphomet	1039,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-5,0,0	monster	Incantation Samurai	1492,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-5,0,0	monster	Pharoh	1157,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-5,0,0	monster	Dark Lord	1272,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_5-5,0,0	monster	Baphomet	1039,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-5,0,0	monster	Incantation Samurai	1492,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-5,0,0	monster	Pharoh	1157,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-5,0,0	monster	Dark Lord	1272,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_6-5,0,0	monster	Baphomet	1039,1,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-5,0,0	monster	Incantation Samurai	1492,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-5,0,0	monster	Pharoh	1157,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-5,0,0	monster	Dark Lord	1272,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_7-5,0,0	monster	Baphomet	1039,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-5,0,0	monster	Incantation Samurai	1492,3,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-5,0,0	monster	Pharoh	1157,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-5,0,0	monster	Dark Lord	1272,2,60000,66000,"Master::OnThisMobDeath"
+pvp_n_8-5,0,0	monster	Baphomet	1039,2,60000,66000,"Master::OnThisMobDeath"
 
 // Mapflags
 pvp_n_1-1	mapflag	pvp_nightmaredrop	off
@@ -282,3 +289,85 @@ pvp_n_5-5	mapflag	pvp_nightmaredrop	off
 pvp_n_6-5	mapflag	pvp_nightmaredrop	off
 pvp_n_7-5	mapflag	pvp_nightmaredrop	off
 pvp_n_8-5	mapflag	pvp_nightmaredrop	off
+
+pvp_n_1-1	mapflag	noloot	on
+pvp_n_2-1	mapflag	noloot	on
+pvp_n_3-1	mapflag	noloot	on
+pvp_n_4-1	mapflag	noloot	on
+pvp_n_5-1	mapflag	noloot	on
+pvp_n_6-1	mapflag	noloot	on
+pvp_n_7-1	mapflag	noloot	on
+pvp_n_8-1	mapflag	noloot	on
+pvp_n_1-2	mapflag	noloot	on
+pvp_n_2-2	mapflag	noloot	on
+pvp_n_3-2	mapflag	noloot	on
+pvp_n_4-2	mapflag	noloot	on
+pvp_n_5-2	mapflag	noloot	on
+pvp_n_6-2	mapflag	noloot	on
+pvp_n_7-2	mapflag	noloot	on
+pvp_n_8-2	mapflag	noloot	on
+pvp_n_1-3	mapflag	noloot	on
+pvp_n_2-3	mapflag	noloot	on
+pvp_n_3-3	mapflag	noloot	on
+pvp_n_4-3	mapflag	noloot	on
+pvp_n_5-3	mapflag	noloot	on
+pvp_n_6-3	mapflag	noloot	on
+pvp_n_7-3	mapflag	noloot	on
+pvp_n_8-3	mapflag	noloot	on
+pvp_n_1-4	mapflag	noloot	on
+pvp_n_2-4	mapflag	noloot	on
+pvp_n_3-4	mapflag	noloot	on
+pvp_n_4-4	mapflag	noloot	on
+pvp_n_5-4	mapflag	noloot	on
+pvp_n_6-4	mapflag	noloot	on
+pvp_n_7-4	mapflag	noloot	on
+pvp_n_8-4	mapflag	noloot	on
+pvp_n_1-5	mapflag	noloot	on
+pvp_n_2-5	mapflag	noloot	on
+pvp_n_3-5	mapflag	noloot	on
+pvp_n_4-5	mapflag	noloot	on
+pvp_n_5-5	mapflag	noloot	on
+pvp_n_6-5	mapflag	noloot	on
+pvp_n_7-5	mapflag	noloot	on
+pvp_n_8-5	mapflag	noloot	on
+
+pvp_n_1-1	mapflag	pvp	off
+pvp_n_2-1	mapflag	pvp	off
+pvp_n_3-1	mapflag	pvp	off
+pvp_n_4-1	mapflag	pvp	off
+pvp_n_5-1	mapflag	pvp	off
+pvp_n_6-1	mapflag	pvp	off
+pvp_n_7-1	mapflag	pvp	off
+pvp_n_8-1	mapflag	pvp	off
+pvp_n_1-2	mapflag	pvp	off
+pvp_n_2-2	mapflag	pvp	off
+pvp_n_3-2	mapflag	pvp	off
+pvp_n_4-2	mapflag	pvp	off
+pvp_n_5-2	mapflag	pvp	off
+pvp_n_6-2	mapflag	pvp	off
+pvp_n_7-2	mapflag	pvp	off
+pvp_n_8-2	mapflag	pvp	off
+pvp_n_1-3	mapflag	pvp	off
+pvp_n_2-3	mapflag	pvp	off
+pvp_n_3-3	mapflag	pvp	off
+pvp_n_4-3	mapflag	pvp	off
+pvp_n_5-3	mapflag	pvp	off
+pvp_n_6-3	mapflag	pvp	off
+pvp_n_7-3	mapflag	pvp	off
+pvp_n_8-3	mapflag	pvp	off
+pvp_n_1-4	mapflag	pvp	off
+pvp_n_2-4	mapflag	pvp	off
+pvp_n_3-4	mapflag	pvp	off
+pvp_n_4-4	mapflag	pvp	off
+pvp_n_5-4	mapflag	pvp	off
+pvp_n_6-4	mapflag	pvp	off
+pvp_n_7-4	mapflag	pvp	off
+pvp_n_8-4	mapflag	pvp	off
+pvp_n_1-5	mapflag	pvp	off
+pvp_n_2-5	mapflag	pvp	off
+pvp_n_3-5	mapflag	pvp	off
+pvp_n_4-5	mapflag	pvp	off
+pvp_n_5-5	mapflag	pvp	off
+pvp_n_6-5	mapflag	pvp	off
+pvp_n_7-5	mapflag	pvp	off
+pvp_n_8-5	mapflag	pvp	off

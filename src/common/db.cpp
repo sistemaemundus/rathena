@@ -2386,7 +2386,6 @@ DBOptions db_fix_options(DBType type, DBOptions options)
 
 		default:
 			ShowError("db_fix_options: Unknown database type %u with options %x\n", type, options);
-		[[fallthrough]];
 		case DB_STRING:
 		case DB_ISTRING: // String databases, no fix required
 			return options;

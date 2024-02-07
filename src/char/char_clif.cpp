@@ -30,6 +30,10 @@
 
 using namespace rathena;
 
+// Reuseable global packet buffer to prevent too many allocations
+// Take socket.cpp::socket_max_client_packet into consideration
+static int8 packet_buffer[UINT16_MAX];
+
 std::vector<struct s_point_str> accessible_maps{
 	s_point_str{ MAP_PRONTERA, 273, 354 },
 	s_point_str{ MAP_GEFFEN, 120, 100 },
@@ -813,11 +817,6 @@ void chclif_send_map_data( int fd, std::shared_ptr<struct mmo_charstatus> cd, ui
 #if PACKETVER >= 20170315
 	memset(WFIFOP(fd, 28), 0, 128); // Unknown
 #endif
-#ifdef DEBUG
-	ShowDebug("Sending the client (%d %d.%d.%d.%d) to map-server with ip %d.%d.%d.%d and port %hu\n",
-			  cd->account_id, CONVIP(ipl), CONVIP((subnet_map_ip) ? subnet_map_ip : map_server[map_server_index].ip),
-			  map_server[map_server_index].port);
-#endif
 	WFIFOSET(fd,size);
 }
 
@@ -921,8 +920,8 @@ int chclif_parse_select_accessible_map( int fd, struct char_session_data* sd, ui
 	// FIXME: is this case even possible? [ultramage]
 	if( ( map_fd = map_server[mapserver].fd ) < 1 || session[map_fd] == nullptr ){
 		ShowError( "parse_char: Attempting to write to invalid session %d! Map Server #%d disconnected.\n", map_fd, mapserver );
-		map_server[mapserver] = {};
 		map_server[mapserver].fd = -1;
+		memset( &map_server[mapserver], 0, sizeof( struct mmo_map_server ) );
 		chclif_send_auth_result( fd, 1 ); // Send server closed.
 		return 1;
 	}
@@ -1091,8 +1090,8 @@ int chclif_parse_charselect(int fd, struct char_session_data* sd,uint32 ipl){
 		if ((map_fd = map_server[i].fd) < 1 || session[map_fd] == NULL)
 		{
 			ShowError("parse_char: Attempting to write to invalid session %d! Map Server #%d disconnected.\n", map_fd, i);
-			map_server[i] = {};
 			map_server[i].fd = -1;
+			memset(&map_server[i], 0, sizeof(struct mmo_map_server));
 			chclif_send_auth_result(fd,1);  //Send server closed.
 			return 1;
 		}

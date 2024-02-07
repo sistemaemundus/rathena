@@ -1,0 +1,91 @@
+// Criado pelo Alek Emundus
+// Muda a classe expandida para as novas
+prontera,154,196,6	script	Novas Classes Expandidas	403,{
+	mes "[Novas Classes Expandidas]";
+	mes "Olá, gostaria de expandir seu poder mais ainda?";
+	switch(select("- Sim, por favor!:- Agora não, obrigado!")) {
+		case 1:
+			if (SkillPoint) {
+				clear;
+				mes "[Novas Classes Expandidas]";
+				mes "Por favor use todos seus skills points antes de prosseguir.";
+				close;
+			} else if(readparam(Class) == 4218 && readparam(JobLevel) == 60) {
+						jobchange 4308;
+						clear;
+						mes "[Novas Classes Expandidas]";
+						mes "Sente-se mais forte agora?";
+						close;
+					} else if(readparam(BaseLevel) == 200 && readparam(JobLevel) == 70) {
+						clear;
+						mes "[Novas Classes Expandidas]";
+						mes "Bom, você está apto, gostaria de prosseguir?";
+						switch(select("- Vamos lá!:- Vou pensar mais um pouco...")) {
+					case 1:
+						if(readparam(Class) == 4190) {
+							jobchange 4307;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else if(readparam(Class) == 4215) {
+							jobchange 4306;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else if(readparam(Class) == 4212) {
+							jobchange 4305;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else if(readparam(Class) == 4211) {
+							jobchange 4304;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else if(readparam(Class) == 4240) {
+							jobchange 4303;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else if(readparam(CLass) == 4239) {
+							jobchange 4302;
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Sente-se mais forte agora?";
+							close;
+						} else {
+							clear;
+							mes "[Novas Classes Expandidas]";
+							mes "Algo deu errado, contate um Staff.. me desculpe...";
+							close;
+						}
+					case 2:
+						clear;
+						mes "[Novas Classes Expandidas]";
+						mes "Ok, fico no seu aguardo!";
+						close;
+				}
+			}  else if(readparam(Class) == 4307 || readparam(Class) == 4306 || readparam(Class) == 4305 || readparam(Class) == 4304 || readparam(Class) == 4303 || readparam(Class) == 4302 || readparam(Class) == 4308) {
+						clear;
+						mes "[Novas Classes Expandidas]";
+						mes "Você já alcançou seu poder absoluto!";
+						close;
+			} else {
+				clear;
+				mes "[Novas Classes Expandidas]";
+				mes "Me parece que você não tem os niveis necessários,";
+				mes "Ou já chegou ao seu poder absoluto!";
+				close;
+			}
+		case 2:
+			clear;
+			mes "[Novas Classes Expandidas]";
+			mes "Ok, fico no seu aguardo!";
+			close;
+	}
+}

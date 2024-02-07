@@ -915,7 +915,6 @@ static void chrif_ack_login_req(int aid, const char* player_name, uint16 type, u
 		case CHRIF_OP_LOGIN_CHANGESEX:
 		case CHRIF_OP_CHANGECHARSEX:
 			type = CHRIF_OP_LOGIN_CHANGESEX; // So we don't have to create a new msgstring.
-			[[fallthrough]];
 		case CHRIF_OP_LOGIN_BLOCK:
 		case CHRIF_OP_LOGIN_BAN:
 		case CHRIF_OP_LOGIN_UNBLOCK:
@@ -1903,7 +1902,6 @@ int auth_db_final(DBKey key, DBData *data, va_list ap) {
 		if (node->sd->regs.arrays)
 			node->sd->regs.arrays->destroy(node->sd->regs.arrays, script_free_array_db);
 
-		node->sd->~map_session_data();
 		aFree(node->sd);
 	}
 

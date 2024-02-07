@@ -47,10 +47,6 @@
 #include "strlib.hpp"
 #include "timer.hpp"
 
-// Reuseable global packet buffer to prevent too many allocations
-// Take socket.cpp::socket_max_client_packet into consideration
-int8 packet_buffer[UINT16_MAX];
-
 /////////////////////////////////////////////////////////////////////
 #if defined(WIN32)
 /////////////////////////////////////////////////////////////////////
@@ -754,23 +750,25 @@ static void delete_session(int fd)
 	}
 }
 
-int _realloc_fifo( int fd, unsigned int rfifo_size, unsigned int wfifo_size, const char* file, int line, const char* func ){
+int realloc_fifo(int fd, unsigned int rfifo_size, unsigned int wfifo_size)
+{
 	if( !session_isValid(fd) )
 		return 0;
 
 	if( session[fd]->max_rdata != rfifo_size && session[fd]->rdata_size < rfifo_size) {
-		RECREATE2( session[fd]->rdata, unsigned char, rfifo_size, file, line, func );
+		RECREATE(session[fd]->rdata, unsigned char, rfifo_size);
 		session[fd]->max_rdata  = rfifo_size;
 	}
 
 	if( session[fd]->max_wdata != wfifo_size && session[fd]->wdata_size < wfifo_size) {
-		RECREATE2( session[fd]->wdata, unsigned char, wfifo_size, file, line, func );
+		RECREATE(session[fd]->wdata, unsigned char, wfifo_size);
 		session[fd]->max_wdata  = wfifo_size;
 	}
 	return 0;
 }
 
-int _realloc_writefifo( int fd, size_t addition, const char* file, int line, const char* func ){
+int realloc_writefifo(int fd, size_t addition)
+{
 	size_t newsize;
 
 	if( !session_isValid(fd) ) // might not happen
@@ -790,7 +788,7 @@ int _realloc_writefifo( int fd, size_t addition, const char* file, int line, con
 	else // no change
 		return 0;
 
-	RECREATE2( session[fd]->wdata, unsigned char, newsize, file, line, func );
+	RECREATE(session[fd]->wdata, unsigned char, newsize);
 	session[fd]->max_wdata  = newsize;
 
 	return 0;

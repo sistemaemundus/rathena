@@ -95,7 +95,7 @@ char guild_storage_log_table[32] = "guild_storage_log";
 
 // log database
 std::string log_db_ip = "127.0.0.1";
-uint16 log_db_port = 3306;
+int log_db_port = 3306;
 std::string log_db_id = "ragnarok";
 std::string log_db_pw = "";
 std::string log_db_db = "log";
@@ -571,7 +571,7 @@ int map_count_oncell(int16 m, int16 x, int16 y, int type, int flag)
 			if(bl->x == x && bl->y == y && bl->type&type) {
 				if (bl->type == BL_NPC) {	// Don't count hidden or invisible npc. Cloaked npc are counted
 					npc_data *nd = BL_CAST(BL_NPC, bl);
-					if (nd->bl.m < 0 || nd->sc.option&OPTION_HIDE || nd->dynamicnpc.owner_char_id != 0)
+					if (nd->bl.m < 0 || nd->sc.option&(OPTION_HIDE|OPTION_INVISIBLE) || nd->dynamicnpc.owner_char_id != 0)
 						continue;
 				}
 				if(flag&1) {
@@ -763,9 +763,9 @@ int map_foreachinareaV(int(*func)(struct block_list*, va_list), int16 m, int16 x
 		return 0;
 
 	if (x1 < x0)
-		std::swap(x0, x1);
+		SWAP(x0, x1);
 	if (y1 < y0)
-		std::swap(y0, y1);
+		SWAP(y0, y1);
 
 	struct map_data *mapdata = map_getmapdata(m);
 
@@ -942,9 +942,9 @@ int map_forcountinarea(int (*func)(struct block_list*,va_list), int16 m, int16 x
 		return 0;
 
 	if ( x1 < x0 )
-		std::swap(x0, x1);
+		SWAP(x0, x1);
 	if ( y1 < y0 )
-		std::swap(y0, y1);
+		SWAP(y0, y1);
 
 	struct map_data *mapdata = map_getmapdata(m);
 
@@ -1021,9 +1021,9 @@ int map_foreachinmovearea(int (*func)(struct block_list*,va_list), struct block_
 	y1 = center->y + range;
 
 	if ( x1 < x0 )
-		std::swap(x0, x1);
+		SWAP(x0, x1);
 	if ( y1 < y0 )
-		std::swap(y0, y1);
+		SWAP(y0, y1);
 
 	if( dx == 0 || dy == 0 ) {
 		//Movement along one axis only.
@@ -1254,9 +1254,9 @@ int map_foreachinpath(int (*func)(struct block_list*,va_list),int16 m,int16 x0,i
 
 	//The two fors assume mx0 < mx1 && my0 < my1
 	if ( mx0 > mx1 )
-		std::swap(mx0, mx1);
+		SWAP(mx0, mx1);
 	if ( my0 > my1 )
-		std::swap(my0, my1);
+		SWAP(my0, my1);
 
 	struct map_data *mapdata = map_getmapdata(m);
 
@@ -1416,9 +1416,9 @@ int map_foreachindir(int(*func)(struct block_list*, va_list), int16 m, int16 x0,
 
 	//The following assumes mx0 < mx1 && my0 < my1
 	if (mx0 > mx1)
-		std::swap(mx0, mx1);
+		SWAP(mx0, mx1);
 	if (my0 > my1)
-		std::swap(my0, my1);
+		SWAP(my0, my1);
 
 	//Apply width to the path by turning 90 degrees
 	mx0 -= abs( range * dirx[( dir + 2 ) % DIR_MAX] );
@@ -1669,7 +1669,7 @@ int map_searchrandfreecell(int16 m,int16 *x,int16 *y,int stack) {
 	}
 	if(free_cell==0)
 		return 0;
-	free_cell = rnd_value(0, free_cell-1);
+	free_cell = rnd()%free_cell;
 	*x = free_cells[free_cell][0];
 	*y = free_cells[free_cell][1];
 	return 1;
@@ -1697,6 +1697,8 @@ int map_search_freecell(struct block_list *src, int16 m, int16 *x,int16 *y, int1
 {
 	int tries, spawn=0;
 	int bx, by;
+	int rx2 = 2*rx+1;
+	int ry2 = 2*ry+1;
 
 	if( !src && (!(flag&1) || flag&2) )
 	{
@@ -1726,7 +1728,7 @@ int map_search_freecell(struct block_list *src, int16 m, int16 *x,int16 *y, int1
 	}
 
 	if (rx >= 0 && ry >= 0) {
-		tries = (rx * 2 + 1) * (ry * 2 + 1);
+		tries = rx2*ry2;
 		if (tries > 100) tries = 100;
 	} else {
 		tries = mapdata->xs*mapdata->ys;
@@ -1734,8 +1736,8 @@ int map_search_freecell(struct block_list *src, int16 m, int16 *x,int16 *y, int1
 	}
 
 	while(tries--) {
-		*x = (rx >= 0) ? rnd_value(bx - rx, bx + rx) : rnd_value<int16>(1, mapdata->xs - 1);
-		*y = (ry >= 0) ? rnd_value(by - ry, by + ry) : rnd_value<int16>(1, mapdata->ys - 1);
+		*x = (rx >= 0)?(rnd()%rx2-rx+bx):(rnd()%(mapdata->xs-2)+1);
+		*y = (ry >= 0)?(rnd()%ry2-ry+by):(rnd()%(mapdata->ys-2)+1);
 
 		if (*x == bx && *y == by)
 			continue; //Avoid picking the same target tile.
@@ -1858,6 +1860,7 @@ bool map_closest_freecell(int16 m, int16 *x, int16 *y, int type, int flag)
  *------------------------------------------*/
 int map_addflooritem(struct item *item, int amount, int16 m, int16 x, int16 y, int first_charid, int second_charid, int third_charid, int flags, unsigned short mob_id, bool canShowEffect)
 {
+	int r;
 	struct flooritem_data *fitem = NULL;
 
 	nullpo_ret(item);
@@ -1867,6 +1870,7 @@ int map_addflooritem(struct item *item, int amount, int16 m, int16 x, int16 y, i
 
 	if (!map_searchrandfreecell(m,&x,&y,flags&2?1:0))
 		return 0;
+	r = rnd();
 
 	CREATE(fitem, struct flooritem_data, 1);
 	fitem->bl.type=BL_ITEM;
@@ -1890,8 +1894,8 @@ int map_addflooritem(struct item *item, int amount, int16 m, int16 x, int16 y, i
 
 	memcpy(&fitem->item,item,sizeof(*item));
 	fitem->item.amount = amount;
-	fitem->subx = rnd_value(1, 4) * 3;
-	fitem->suby = rnd_value(1, 4) * 3;
+	fitem->subx = (r&3)*3+3;
+	fitem->suby = ((r>>2)&3)*3+3;
 	fitem->cleartimer = add_timer(gettick()+battle_config.flooritem_lifetime,map_clearflooritem_timer,fitem->bl.id,0);
 
 	map_addiddb(&fitem->bl);
@@ -2121,9 +2125,8 @@ int map_quit(map_session_data *sd) {
 
 	for (i = 0; i < EQI_MAX; i++) {
 		if (sd->equip_index[i] >= 0)
-			if( pc_isequip( sd, sd->equip_index[i] ) != ITEM_EQUIP_ACK_OK ){
+			if (pc_isequip(sd,sd->equip_index[i]))
 				pc_unequipitem(sd,sd->equip_index[i],2);
-			}
 	}
 
 	// Return loot to owner
@@ -2797,7 +2800,7 @@ int map_delinstancemap(int m)
 
 	map_free_questinfo(mapdata);
 	mapdata->damage_adjust = {};
-	mapdata->initMapFlags();
+	mapdata->flag.clear();
 	mapdata->skill_damage.clear();
 	mapdata->instance_id = 0;
 
@@ -3086,8 +3089,8 @@ int map_random_dir(struct block_list *bl, int16 *x, int16 *y)
 	if (dist < 1) dist =1;
 
 	do {
-		directions j = static_cast<directions>(1 + 2 * rnd_value(0, 3)); //Pick a random diagonal direction
-		short segment = rnd_value((short)1, dist); //Pick a random interval from the whole vector in that direction
+		short j = 1 + 2*(rnd()%4); //Pick a random diagonal direction
+		short segment = 1+(rnd()%dist); //Pick a random interval from the whole vector in that direction
 		xi = bl->x + segment*dirx[j];
 		segment = (short)sqrt((float)(dist2 - segment*segment)); //The complement of the previously picked segment
 		yi = bl->y + segment*diry[j];
@@ -3595,13 +3598,14 @@ void map_flags_init(void){
 		struct map_data *mapdata = &map[i];
 		union u_mapflag_args args = {};
 
-		mapdata->initMapFlags(); // Resize and define default values
+		mapdata->flag.clear();
+		mapdata->flag.resize(MF_MAX, 0); // Resize and define default values
 		mapdata->drop_list.clear();
 		args.flag_val = 100;
 
 		// additional mapflag data
 		mapdata->zone = 0; // restricted mapflag zone
-		mapdata->setMapFlag(MF_NOCOMMAND, false); // nocommand mapflag level
+		mapdata->flag[MF_NOCOMMAND] = false; // nocommand mapflag level
 		map_setmapflag_sub(i, MF_BEXP, true, &args); // per map base exp multiplicator
 		map_setmapflag_sub(i, MF_JEXP, true, &args); // per map job exp multiplicator
 
@@ -3616,7 +3620,7 @@ void map_flags_init(void){
 
 		// adjustments
 		if( battle_config.pk_mode && !mapdata_flag_vs2(mapdata) )
-			mapdata->setMapFlag(MF_PVP, true); // make all maps pvp for pk_mode [Valaris]
+			mapdata->flag[MF_PVP] = true; // make all maps pvp for pk_mode [Valaris]
 	}
 }
 
@@ -3632,7 +3636,7 @@ void map_data_copy(struct map_data *dst_map, struct map_data *src_map) {
 	memcpy(&dst_map->save, &src_map->save, sizeof(struct point));
 	memcpy(&dst_map->damage_adjust, &src_map->damage_adjust, sizeof(struct s_skill_damage));
 
-	dst_map->copyFlags(*src_map);
+	dst_map->flag = src_map->flag;
 	dst_map->skill_damage.insert(src_map->skill_damage.begin(), src_map->skill_damage.end());
 	dst_map->skill_duration.insert(src_map->skill_duration.begin(), src_map->skill_duration.end());
 
@@ -4189,7 +4193,7 @@ int inter_config_read(const char *cfgName)
 			log_db_pw = w2;
 		else
 		if(strcmpi(w1,"log_db_port")==0)
-			log_db_port = (uint16)strtoul( w2, nullptr, 10 );
+			log_db_port = atoi(w2);
 		else
 		if(strcmpi(w1,"log_db_db")==0)
 			log_db_db = w2;
@@ -4274,7 +4278,7 @@ int log_sql_init(void)
 
 	ShowInfo("" CL_WHITE "[SQL]" CL_RESET ": Connecting to the Log Database " CL_WHITE "%s" CL_RESET " At " CL_WHITE "%s" CL_RESET "...\n",log_db_db.c_str(), log_db_ip.c_str());
 	if ( SQL_ERROR == Sql_Connect(logmysql_handle, log_db_id.c_str(), log_db_pw.c_str(), log_db_ip.c_str(), log_db_port, log_db_db.c_str()) ){
-		ShowError("Couldn't connect with uname='%s',host='%s',port='%hu',database='%s'\n",
+		ShowError("Couldn't connect with uname='%s',host='%s',port='%d',database='%s'\n",
 			log_db_id.c_str(), log_db_ip.c_str(), log_db_port, log_db_db.c_str());
 		Sql_ShowDebug(logmysql_handle);
 		Sql_Free(logmysql_handle);
@@ -4521,11 +4525,11 @@ int map_getmapflag_sub(int16 m, enum e_mapflag mapflag, union u_mapflag_args *ar
 		case MF_RESTRICTED:
 			return mapdata->zone;
 		case MF_NOLOOT:
-			return mapdata->getMapFlag(MF_NOMOBLOOT) && mapdata->getMapFlag(MF_NOMVPLOOT);
+			return mapdata->flag[MF_NOMOBLOOT] && mapdata->flag[MF_NOMVPLOOT];
 		case MF_NOPENALTY:
-			return mapdata->getMapFlag(MF_NOEXPPENALTY) && mapdata->getMapFlag(MF_NOZENYPENALTY);
+			return mapdata->flag[MF_NOEXPPENALTY] && mapdata->flag[MF_NOZENYPENALTY];
 		case MF_NOEXP:
-			return mapdata->getMapFlag(MF_NOBASEEXP) && mapdata->getMapFlag(MF_NOJOBEXP);
+			return mapdata->flag[MF_NOBASEEXP] && mapdata->flag[MF_NOJOBEXP];
 		case MF_SKILL_DAMAGE:
 			nullpo_retr(-1, args);
 
@@ -4538,10 +4542,10 @@ int map_getmapflag_sub(int16 m, enum e_mapflag mapflag, union u_mapflag_args *ar
 				case SKILLDMG_CASTER:
 					return mapdata->damage_adjust.caster;
 				default:
-					return mapdata->getMapFlag(mapflag);
+					return mapdata->flag[mapflag];
 			}
 		default:
-			return mapdata->getMapFlag(mapflag);
+			return mapdata->flag[mapflag];
 	}
 }
 
@@ -4576,10 +4580,10 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 				mapdata->save.x = args->nosave.x;
 				mapdata->save.y = args->nosave.y;
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_PVP:
-			mapdata->setMapFlag(mapflag, status); // Must come first to properly set map property
+			mapdata->flag[mapflag] = status; // Must come first to properly set map property
 			if (!status) {
 				clif_map_property_mapall(m, MAPPROPERTY_NOTHING);
 				map_foreachinmap(map_mapflag_pvp_stop_sub, m, BL_PC);
@@ -4589,47 +4593,47 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 					clif_map_property_mapall(m, MAPPROPERTY_FREEPVPZONE);
 					map_foreachinmap(map_mapflag_pvp_start_sub, m, BL_PC);
 				}
-				if (mapdata->getMapFlag(MF_GVG)) {
-					mapdata->setMapFlag(MF_GVG, false);
+				if (mapdata->flag[MF_GVG]) {
+					mapdata->flag[MF_GVG] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG and PvP flags for the same map! Removing GvG flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_TE)) {
-					mapdata->setMapFlag(MF_GVG_TE, false);
+				if (mapdata->flag[MF_GVG_TE]) {
+					mapdata->flag[MF_GVG_TE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG TE and PvP flags for the same map! Removing GvG TE flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_DUNGEON)) {
-					mapdata->setMapFlag(MF_GVG_DUNGEON, false);
+				if (mapdata->flag[MF_GVG_DUNGEON]) {
+					mapdata->flag[MF_GVG_DUNGEON] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG Dungeon and PvP flags for the same map! Removing GvG Dungeon flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_CASTLE)) {
-					mapdata->setMapFlag(MF_GVG_CASTLE, false);
+				if (mapdata->flag[MF_GVG_CASTLE]) {
+					mapdata->flag[MF_GVG_CASTLE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG Castle and PvP flags for the same map! Removing GvG Castle flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_TE_CASTLE)) {
-					mapdata->setMapFlag(MF_GVG_TE_CASTLE, false);
+				if (mapdata->flag[MF_GVG_TE_CASTLE]) {
+					mapdata->flag[MF_GVG_TE_CASTLE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG TE Castle and PvP flags for the same map! Removing GvG TE Castle flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_BATTLEGROUND)) {
-					mapdata->setMapFlag(MF_BATTLEGROUND, false);
+				if (mapdata->flag[MF_BATTLEGROUND]) {
+					mapdata->flag[MF_BATTLEGROUND] = false;
 					ShowWarning("map_setmapflag: Unable to set Battleground and PvP flags for the same map! Removing Battleground flag from %s.\n", mapdata->name);
 				}
 			}
 			break;
 		case MF_GVG:
 		case MF_GVG_TE:
-			mapdata->setMapFlag(mapflag, status); // Must come first to properly set map property
+			mapdata->flag[mapflag] = status; // Must come first to properly set map property
 			if (!status) {
 				clif_map_property_mapall(m, MAPPROPERTY_NOTHING);
 				map_foreachinmap(unit_stopattack, m, BL_CHAR, 0);
 			} else {
 				clif_map_property_mapall(m, MAPPROPERTY_AGITZONE);
-				if (mapdata->getMapFlag(MF_PVP)) {
-					mapdata->setMapFlag(MF_PVP, false);
+				if (mapdata->flag[MF_PVP]) {
+					mapdata->flag[MF_PVP] = false;
 					if (!battle_config.pk_mode)
 						ShowWarning("map_setmapflag: Unable to set PvP and GvG flags for the same map! Removing PvP flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_BATTLEGROUND)) {
-					mapdata->setMapFlag(MF_BATTLEGROUND, false);
+				if (mapdata->flag[MF_BATTLEGROUND]) {
+					mapdata->flag[MF_BATTLEGROUND] = false;
 					ShowWarning("map_setmapflag: Unable to set Battleground and GvG flags for the same map! Removing Battleground flag from %s.\n", mapdata->name);
 				}
 			}
@@ -4637,43 +4641,43 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 		case MF_GVG_CASTLE:
 		case MF_GVG_TE_CASTLE:
 			if (status) {
-				if (mapflag == MF_GVG_CASTLE && mapdata->getMapFlag(MF_GVG_TE_CASTLE)) {
-					mapdata->setMapFlag(MF_GVG_TE_CASTLE, false);
+				if (mapflag == MF_GVG_CASTLE && mapdata->flag[MF_GVG_TE_CASTLE]) {
+					mapdata->flag[MF_GVG_TE_CASTLE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG TE Castle and GvG Castle flags for the same map! Removing GvG TE Castle flag from %s.\n", mapdata->name);
 				}
-				if (mapflag == MF_GVG_TE_CASTLE && mapdata->getMapFlag(MF_GVG_CASTLE)) {
-					mapdata->setMapFlag(MF_GVG_CASTLE, false);
+				if (mapflag == MF_GVG_TE_CASTLE && mapdata->flag[MF_GVG_CASTLE]) {
+					mapdata->flag[MF_GVG_CASTLE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG Castle and GvG TE Castle flags for the same map! Removing GvG Castle flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_PVP)) {
-					mapdata->setMapFlag(MF_PVP, false);
+				if (mapdata->flag[MF_PVP]) {
+					mapdata->flag[MF_PVP] = false;
 					if (!battle_config.pk_mode)
 						ShowWarning("npc_parse_mapflag: Unable to set PvP and GvG%s Castle flags for the same map! Removing PvP flag from %s.\n", (mapflag == MF_GVG_CASTLE ? NULL : " TE"), mapdata->name);
 				}
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_GVG_DUNGEON:
-			if (status && mapdata->getMapFlag(MF_PVP)) {
-				mapdata->setMapFlag(MF_PVP, false);
+			if (status && mapdata->flag[MF_PVP]) {
+				mapdata->flag[MF_PVP] = false;
 				if (!battle_config.pk_mode)
 					ShowWarning("map_setmapflag: Unable to set PvP and GvG Dungeon flags for the same map! Removing PvP flag from %s.\n", mapdata->name);
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_NOBASEEXP:
 		case MF_NOJOBEXP:
 			if (status) {
-				if (mapflag == MF_NOBASEEXP && mapdata->getMapFlag(MF_BEXP) != 100) {
-					mapdata->setMapFlag(MF_BEXP, false);
+				if (mapflag == MF_NOBASEEXP && mapdata->flag[MF_BEXP] != 100) {
+					mapdata->flag[MF_BEXP] = false;
 					ShowWarning("map_setmapflag: Unable to set BEXP and No Base EXP flags for the same map! Removing BEXP flag from %s.\n", mapdata->name);
 				}
-				if (mapflag == MF_NOJOBEXP && mapdata->getMapFlag(MF_JEXP) != 100) {
-					mapdata->setMapFlag(MF_JEXP, false);
+				if (mapflag == MF_NOJOBEXP && mapdata->flag[MF_JEXP] != 100) {
+					mapdata->flag[MF_JEXP] = false;
 					ShowWarning("map_setmapflag: Unable to set JEXP and No Job EXP flags for the same map! Removing JEXP flag from %s.\n", mapdata->name);
 				}
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_PVP_NIGHTMAREDROP:
 			if (status) {
@@ -4691,7 +4695,7 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 				entry.drop_per = args->nightmaredrop.drop_per;
 				mapdata->drop_list.push_back(entry);
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_RESTRICTED:
 			if (!status) {
@@ -4703,76 +4707,76 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 
 				// Don't completely disable the mapflag's status if other zones are active
 				if (mapdata->zone == 0) {
-					mapdata->setMapFlag(mapflag, status);
+					mapdata->flag[mapflag] = status;
 				}
 			} else {
 				nullpo_retr(false, args);
 
 				mapdata->zone |= (1 << (args->flag_val + 1)) << 3;
-				mapdata->setMapFlag(mapflag, status);
+				mapdata->flag[mapflag] = status;
 			}
 			break;
 		case MF_NOCOMMAND:
 			if (status) {
 				nullpo_retr(false, args);
 
-				mapdata->setMapFlag(mapflag, ((args->flag_val <= 0) ? 100 : args->flag_val));
+				mapdata->flag[mapflag] = ((args->flag_val <= 0) ? 100 : args->flag_val);
 			} else
-				mapdata->setMapFlag(mapflag, false);
+				mapdata->flag[mapflag] = false;
 			break;
 		case MF_JEXP:
 		case MF_BEXP:
 			if (status) {
 				nullpo_retr(false, args);
 
-				if (mapflag == MF_JEXP && mapdata->getMapFlag(MF_NOJOBEXP)) {
-					mapdata->setMapFlag(MF_NOJOBEXP, false);
+				if (mapflag == MF_JEXP && mapdata->flag[MF_NOJOBEXP]) {
+					mapdata->flag[MF_NOJOBEXP] = false;
 					ShowWarning("map_setmapflag: Unable to set No Job EXP and JEXP flags for the same map! Removing No Job EXP flag from %s.\n", mapdata->name);
 				}
-				if (mapflag == MF_BEXP && mapdata->getMapFlag(MF_NOBASEEXP)) {
-					mapdata->setMapFlag(MF_NOBASEEXP, false);
+				if (mapflag == MF_BEXP && mapdata->flag[MF_NOBASEEXP]) {
+					mapdata->flag[MF_NOBASEEXP] = false;
 					ShowWarning("map_setmapflag: Unable to set No Base EXP and BEXP flags for the same map! Removing No Base EXP flag from %s.\n", mapdata->name);
 				}
-				mapdata->setMapFlag(mapflag, args->flag_val);
+				mapdata->flag[mapflag] = args->flag_val;
 			} else
-				mapdata->setMapFlag(mapflag, false);
+				mapdata->flag[mapflag] = false;
 			break;
 		case MF_BATTLEGROUND:
 			if (status) {
 				nullpo_retr(false, args);
 
-				if (mapdata->getMapFlag(MF_PVP)) {
-					mapdata->setMapFlag(MF_PVP, false);
+				if (mapdata->flag[MF_PVP]) {
+					mapdata->flag[MF_PVP] = false;
 					if (!battle_config.pk_mode)
 						ShowWarning("map_setmapflag: Unable to set PvP and Battleground flags for the same map! Removing PvP flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG)) {
-					mapdata->setMapFlag(MF_GVG, false);
+				if (mapdata->flag[MF_GVG]) {
+					mapdata->flag[MF_GVG] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG and Battleground flags for the same map! Removing GvG flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_DUNGEON)) {
-					mapdata->setMapFlag(MF_GVG_DUNGEON, false);
+				if (mapdata->flag[MF_GVG_DUNGEON]) {
+					mapdata->flag[MF_GVG_DUNGEON] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG Dungeon and Battleground flags for the same map! Removing GvG Dungeon flag from %s.\n", mapdata->name);
 				}
-				if (mapdata->getMapFlag(MF_GVG_CASTLE)) {
-					mapdata->setMapFlag(MF_GVG_CASTLE, false);
+				if (mapdata->flag[MF_GVG_CASTLE]) {
+					mapdata->flag[MF_GVG_CASTLE] = false;
 					ShowWarning("map_setmapflag: Unable to set GvG Castle and Battleground flags for the same map! Removing GvG Castle flag from %s.\n", mapdata->name);
 				}
-				mapdata->setMapFlag(mapflag, ((args->flag_val <= 0 || args->flag_val > 2) ? 1 : args->flag_val));
+				mapdata->flag[mapflag] = ((args->flag_val <= 0 || args->flag_val > 2) ? 1 : args->flag_val);
 			} else
-				mapdata->setMapFlag(mapflag, false);
+				mapdata->flag[mapflag] = false;
 			break;
 		case MF_NOLOOT:
-			mapdata->setMapFlag(MF_NOMOBLOOT, status);
-			mapdata->setMapFlag(MF_NOMVPLOOT, status);
+			mapdata->flag[MF_NOMOBLOOT] = status;
+			mapdata->flag[MF_NOMVPLOOT] = status;
 			break;
 		case MF_NOPENALTY:
-			mapdata->setMapFlag(MF_NOEXPPENALTY, status);
-			mapdata->setMapFlag(MF_NOZENYPENALTY, status);
+			mapdata->flag[MF_NOEXPPENALTY] = status;
+			mapdata->flag[MF_NOZENYPENALTY] = status;
 			break;
 		case MF_NOEXP:
-			mapdata->setMapFlag(MF_NOBASEEXP, status);
-			mapdata->setMapFlag(MF_NOJOBEXP, status);
+			mapdata->flag[MF_NOBASEEXP] = status;
+			mapdata->flag[MF_NOJOBEXP] = status;
 			break;
 		case MF_SKILL_DAMAGE:
 			if (!status) {
@@ -4792,7 +4796,7 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 						mapdata->damage_adjust.rate[i] = cap_value(args->skill_damage.rate[i], -100, 100000);
 				}
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		case MF_SKILL_DURATION:
 			if (!status)
@@ -4802,10 +4806,10 @@ bool map_setmapflag_sub(int16 m, enum e_mapflag mapflag, bool status, union u_ma
 
 				map_skill_duration_add(mapdata, args->skill_duration.skill_id, args->skill_duration.per);
 			}
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 		default:
-			mapdata->setMapFlag(mapflag, status);
+			mapdata->flag[mapflag] = status;
 			break;
 	}
 
@@ -5098,37 +5102,6 @@ int mapgenerator_get_options(int argc, char** argv) {
 	return 1;
 }
 
-int map_data::getMapFlag(int flag) const {
-#ifdef DEBUG
-	if (flag < 0 || flag > flags.size()) {
-		// This is debugged because we didn't previously check for out-of-bounds
-		ShowError("map_data::getMapFlag: flag %d out of bounds (0-%d)\n", flag, flags.size() - 1);
-		return 0;
-	}
-#endif
-	return flags[flag];
-}
-
-void map_data::setMapFlag(int flag, int value) {
-#ifdef DEBUG
-	if (flag < 0 || flag > flags.size()) {
-		// This is debugged because we didn't previously check for out-of-bounds
-		ShowError("map_data::getMapFlag: flag %d out of bounds (0-%d)\n", flag, flags.size() - 1);
-		return;
-	}
-#endif
-	flags[flag] = value;
-}
-
-void map_data::initMapFlags() {
-	flags.clear();
-	flags.resize(MF_MAX, 0);
-}
-
-void map_data::copyFlags(const map_data& other) {
-	flags = other.flags;
-}
-
 /// Called when a terminate signal is received.
 void MapServer::handle_shutdown(){
 	ShowStatus("Shutting down...\n");
@@ -5177,6 +5150,7 @@ bool MapServer::initialize( int argc, char *argv[] ){
 #endif
 	cli_get_options(argc,argv);
 
+	rnd_init();
 	map_config_read(MAP_CONF_NAME);
 
 	if (save_settings == CHARSAVE_NONE)

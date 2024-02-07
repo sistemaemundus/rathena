@@ -1,0 +1,3 @@
+// Criado por Alek Emundus
+// Nao permite lojinha de compra nas cidades citadas
+prontera	mapflag	nobuyingstore

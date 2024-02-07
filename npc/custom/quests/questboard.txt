@@ -18,7 +18,7 @@
 // 1.6.5 Bug fixes for party support
 // 1.6.6 Bug fixes for delay time does not appear [mazvi]
 //============================================================
-prontera,129,215,5	script	Questboard	4_BOARD3,{
+prontera,140,178,4	script	Questboard	4_BOARD3,{
 
 	if(c_run==true){
 		mes "[^FF7700Questboard^000000]";

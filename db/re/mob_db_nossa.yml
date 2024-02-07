@@ -1,0 +1,238 @@
+# Criado por Alek Emundus
+Header:
+  Type: MOB_DB
+  Version: 3
+
+Body:
+  - Id: 21302
+    AegisName: EP18_ASHHOPPER
+    Name: Ashhopper
+    Level: 185
+    Hp: 2361429
+    BaseExp: 157531
+    JobExp: 110272
+    Attack: 4104
+    Attack2: 5963
+    Defense: 305
+    MagicDefense: 110
+    Str: 201
+    Agi: 208
+    Vit: 40
+    Int: 140
+    Dex: 280
+    Luk: 90
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Small
+    Race: Insect
+    Element: Dark
+    ElementLevel: 4
+    Ai: 13
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200    
+      - Item: Grasshopper's_Leg
+        Rate: 10000
+      - Item: Grasshopper_Doll
+        Rate: 30
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Ashhopper_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 21303
+    AegisName: EP18_ASHRING
+    Name: Ashring
+    Level: 185
+    Hp: 2364513
+    BaseExp: 168894
+    JobExp: 118226
+    Attack: 3987
+    Attack2: 5790
+    Defense: 335
+    MagicDefense: 115
+    Str: 195
+    Agi: 189
+    Vit: 50
+    Int: 180
+    Dex: 220
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Small
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 02
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200
+      - Item: Sticky_Mucus
+        Rate: 10000
+      - Item: Explosive_Powder
+        Rate: 200
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Ashring_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 21304
+    AegisName: EP18_GREY_WOLF
+    Name: Grey Wolf
+    Level: 187
+    Hp: 2399581
+    BaseExp: 171399
+    JobExp: 119979
+    Attack: 4915
+    Attack2: 7159
+    Defense: 520
+    MagicDefense: 104
+    Str: 240
+    Agi: 185
+    Vit: 111
+    Int: 80
+    Dex: 240
+    Luk: 76
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Medium
+    Race: Brute
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 13
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200    
+      - Item: Claw_Of_Wolves
+        Rate: 10000
+      - Item: Explosive_Powder
+        Rate: 200
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Grey_Wolf_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 21305
+    AegisName: EP18_TUMBLE_RING
+    Name: Tumblering
+    Level: 185
+    Hp: 2361738
+    BaseExp: 157449
+    JobExp: 110214
+    Attack: 3695
+    Attack2: 5360
+    Defense: 281
+    MagicDefense: 118
+    Str: 180
+    Agi: 266
+    Vit: 32
+    Int: 200
+    Dex: 213
+    Luk: 79
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Small
+    Race: Plant
+    Element: Poison
+    ElementLevel: 2
+    Ai: 07
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200    
+      - Item: Root_Of_Maneater
+        Rate: 10000
+      - Item: Prickly_Fruit
+        Rate: 200
+      - Item: Shoot
+        Rate: 40
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Tumble_Ring_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 21306
+    AegisName: EP18_FIREWIND_KITE
+    Name: Firewind Kite
+    Level: 188
+    Hp: 2407556
+    BaseExp: 171968
+    JobExp: 120378
+    Attack: 4742
+    Attack2: 6904
+    Defense: 428
+    MagicDefense: 103
+    Str: 230
+    Agi: 218
+    Vit: 80
+    Int: 70
+    Dex: 310
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Medium
+    Race: Brute
+    Element: Fire
+    ElementLevel: 2
+    Ai: 05
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200    
+      - Item: BurningFeather
+        Rate: 5000
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Firewind_Kite_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 21307
+    AegisName: EP18_PHANTOM_WOLF
+    Name: Phantom Wolf
+    Level: 186
+    Hp: 2383494
+    BaseExp: 170250
+    JobExp: 119175
+    Attack: 4557
+    Attack2: 6631
+    Defense: 456
+    MagicDefense: 108
+    Str: 223
+    Agi: 164
+    Vit: 90
+    Int: 123
+    Dex: 288
+    Luk: 67
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    Size: Medium
+    Race: Brute
+    Element: Ghost
+    ElementLevel: 2
+    Ai: 05
+    Drops:
+      - Item: Ep18_Amethyst_Fragment
+        Rate: 200    
+      - Item: Transparent_Cloth
+        Rate: 2500
+      - Item: Zelunium_Ore
+        Rate: 260
+      - Item: Shadowdecon_Ore
+        Rate: 260
+      - Item: EP18_Phantom_Wolf_Card
+        Rate: 1
+        StealProtected: true
