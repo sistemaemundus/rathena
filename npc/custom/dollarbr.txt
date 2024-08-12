@@ -1,0 +1,6 @@
+prontera,141,180,6	script	DollarBR	3004,{
+	mes "[DollarBR]";
+	mes "Eu sou o dono dessa porra!";
+	//getitem 100045,1;
+	close;
+}

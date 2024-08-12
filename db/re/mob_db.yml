@@ -94668,8 +94668,10 @@ Body:
         Rate: 1000
       - Item: Wooden_Block
         Rate: 1000
+      - Item: EP17_1_EVT02
+        Rate: 30
       - Item: EP17_1_EVT39
-        Rate: 5
+        Rate: 10
       - Item: Bloody_Rune
         Rate: 800
       - Item: Dolor_Card
@@ -94758,8 +94760,10 @@ Body:
         Rate: 120
       - Item: Elunium
         Rate: 10
+      - Item: EP17_1_EVT02
+        Rate: 30
       - Item: EP17_1_EVT39
-        Rate: 5
+        Rate: 10
       - Item: Venenum_Card
         Rate: 1
         StealProtected: true
@@ -94846,8 +94850,10 @@ Body:
         Rate: 800
       - Item: Tendon
         Rate: 1000
+      - Item: EP17_1_EVT02
+        Rate: 30
       - Item: EP17_1_EVT39
-        Rate: 5
+        Rate: 10
       - Item: Caput_Card
         Rate: 1
         StealProtected: true
@@ -99951,3 +99957,4 @@ Body:
 #    AegisName: HUNTING_GID_DEFAULT
 #  - Id: 32000
 #    AegisName: MONSTER_2ND_END
+

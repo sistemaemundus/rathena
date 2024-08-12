@@ -1,0 +1,176 @@
+// Criado por Alek Emundus
+// Leveling Area
+
+-	script	Ouro	-1,{
+	OnThisMobDeath:
+		getitem 969,1;
+	end;
+}
+
+prontera,145,199,5	script	Leveling Area	64,{
+	mes "^FF0000[Leveling Area]^000000";
+	mes "Bem vindo, gostaria de ir para Leveling Area?";
+	mes "Irei te levar para uma área do seu nível apropriado!";
+	switch(select("- Bora!:- Deixa pra depois..."))
+	{
+		case 1:
+			clear;
+			mes "^FF0000[Leveling Area]^000000";
+			mes "Aproveite!";
+			//mes "Selecione para qual nível gostaria de ir:";
+			//switch(select("- Nível 1 a 40.:- Nível 40 a 75.:- Nível 75 a 99.:- Nível 99 a 125.:- Nível 125 a 150.:- Nível 150 a 175.:- Nível 175 a 200.:- Nível 200 a 250.:- Deixa pra lá!"))
+			// Nível 1 a 40
+			if(BaseLevel >= 1 && BaseLevel < 40){
+				warp "06guild_01",49,50;
+			} else if(BaseLevel >= 40 && BaseLevel < 75){	
+			// Nível 40 a 75
+				warp "06guild_02",49,50;
+			} else if(BaseLevel >= 75 && BaseLevel < 99){
+			// Nível 75 a 99
+				warp "06guild_03",49,50;
+			} else if(BaseLevel >= 99 && BaseLevel < 125){
+			// Nível 99 a 125
+				warp "06guild_04",49,50;
+			} else if(BaseLevel >= 125 && BaseLevel < 150){
+			// Nível 125 a 150
+				warp "06guild_05",49,50;
+			} else if(BaseLevel >= 150 && BaseLevel < 175){
+			// Nível 150 a 175
+				warp "06guild_06",49,50;
+			} else if(BaseLevel >= 175 && BaseLevel < 200){
+			// Nível 175 a 200
+				warp "06guild_07",49,50;
+			} else if(BaseLevel >= 200 && BaseLevel < 250){
+			// Nível 200 a 250
+				warp "06guild_08",49,50;
+			} else if(BaseLevel >= 250){
+			// Deixa pra lá
+			clear;
+			mes "^FF0000[Leveling Area]^000000";
+			mes "Você não está apto para entrar!";
+			close;
+			} else {
+			mes "Fala com o Alek!";
+			}
+		case 2:
+			clear;
+			mes "^FF0000[Leveling Area]^000000";
+			mes "Tudo bem, até mais!";
+			close;
+	}
+	
+	OnPCLogoutEvent:
+	getmapxy .@map$,.@x,.@y;
+	if (.@map$ == "06guild_01" || .@map$ == "06guild_02" || .@map$ == "06guild_03" || .@map$ == "06guild_04" || .@map$ == "06guild_05" || .@map$ == "06guild_06" || .@map$ == "06guild_07" || .@map$ == "06guild_08")
+	{
+		warp "prontera",156,191;
+		end;
+	} else {
+		end;
+	}
+}
+
+// Leveling Area 1 - Nível 1 a 40
+06guild_01,0,0	monster	Poring	1002,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Fabre	1184,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Picky	1049,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Drops	1113,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Lunatic	1063,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Creamy	1018,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Peco-Peco	1019,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Caramel	1103,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Skeleton	1076,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Myst Case	1249,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Dokebi	1407,5,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 2 - Nível 40 a 75
+06guild_02,0,0	monster	Marina	1141,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Wolf	1013,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Aster	1266,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Phen	1158,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Horong	1129,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_02,0,0	monster	Rideword	1195,5,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 3 - Nível 75 a 99
+06guild_03,0,0	monster	Zerom	1178,20,1000,1000,"Ouro::OnThisMobDeath"
+06guild_03,0,0	monster	Goat	1372,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_03,0,0	monster	Parasite	1500,20,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 4 - Nível 99 a 125
+06guild_04,0,0	monster	Anacondaq	1030,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_04,0,0	monster	Gargoyle	1253,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_04,0,0	monster	Alice	1275,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_04,0,0	monster	Scythe Solder	3488,20,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 5 - Nível 125 a 150
+06guild_05,0,0	monster	Acidus	1713,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_05,0,0	monster	Banshee	1867,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_05,0,0	monster	Pitaya	20661,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_05,0,0	monster	Charleston 1 	3122,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_05,0,0	monster	Aries	20677,5,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 6 - Nível 150 a 175
+06guild_06,0,0	monster	Big Bell	2917,25,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_06,0,0	monster	Chaos Hunter Fly	20527,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_06,0,0	monster	Twin Caput	20366,5,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 7 - Nível 175 a 200
+06guild_07,0,0	monster	Excavator Robot	3153,35,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_07,0,0	monster	Trentini	3232,15,1000,1000,"Ouro::OnThisMobDeath"
+
+// Leveling Area 8 - Nível 200 a 250
+06guild_08,0,0	monster	Explorer Robot Turbo	3249,35,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_08,0,0	monster	Ranger Cecil	3217,15,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_08,0,0	monster	Rune Knight Seyren	3219,15,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_08,0,0	monster	Brutal Murderer	20937,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_08,0,0	monster	Gan Ceann	20935,5,1000,1000,"Ouro::OnThisMobDeath"
+
+
+// Mapflags
+06guild_01	mapflag	noloot	on
+06guild_01	mapflag	noteleport	on
+06guild_01	mapflag	nosave	on
+06guild_01	mapflag	nomemo	on
+06guild_01	mapflag	nowarpto	on
+
+06guild_02	mapflag	noloot	on
+06guild_02	mapflag	noteleport	on
+06guild_02	mapflag	nosave	on
+06guild_02	mapflag	nomemo	on
+06guild_02	mapflag	nowarpto	on
+
+06guild_03	mapflag	noloot	on
+06guild_03	mapflag	noteleport	on
+06guild_03	mapflag	nosave	on
+06guild_03	mapflag	nomemo	on
+06guild_03	mapflag	nowarpto	on
+
+06guild_04	mapflag	noloot	on
+06guild_04	mapflag	noteleport	on
+06guild_04	mapflag	nosave	on
+06guild_04	mapflag	nomemo	on
+06guild_04	mapflag	nowarpto	on
+
+06guild_05	mapflag	noloot	on
+06guild_05	mapflag	noteleport	on
+06guild_05	mapflag	nosave	on
+06guild_05	mapflag	nomemo	on
+06guild_05	mapflag	nowarpto	on
+
+06guild_06	mapflag	noloot	on
+06guild_06	mapflag	noteleport	on
+06guild_06	mapflag	nosave	on
+06guild_06	mapflag	nomemo	on
+06guild_06	mapflag	nowarpto	on
+
+06guild_07	mapflag	noloot	on
+06guild_07	mapflag	noteleport	on
+06guild_07	mapflag	nosave	on
+06guild_07	mapflag	nomemo	on
+06guild_07	mapflag	nowarpto	on
+
+06guild_08	mapflag	noloot	on
+06guild_08	mapflag	noteleport	on
+06guild_08	mapflag	nosave	on
+06guild_08	mapflag	nomemo	on
+06guild_08	mapflag	nowarpto	on

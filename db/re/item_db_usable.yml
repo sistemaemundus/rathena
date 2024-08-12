@@ -13159,6 +13159,8 @@ Body:
     AegisName: 1M_Zeny_Check
     Name: 1M Zeny Check
     Type: Usable
+    Script: |
+      Zeny +=1000000;
   - Id: 12782
     AegisName: 100T_Zeny_Check
     Name: 100T Zeny Check

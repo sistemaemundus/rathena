@@ -28,7 +28,7 @@ Body:
     Race: Insect
     Element: Dark
     ElementLevel: 4
-    Ai: 13
+    Ai: 04
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    

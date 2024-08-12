@@ -184,7 +184,8 @@ OnTimer5000:
 		if(.@diff > 0){
 			npctalk "Punching Bag : I've taken " + F_InsertComma(.@diff/5) + " DPS in last 5 seconds.";
 			setunitdata .gid[.@dupid],UMOB_HP,.mhp[.@dupid];
-			specialeffect EF_HEAL, .gid[.@dupid];
+			//specialeffect EF_HEAL, .gid[.@dupid];
+			specialeffect EF_HEAL;
 		}
 	}
 	initnpctimer;

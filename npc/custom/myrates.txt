@@ -1,0 +1,26 @@
+// Criado por Alek Emundus
+// @myrates mostra as rates selecionadas ao criar o personagem
+
+-	script	MyRates	-1,{
+	OnInit:
+		bindatcmd "myrates",strnpcinfo(3) + "::OnAtcommand";
+		end;
+	OnAtcommand:
+		dispbottom "===== Rates Selecionadas ===== ";
+		if(individual_rate == 1)
+		{
+			dispbottom "EXP/Drop Rates: 1x";
+			end;
+		} else if(individual_rate == 2)
+		{
+			dispbottom "EXP/Drop Rates: 50x";
+			end;
+		} else if(individual_rate == 3)
+		{
+			dispbottom "EXP/Drop Rates: 1000x";
+			end;
+		} else {
+			dispbottom "Selecione suas rates primeiro!";
+			end;
+		}
+}

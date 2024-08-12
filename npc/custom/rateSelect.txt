@@ -1,0 +1,60 @@
+-	script	RateSelect	-1,{
+
+OnPCLoginEvent:
+		switch (individual_rate) {
+			case 1:
+				.@exp_rate_multiplier = 1;
+				.@jexp_rate_multiplier = 1;
+				set .@rate_description$, "x1 (Low Rate)";
+				break;
+			case 2:
+				.@exp_rate_multiplier = 2500;
+				.@jexp_rate_multiplier = 2500;
+				set .@rate_description$, "x25 (Mid Rate)";
+				break;
+			case 3:
+				.@exp_rate_multiplier = 5000;
+				.@jexp_rate_multiplier = 5000;
+				set .@rate_description$, "x50 (High Rate)";
+				break;
+			case 4:
+				.@exp_rate_multiplier = 10000;
+				.@jexp_rate_multiplier = 10000;
+				set .@rate_description$, "x100 (Super High Rate)";
+				break;
+			default:
+				mes "[Rate Selector]";
+				mes "Selecione as rates que deseja para esse personagem!";
+				mes "^FF0000TENHA CUIDADO: NÃO É POSSÍVEL ALTERAR!^000000";
+				individual_rate = select("Low Rate (x1):Mid Rate (x25):High Rate(x50):Super High Rate(x100)");
+			close2;
+			goto OnPCLoginEvent; // Return to case evaluation after selection
+		}
+		
+	// Save the multipliers to the player variables
+	set #exp_rate_multiplier, .@exp_rate_multiplier;
+	set #jexp_rate_multiplier, .@jexp_rate_multiplier;
+	fakeIcon(getcharid(0),2002,0,1);
+	dispbottom "Você escolheu " + .@rate_description$ + " para seu personagem.";
+	end;
+
+OnNPCKillEvent:
+	// Retrieve the stored multipliers
+	.@exp_rate_multiplier = #exp_rate_multiplier;
+	.@jexp_rate_multiplier = #jexp_rate_multiplier;
+
+	.@base_exp = getmonsterinfo(killedrid, MOB_BASEEXP) * .@exp_rate_multiplier;
+	.@job_exp = getmonsterinfo(killedrid, MOB_JOBEXP) * .@jexp_rate_multiplier;
+
+	// Debug messages to track values
+	//dispbottom "[Debug] Base EXP: " + .@base_exp;
+	//dispbottom "[Debug] Job EXP: " + .@job_exp;
+
+	if (.@base_exp > 0 || .@job_exp > 0) {
+		// Use getcharid(0) to specify the character ID
+		getexp2(.@base_exp, .@job_exp);
+	} else {
+		dispbottom "[Error] Experience values are zero.";
+	}
+	end;
+}

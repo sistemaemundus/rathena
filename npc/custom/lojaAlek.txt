@@ -1,0 +1,90 @@
+prontera,147,170,5	script	Alekinho	51,{
+	mes "[^03fc0fAlekinho^000000]";
+	mes "O quê gostaria?";
+	switch(select("1- Itens Ilusion:2- Aprimoramentos Ilusion.:3- Você tem alguma quest?")){
+		case 1:
+			clear;
+			mes "[^03fc0fAlekinho^000000]";
+			mes "Ok!";
+			close2;
+			callshop "itensIlusion";
+			end;
+		case 2:
+			clear;
+			mes "[^03fc0fAlekinho^000000]";
+			mes "Ok!";
+			close2;
+			callshop "modificationDevices";
+			end;
+		case 3:
+			if(countitem(507) >= 10 && countitem(508) >= 10 && countitem(509) >= 10 && countitem(510) >= 10 && countitem(511) >= 10){
+				clear;
+				mes "[^03fc0fAlekinho^000000]";
+				mes "Uau, você conseguiu! Meus parabéns!";
+				mes "Tome aqui o que eu prometi.";
+				completequest 70000;
+				delitem 507,10;
+				delitem 508,10;
+				delitem 509,10;
+				delitem 510,10;
+				delitem 511,10;
+				getitembound 31082,1,Bound_Char;
+				end;
+			} else if(checkquest(70000) == 1){
+				clear;
+				mes "[^03fc0fAlekinho^000000]";
+				mes "Me parece que falta algo...";
+				end;
+			} else if(checkquest(70000) != 2){
+				clear;
+				mes "[^03fc0fAlekinho^000000]";
+				mes "Uau, alguém que poderia me ajudar, talvez?!";
+				mes "Sim, eu tenho uma quest bem básica: me busque algumas ervas.. hehe!";
+				switch(select("1- Ok, vou atrás!:2- Ervas? Hein?!..")){
+					case 1:
+						clear;
+						mes "[^03fc0fAlekinho^000000]";
+						mes "Seguinte, preciso que pegue as seguintes ervas pra mim:";
+						mes mesitemlink(507)+" x10;";
+						mes mesitemlink(508)+" x10;";
+						mes mesitemlink(509)+" x10;";
+						mes mesitemlink(510)+" x10;";
+						mes mesitemlink(511)+" x10;";
+						mes "E aí, topa? xD";
+						switch(select("1- Pode ser...:2- Passo hahaha!")){
+							case 1:
+								clear;
+								mes "[^03fc0fAlekinho^000000]";
+								mes "Como recompensa vou te dar um cabelo muito lindo!";
+								mes mesitemlink(31082);
+								mes "Pode ser?";
+								switch(select("1- Pode ser...:2- Passo hahaha!")){
+									case 1:
+										setquest 70000;
+										clear;
+										mes "[^03fc0fAlekinho^000000]";
+										mes "É assim que se fala, hehe!";
+										end;
+										open_quest_ui 70000;
+										questinfo_refresh;
+									case 2:
+										clear;
+										mes "[^03fc0fAlekinho^000000]";
+										mes "Ok =/";
+										end;
+								}
+							case 2:
+								clear;
+								mes "[^03fc0fAlekinho^000000]";
+								mes "Ok =/";
+								end;
+						}
+					case 2:
+						clear;
+						mes "[^03fc0fAlekinho^000000]";
+						mes "Ok =/";
+						end;
+				}
+			}
+	}
+}

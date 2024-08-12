@@ -162,3 +162,410 @@ Body:
           - Index: 1
             Item: Jellopy
             Amount: 10
+  - Name: nossaLoja
+    Items:
+      - Index: 0
+        Item: EP17_1_EVT01 # Broken_Weapon
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 100
+      - Index: 1
+        Item: Max_Weight_Up_Scroll # Gym Pass
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 50
+      - Index: 2
+        Item: 1M_Zeny_Check # 1M Cheque
+        Zeny: 1000000
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 1
+      - Index: 3
+        Item: BarMealTicket # Barmil Ticket
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 50
+# Coisas novas 24/02/2024 - Alek
+  - Name: itensIlusion
+    Items:
+      - Index: 0
+        Item: Cannon_Rapier_OS # Sword
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 1
+        Item: Beam_Claymore_OS # Two-handed Sword
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 2
+        Item: Rutilus_Stick_OS # Staff
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 3
+        Item: Circuit_Board_OS # Book
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 4
+        Item: Blasti_OS # Axe
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 5
+        Item: Saphir_Hall_OS # Mace
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 6
+        Item: Virtual_Bow_OS # Bow
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 7
+        Item: MH_P89_OS # Crossbow
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 8
+        Item: Meuchler_OS # Katar
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 9
+        Item: Burning_Knuckle_OS # Knuckle
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 10
+        Item: HR_S55_OS # Sniper Rifle
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 11
+        Item: Kuroiro_OS # Dagger
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 12
+        Item: AC_B44_OS # Bow 2
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 13
+        Item: Boost_Lance_OS # Lance
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 14
+        Item: Ultio_Spes_OS # Mace
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT01
+            Amount: 1
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 50
+      - Index: 15
+        Item: Illusion_Armor_A
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 16
+        Item: Illusion_Armor_B
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 17
+        Item: Illusion_Engine_A
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 18
+        Item: Illusion_Engine_B
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 19
+        Item: Illusion_Leg_A
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 20
+        Item: Illusion_Leg_B
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 21
+        Item: Illusion_B_R
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 22
+        Item: Illusion_B_L
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 23
+        Item: Illusion_BC_R
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 24
+        Item: Illusion_BC_L
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+      - Index: 25
+        Item: OS_Weapon_Refine_Cube # OS Weapon +11 Refinement Cube
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 100
+      - Index: 26
+        Item: Illu_Enhance_Cube # Illusion Reinforcement Cube +4 to +7
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 100
+
+  - Name: modificationDevices
+    Items:
+      - Index: 0
+        Item: EP17_1_SPC05 # Normal Phy
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 5
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 30
+      - Index: 1
+        Item: EP17_1_SPC06 # Adv Phy
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 10
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 60
+      - Index: 2
+        Item: EP17_1_SPC07 # Highly Phy
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 20
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 80
+      - Index: 3
+        Item: EP17_1_SPC08 # Normal Mag
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 5
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 30
+      - Index: 4
+        Item: EP17_1_SPC09 # Adv Mag
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 10
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 60
+      - Index: 5
+        Item: EP17_1_SPC10 # Highly Mag
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 20
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 80
+      - Index: 6
+        Item: EP17_1_SPC04 # Armor Random
+        RequiredItems:
+          - Index: 0
+            Item: EP17_1_EVT39
+            Amount: 50
+          - Index: 1
+            Item: EP17_1_EVT02
+            Amount: 100
+  - Name: equipsAutomatic
+    Items: 
+      - Index: 0
+        Item: Auto_Armor_A
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Armor_A
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 1
+        Item: Auto_Armor_B
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Armor_B
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 2
+        Item: Auto_Engine_A
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Engine_A
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 3
+        Item: Auto_Engine_B
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Engine_B
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 4
+        Item: Auto_Leg_A
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Leg_A
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 5
+        Item: Auto_Leg_B
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_Leg_B
+            Amount: 1
+            Refine: 9
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 200
+      - Index: 6
+        Item: Auto_B_R
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_B_R
+            Amount: 1
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 300
+      - Index: 7
+        Item: Auto_B_L
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_B_L
+            Amount: 1
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 300
+      - Index: 8
+        Item: Auto_BC_R
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_BC_R
+            Amount: 1
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 300
+      - Index: 9
+        Item: Auto_BC_L
+        RequiredItems: 
+          - Index: 0
+            Item: Illusion_BC_L
+            Amount: 1
+          - Index: 1
+            Item: BarMealTicket
+            Amount: 300
+      - Index: 10
+        Item: Auto_M_Box
+        RequiredItems:
+          - Index: 0
+            Item: BarMealTicket
+            Amount: 50

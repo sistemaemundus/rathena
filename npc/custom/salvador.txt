@@ -1,0 +1,18 @@
+prontera,160,187,5	script	Salvador	4_F_KAFRA1,{
+	mes "[Salvador]";
+	mes "Posso salvar seu renascimento em Prontera, o que acha?";
+	switch(select("Pode ser!:Depois...")){
+		case 1:	
+			clear;
+			getmapxy(.@map$, .@x, .@y, BL_NPC);
+			savepoint .@map$, 156, 191;
+			mes "[Salvador]";
+			mes "Ponto de renascimento salvo em Prontera!";
+			close;
+		case 2:
+			clear;
+			mes "[Salvador]";
+			mes "Ok, volte depois...";
+			close;
+	}
+}

@@ -97,3 +97,192 @@ Body:
       bonus bSPGainValue,15;
       bonus bMagicHPGainValue,150;
       bonus bMagicSPGainValue,15;
+  - Id: 840029
+    AegisName: blackeremes
+    Name: C Eremes Scarf Black
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2246
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840030
+    AegisName: blueremes
+    Name: C Eremes Scarf Blue
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2247
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840031
+    AegisName: cyaneremes
+    Name: C Eremes Scarf Cyan
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2248
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840032
+    AegisName: foileremes
+    Name: C Eremes Scarf Foil
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2249
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840033
+    AegisName: golderemes
+    Name: C Eremes Scarf Gold
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2250
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840034
+    AegisName: greeneremes
+    Name: C Eremes Scarf Green
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2251
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840035
+    AegisName: pinkeremes
+    Name: C Eremes Scarf Pink
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2252
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840036
+    AegisName: purperemes
+    Name: C Eremes Scarf Purple
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2253
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;
+  - Id: 840037
+    AegisName: whiteremes
+    Name: C Eremes Scarf White
+    Type: Armor
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 2254
+    Script: |
+      bonus2 bDropAddRace,RC_All,100;

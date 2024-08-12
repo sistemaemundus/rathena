@@ -210,6 +210,8 @@ Body:
       request: true
       storage: true
       breakguild: true
+      follow: true
+      warp: true
   - Id: 10
     Name: Law Enforcement
     Inherit:
