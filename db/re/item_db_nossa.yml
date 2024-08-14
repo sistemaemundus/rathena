@@ -418,3 +418,44 @@ Body:
       bonus bMaxHPrate,5;
       bonus bMaxSPrate,5;
       bonus bHealPower,3;
+#= Mochilas Custom
+  - Id: 840047
+    AegisName: randoserublue
+    Name: Costume Mochilinha Azul
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 2255
+    Script: |
+      bonus bAddMaxWeight,1000;
+  - Id: 840048
+    AegisName: randoserugreen
+    Name: Costume Mochilinha Verde
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 2256
+    Script: |
+      bonus bAddMaxWeight,1000;
+  - Id: 840049
+    AegisName: randoserured
+    Name: Costume Mochilinha Vermelha
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 2257
+    Script: |
+      bonus bAddMaxWeight,1000;
+  - Id: 840050
+    AegisName: randoseruyellow
+    Name: Costume Mochilinha Amarela
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 2258
+    Script: |
+      bonus bAddMaxWeight,1000;
