@@ -41,8 +41,6 @@
 		sc_start SC_INCREASEAGI,3600000,10;
 		specialeffect2 EF_BLESSING;
 		sc_start SC_BLESSING,3600000,10;
-		specialeffect2 SA_DISPELL;
-		sc_start SA_DISPELL,100,5;
 	}
 	if ((getgroupid() == 1) || (getgroupid() == 99) || (getgroupid() == 5)) {
 		specialeffect2 EF_IMPOSITIO;
@@ -51,8 +49,6 @@
 		sc_start SC_MAGNIFICAT,3600000,5;
 		specialeffect2 EF_ASSUMPTIO;
 		sc_start SC_ASSUMPTIO,3600000,5;
-		specialeffect2 SA_DISPELL;
-		sc_start SA_DISPELL,100,5;
 	}
 	if (.@Delay)
 		@HD = gettimetick(2) + .@Delay;

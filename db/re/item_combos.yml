@@ -36115,3 +36115,27 @@ Body:
     Script: |
       bonus bSMatk,3;
       bonus bDef,30;
+  - Combos: # Azur
+      - Combo:
+          - Azur_armor
+          - Azur_manteau
+          - Azur_shoes
+    Script: |
+      bonus bAllStats,10;
+      bonus2 bExpAddRace,RC_All,100;
+  - Combos: # Phoenix
+      - Combo:
+          - phoenix_armor
+          - phoenix_manteau
+          - phoenix_shoes
+    Script: |
+      bonus bAllStats,10;
+      bonus2 bExpAddRace,RC_All,100;
+  - Combos: # Dark GodLike
+      - Combo:
+          - Dark_God_armor
+          - Dark_God_manteau
+          - Dark_God_shoes
+    Script: |
+      bonus bAllStats,10;
+      bonus2 bExpAddRace,RC_All,100;

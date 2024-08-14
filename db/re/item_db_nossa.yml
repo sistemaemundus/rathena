@@ -286,3 +286,135 @@ Body:
     View: 2254
     Script: |
       bonus2 bDropAddRace,RC_All,100;
+#= Itens custom 13/08 - Azur
+  - Id: 840038                      #Item ID.
+    AegisName: Azur_armor               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Armadura de Azur                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Armor: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 200           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDef,200;
+      bonus bMdef,200;
+      bonus bBaseAtk,150;
+      bonus bMatk,150;
+  - Id: 840039                      #Item ID.
+    AegisName: Azur_manteau               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Manto de Azur                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Garment: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 200           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bAspd,5;
+      bonus bMatkRate,10;
+      bonus bDefRate,30;
+      bonus bResRate,30;
+      bonus bMResRate,20;
+  - Id: 840040                      #Item ID.
+    AegisName: Azur_shoes               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Botas de Azur                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Shoes: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 200           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDelayrate,-7;
+      bonus bMaxHPrate,20;
+      bonus bMaxSPrate,20;
+      bonus bHealPower,10;
+#= Itens custom 13/08 - Phoenix
+  - Id: 840041                      #Item ID.
+    AegisName: phoenix_armor               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Armadura de Phoenix                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Armor: true              #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 150           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDef,100;
+      bonus bMdef,100;
+      bonus bBaseAtk,75;
+      bonus bMatk,75;
+  - Id: 840042                      #Item ID.
+    AegisName: phoenix_manteau               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Manto de Phoenix                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Garment: true              #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 150           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bAspd,2;
+      bonus bMatkRate,5;
+      bonus bDefRate,15;
+      bonus bResRate,15;
+      bonus bMResRate,10;
+  - Id: 840043                      #Item ID.
+    AegisName: phoenix_shoes               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Botas de Phoenix                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Shoes: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 150           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDelayrate,-5;
+      bonus bMaxHPrate,10;
+      bonus bMaxSPrate,10;
+      bonus bHealPower,5;
+#= Itens custom 13/08 - Dark GodLike
+  - Id: 840044                      #Item ID.
+    AegisName: Dark_God_armor               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Armadura Dark GodLike                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Armor: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 99           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDef,75;
+      bonus bMdef,75;
+      bonus bBaseAtk,50;
+      bonus bMatk,50;
+  - Id: 840045                      #Item ID.
+    AegisName: Dark_God_manteau               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Manto Dark GodLike                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Garment: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 99           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bAspd,1;
+      bonus bMatkRate,2;
+      bonus bDefRate,10;
+      bonus bResRate,10;
+      bonus bMResRate,5;
+  - Id: 840046                      #Item ID.
+    AegisName: Dark_God_shoes               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Botas Dark GodLike                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 10                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Shoes: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    EquipLevelMin: 99           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      bonus bDelayrate,-2;
+      bonus bMaxHPrate,5;
+      bonus bMaxSPrate,5;
+      bonus bHealPower,3;

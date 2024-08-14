@@ -85,6 +85,11 @@ prontera,147,170,5	script	Alekinho	51,{
 						mes "Ok =/";
 						end;
 				}
+			} else if(checkquest(70000) == 2){
+				clear;
+				mes "[^03fc0fAlekinho^000000]";
+				mes "Você já fez a quest, fofo!";
+				end;
 			}
 	}
 }

@@ -30,25 +30,25 @@
 //= The idea about the shop display is inspired by sader's enchanter.
 //= There is also a version without Random Options Support available > mystic_enchanter_no_ropt.txt
 //============================================================
-prontera,147,166,5	script	Mystic Enchanter	4_M_MOCASS1,{
+prontera,147,166,5	script	Encantador Místico	4_M_MOCASS1,{
 function ME_Price;
 
 disable_items;
 mes .n$;
-mes "Welcome, "+strcharinfo(0)+"!";
-mes "I can enchant, based on my powers, various Equipments with my Enchantments, as well as upgrade and clear Enchantments,but only those I enchanted myself.";
+mes "Bem vindo, "+strcharinfo(0)+"!";
+mes "Posso encantar, com base em meus poderes, vários Equipamentos com meus Encantamentos, bem como atualizar e limpar Encantamentos, mas apenas aqueles que eu mesmo encantei.";
 mes " ";
-mes "How can I help you?";
+mes "Como posso te ajudar?";
 if(.enchant_restrict)
-	mes "Currently you can only enchant restricted Equipment!!!";
+	mes "Atualmente você só pode encantar equipamentos restritos!!!";
 	
 next;
-switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Restricted Equipment":"")+":- Nevermind")) {
+switch(select("- Selecione o equipamento.:- Informação:"+ ( (.enchant_restrict)?"- Equipamento Restrito":"")+":- Deixa para lá.")) {
 
 	case 1:
 	mes .n$;
-	mes "Please select the equipment you want to enchant/upgrade the enchantments or reset the enchantments:";
-	mes "^FF0000Note: If you can't see an equipment, you can't either enchant it or you don't have anything equipped on it.^000000";
+	mes "Selecione o equipamento que você deseja encantar/atualizar os encantamentos ou limpar os encantamentos:";
+	mes "^FF0000Nota: Se você não consegue ver um equipamento, você não pode encantá-lo ou não tem nada equipado nele..^000000";
 	next;
 	for ( set .@l,0; .@l < getarraysize(.slot); set .@l,.@l + 24)
 		set .@i_menu$,.@i_menu$+ ( (.slot[.@l+1] == 1 && getequipid(.slot[.@l]) != -1)?"["+getequipname(.slot[.@l])+"]":"") + ( ((.@l+24) < (getarraysize(.slot)-1))?":":"");
@@ -64,8 +64,8 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		
 		if(.@f) {
 			mes .n$;
-			mes "I'm sorry, but you can't enchant this item.";
-			mes "Please take a look at the shop for the enchantable items.";
+			mes "Sinto muito, mas você não pode encantar este item.";
+			mes "Por favor, dê uma olhada na loja para os itens encantáveis.";
 			close;
 		}
 	}
@@ -82,8 +82,8 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 	// Item found in Equipment Slot Limitation Arrays and 0 enchantable slots
 	if(.@f) {
 		mes .n$;
-		mes "I'm sorry, but you can't enchant this item.";
-		mes "Please take a look at the Equipment Limitations in \"Information\" for details.";
+		mes "Sinto muito, mas você não pode encantar este item.";
+		mes "Por favor, dê uma olhada nas Limitações do Equipamento em \"Informações\" para mais detalhes.";
 		close;
 	}
 
@@ -97,30 +97,30 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 	set .@c4,getequipcardid(.@part,3);
 	
 	// Count how many slots are used by enchants
-	if(.@c2 && compare(getitemname(.@c2),"Card") != 1) set .@e_cnt,.@e_cnt + 1;
-	if(.@c3 && compare(getitemname(.@c3),"Card") != 1) set .@e_cnt,.@e_cnt + 1;
-	if(.@c4 && compare(getitemname(.@c4),"Card") != 1) set .@e_cnt,.@e_cnt + 1;
+	if(.@c2 && compare(getitemname(.@c2),"Carta") != 1) set .@e_cnt,.@e_cnt + 1;
+	if(.@c3 && compare(getitemname(.@c3),"Carta") != 1) set .@e_cnt,.@e_cnt + 1;
+	if(.@c4 && compare(getitemname(.@c4),"Carta") != 1) set .@e_cnt,.@e_cnt + 1;
 		
 	mes .n$;
-	mes "Please select what you want to do now:";
-	mes "Price for Enchanting & Upgrading:";
+	mes "Selecione o que você quer fazer agora:";
+	mes "Preço para Encantamento e Atualização:";
 	switch(.slot[.@e+10]) {
-		case 0: mes "None"; break;
+		case 0: mes "Nenhum"; break;
 		case 1: mes .slot[.@e+11]+" Zeny"; break;
 		case 2: mes .slot[.@e+11]+" Cash Points"; break;
 		default: mes .slot[.@e+11]+"x "+getitemname(.slot[.@e+10]); break;
 	}
 	if(.slot[.@e+12]) {
-		mes "Price for Reseting:";
+		mes "Preço para Redefinição:";
 		switch(.slot[.@e+13]) {
-			case 0: mes "None"; break;
+			case 0: mes "Nenhum"; break;
 			case 1: mes .slot[.@e+14]+" Zeny"; break;
 			case 2: mes .slot[.@e+14]+" Cash Points"; break;
 			default: mes .slot[.@e+14]+"x "+getitemname(.slot[.@e+13]); break;
 		}
 	}
 	next;
-	switch(select("- Enchant:- Upgrade Enchant:"+ ( (.slot[.@e+12])?"- Reset Enchants":"")+":"+( (.slot[.@e+16])?"- Random Option Enchantment":""))) {
+	switch(select("- Encantar:- Melhorar Encantamento:"+ ( (.slot[.@e+12])?"- Redefinir Encantamentos":"")+":"+( (.slot[.@e+16])?"- Encantamento Random":""))) {
 		
 		case 1:
 		ME_Price .slot[.@e+10],.slot[.@e+11],1;
@@ -137,18 +137,18 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		
 		if(.@e_cnt >= .@e_max || .@e_cnt >= .@enc_max) {
 			mes .n$;
-			mes "I'm sorry, but this item has already reached the maximum amount of enchants.";
+			mes "Desculpe, mas este item já atingiu a quantidade máxima de encantamentos.";
 			close;
 		}
 
 		// Defining what enchants are selectable, if the are limited slots
 		if(.@e_max < 3) {
 			mes .n$;
-			mes "Please choose the enchantments you want to use for the "+.@e_max+" slots you have available.";
-			mes "^FF0000Note: The order is not important, like if you select Special first, it will be placed last no matter what.^000000";
+			mes "Por favor, escolha os encantamentos que você deseja usar para "+.@e_max+" slots que você tem disponíveis.";
+			mes "^FF0000Nota: A ordem não é importante, por exemplo, se você selecionar Especial primeiro, ele será colocado por último, não importa o que aconteça..^000000";
 			next;
 			while(.@e_ct < .@e_max) {
-				setd(".@e_c"+select( ((.slot[.@e+2] && !.@e_c1)?"- Attribute":"")+":"+( (.slot[.@e+5] && !.@e_c2)?"- Status":"")+":" + ((.slot[.@e+8] && !.@e_c3)?"- Special":""))),1;
+				setd(".@e_c"+select( ((.slot[.@e+2] && !.@e_c1)?"- Atributo":"")+":"+( (.slot[.@e+5] && !.@e_c2)?"- Status":"")+":" + ((.slot[.@e+8] && !.@e_c3)?"- Especial":""))),1;
 				set .@e_ct,.@e_ct + 1;
 			}
 		} else {
@@ -175,7 +175,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 				}
 
 			} else if(.slot[.@e+3] == 1) {
-				mes "Please select which Attribute Enchantment you want:";
+				mes "Selecione qual Encantamento de Atributo você deseja:";
 				set .@a,select(.attr_m$) - 1;
 				next;
 				mes .n$;
@@ -209,7 +209,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 				}
 
 			} else if(.slot[.@e+6] == 1) {
-				mes "Please select which Status Enchantment you want:";
+				mes "Selecione qual Encantamento de Status você deseja:";
 				set .@a,select(.stats_m$) - 1;
 				next;
 				mes .n$;
@@ -245,7 +245,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					else if(.@enc_c < 2050) set .@a,13;
 				}
 			} else if(.slot[.@e+9] == 1) {
-				mes "Please select which Special Enchantment you want:";
+				mes "Selecione qual Encantamento Especial você deseja:";
 				set .@a,select(.special_m$) - 1;
 				next;
 				mes .n$;
@@ -269,32 +269,32 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		else 
 			getitem2 .@id,1,1,.@ref,0,.@c1,( (.@c2)?.@c2:.@e_id2),( (.@c3)?.@c3:.@e_id3),( (.@c4)?.@c4:.@e_id4);
 		ME_Price .slot[.@e+10],.slot[.@e+11],2;
-		mes "The Enchantment was successfull.";
+		mes "O Encantamento foi bem sucedido.";
 		break;
 		
 		// Upgrade Enchantments
 		case 2:
 		mes .n$;
 		if(!.@e_cnt) { // No Enchantments
-			mes "It seems like there are no enchantments on this item to upgrade.";
+			mes "Parece que não há encantamentos neste item para atualizar.";
 			close;
 		}
 		if(!.slot[.@e+4] && !.slot[.@e+7]) {
-			mes "I can't upgrade the enchantments on this item.";
+			mes "Não consigo atualizar os encantamentos deste item.";
 			close;
 		}
 		// Price Check
 		ME_Price .slot[.@e+10],.slot[.@e+11],1;
-		mes "Please choose which Enchant Slot you want to Upgrade:";
-		mes "^FF0000Note: Special Enchants can't be upgraded.^000000";
+		mes "Por favor, escolha qual Slot de Encantamento você deseja atualizar:";
+		mes "^FF0000Nota: Encantamentos especiais não podem ser atualizados.^000000";
 		next;
-		set .@s,5 - (select( ((.@c4 && compare(getitemname(.@c4),"Card") != 1)?"Enchant Slot 1":"")+":"+ ( (.@c3 && compare(getitemname(.@c3),"Card") != 1)?"Enchant Slot 2":"")));
+		set .@s,5 - (select( ((.@c4 && compare(getitemname(.@c4),"Carta") != 1)?"Slot de Encantamento 1":"")+":"+ ( (.@c3 && compare(getitemname(.@c3),"Carta") != 1)?"Slot de Encantamento 2":"")));
 		
 		mes .n$;
-		mes "Please select what kind of enchantment is in there:";
-		mes "^FF0000Note: STR,... are Attribute, ATK,... are Status and anything else is Special.^000000";
+		mes "Selecione que tipo de encantamento está lá:";
+		mes "^FF0000Nota: STR,... são Atributos, ATK,... são Status e qualquer outra coisa é Especial.^000000";
 		next;
-		switch(select( ((.slot[.@e+4])?"- Attribute":"")+":"+ ((.slot[.@e+7])?"- Status":""))) {
+		switch(select( ((.slot[.@e+4])?"- Atributos":"")+":"+ ((.slot[.@e+7])?"- Status":""))) {
 			case 1: set .@type$,"attr"; set .@t,select(.attr_m$) - 1; break;
 			case 2: set .@type$,"stats"; set .@t,select(.stats_m$) - 1; break;
 		}
@@ -313,7 +313,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		if(.@u_go) {
 			if( (.@type$ == "attr" && .slot[.@e+4] == 2) || (.@type$ == "stats" && .slot[.@e+7] == 2))
 				if(.@ref < (.@r+1)) {
-					mes "To upgrade your enchantment further you need to increase the refine on your equipment as well.";
+					mes "Para melhorar ainda mais seu encantamento, você precisa aumentar o refinamento do seu equipamento também.";
 					close;
 				}
 			set .@upg_c,rand(1,100);
@@ -338,15 +338,15 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					}
 				
 				ME_Price .slot[.@e+10],.slot[.@e+11],2;
-				mes "The Upgrade was successfully.";
+				mes "A atualização foi bem-sucedida.";
 			} else 
-				mes "The Upgrade has failed.";
+				mes "A atualização falhou.";
 				
 		} else if(.@u_fail) 
-			mes "I'm sorry, but there is no upgrade available anymore for this Enchantment.";
+			mes "Sinto muito, mas não há mais nenhuma atualização disponível para este Encantamento.";
 
 		else if(!.@u_go)
-			mes "I'm sorry, but I can't find your Enchantment in my list or it's an Special Enchantment which I can't upgrade.";
+			mes "Sinto muito, mas não consigo encontrar seu Encantamento na minha lista ou é um Encantamento Especial que não consigo atualizar.";
 		break;
 		
 		// Reset Enchantments
@@ -355,22 +355,22 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		// Price Check
 		ME_Price .slot[.@e+13],.slot[.@e+14],1;
 		if(!.@e_cnt) { // No Enchantments
-			mes "It seems like there are no enchantments on this item to reset.";
+			mes "Parece que não há encantamentos neste item para redefinir.";
 			close;
 		}
 		// Enchant Reset Type
 		if(.slot[.@e+15] == 1) {
-			mes "How do you want to reset your enchantments?";
+			mes "Como você deseja redefinir seus encantamentos?";
 			next;
-			if(select("- All at once:- Select one") == 2) {
+			if(select("- Tudo de uma vez:- Selecione um") == 2) {
 				mes .n$;
-				mes "Please choose which Enchant Slot you want to reset:";
+				mes "Por favor, escolha qual Slot de Encantamento você deseja redefinir:";
 				next;
-				set .@s,5 - (select( ((.@c4 && compare(getitemname(.@c4),"Card") != 1)?"Enchant Slot 1":"")+":"+ ( (.@c3 && compare(getitemname(.@c3),"Card") != 1)?"Enchant Slot 2":"")+":"+ ( (.@c2 && compare(getitemname(.@c2),"Card") != 1)?"Enchant Slot 3":"")));
+				set .@s,5 - (select( ((.@c4 && compare(getitemname(.@c4),"Carta") != 1)?"Slot de Encantamento 1":"")+":"+ ( (.@c3 && compare(getitemname(.@c3),"Carta") != 1)?"Slot de Encantamento 2":"")+":"+ ( (.@c2 && compare(getitemname(.@c2),"Carta") != 1)?"Slot de Encantamento 3":"")));
 			}
 			mes .n$;
-			mes "Do you really want to reset the enchantments on this item?";
-			if(select("- Yes:- No") - 1) close;
+			mes "Você realmente quer redefinir os encantamentos neste item?";
+			if(select("- Sim:- Não") - 1) close;
 			setd(".@c"+.@s),0;
 			next;
 			mes .n$;
@@ -386,9 +386,9 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		// Reset Enchantment Slot Selection
 		if(!.@s) { // All Enchantments at once
 			if(getarraysize(.@OptID) > 0) 
-				getitem3 .@id,1,1,.@ref,0,.@c1,( (.@c2 && compare(getitemname(.@c2),"Card") == 1)?.@c2:0),( (.@c3 && compare(getitemname(.@c3),"Card") == 1)?.@c3:0),0,.@OptID,.@OptVal,.@OptParam;
+				getitem3 .@id,1,1,.@ref,0,.@c1,( (.@c2 && compare(getitemname(.@c2),"Carta") == 1)?.@c2:0),( (.@c3 && compare(getitemname(.@c3),"Carta") == 1)?.@c3:0),0,.@OptID,.@OptVal,.@OptParam;
 			else 
-				getitem2 .@id,1,1,.@ref,0,.@c1,( (.@c2 && compare(getitemname(.@c2),"Card") == 1)?.@c2:0),( (.@c3 && compare(getitemname(.@c3),"Card") == 1)?.@c3:0),0;
+				getitem2 .@id,1,1,.@ref,0,.@c1,( (.@c2 && compare(getitemname(.@c2),"Carta") == 1)?.@c2:0),( (.@c3 && compare(getitemname(.@c3),"Carta") == 1)?.@c3:0),0;
 		
 		} else { // Only reset a selected enchantment
 			if(getarraysize(.@OptID) > 0) 
@@ -397,29 +397,29 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 				getitem2 .@id,1,1,.@ref,0,.@c1,.@c2,.@c3,.@c4;
 		}
 		ME_Price .slot[.@e+13],.slot[.@e+14],2;
-		mes "You're Enchantments has been reset.";
+		mes "Seus Encantamentos foram redefinidos.";
 		break;
 		
 		// Random Option Enchantment
 		case 4:
 		mes .n$;
-		mes "Please select what you want to do:";
-		mes "Price for Random Option Enchanting:";
+		mes "Selecione o que você quer fazer:";
+		mes "Preço para Encantamento Random:";
 		switch(.slot[.@e+20]) {
-			case 0: mes "None"; break;
+			case 0: mes "Nenhum"; break;
 			case 1: mes .slot[.@e+21]+" Zeny"; break;
 			case 2: mes .slot[.@e+21]+" Cash Points"; break;
 			default: mes .slot[.@e+21]+"x "+getitemname(.slot[.@e+20]); break;
 		}
-		mes "Price for Random Option Reset:";
+		mes "Preço para Resetar Encantamento Random:";
 		switch(.slot[.@e+22]) {
-			case 0: mes "None"; break;
+			case 0: mes "Nenhum"; break;
 			case 1: mes .slot[.@e+23]+" Zeny"; break;
 			case 2: mes .slot[.@e+23]+" Cash Points"; break;
 			default: mes .slot[.@e+23]+"x "+getitemname(.slot[.@e+22]); break;
 		}
 		next;
-		if(select("- Enchant Random Options:- Reset Random Options") == 1) {
+		if(select("- Opções de Encantamento Random:- Resetar Opções Random") == 1) {
 			
 			mes .n$;
 			// Price Check
@@ -432,12 +432,12 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					set .@ropt_slot,.@ropt_slot + 1;
 				}
 			if(.slot[.@e+17] > 0 && .@ropt_slot >= .slot[.@e+17] || !.@ropt_slot && .@ropt_slot == 5) {
-				mes "I'm sorry, but every Random Option Slot is used.";
+				mes "Sinto muito, mas todos os Slots de Opções Random estão sendo usados.";
 				close;
 			}
-			mes "Please select what kind of Random Option you want to enchant:";
+			mes "Selecione que tipo de Opção Random você deseja encantar:";
 			set .@ropt_ct,( (.slot[.@e+17] == 0)?5:( (.slot[.@e+17] >= 5)?5:.slot[.@e+17]));
-			mes "^FF0000You can apply "+(.@ropt_ct - .@ropt_slot)+" Random Options.^000000";
+			mes "^FF0000Você pode aplicar "+(.@ropt_ct - .@ropt_slot)+" Opções Random.^000000";
 
 			// Checking if the equipment is a weapon and already has an element
 			if(getiteminfo(.@id,2) == 5) 
@@ -467,17 +467,17 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 				}
 				set .@ropt_m$,""; // Clearing the menu before generating a new one
 				next;
-				switch(select( ( (.@ropt_weap && !.@ropt_wele)?"Weapon Element":"")+":"+ ( (.@ropt_arm && !.@ropt_aele)?"Armor Element":"")+":Attribute:"+( (.@ropt_weap)?"Increase Damage":"")+":"+( (.@ropt_arm)?"Defensive":"")+":Special")) {
+				switch(select( ( (.@ropt_weap && !.@ropt_wele)?"Elemento de Arma":"")+":"+ ( (.@ropt_arm && !.@ropt_aele)?"Elemento de Armadura":"")+":Atributos:"+( (.@ropt_weap)?"Aumentar Dano":"")+":"+( (.@ropt_arm)?"Defensivo":"")+":Especial")) {
 					
 					// Weapon Element
 					case 1:
 					mes .n$;
 					if(getiteminfo(.@id,9) >= 5) { // Checking for ranged Weapons
-						mes "I'm sorry, but you can't enchant ranged weapons with an Weapon Element.";
+						mes "Sinto muito, mas você não pode encantar armas de longo alcance com um Elemento de Arma.";
 						continue;
 					}
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Weapon Element you want to use:";
+						mes "Selecione o Elemento de Arma que você deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(.RandOpt_Ele_M$); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + "- "+.RandOpt_Ele_M$[.@l] + ( (.RandOpt_Ele_M$[.@l+1] != "")?":":"");
@@ -488,7 +488,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					} else // Random Selection
 						set .@i,rand(getarraysize(.RandOpt_Ele_M$));
 					
-					mes "Weapon Element: "+.RandOpt_Ele_M$[.@i];
+					mes "Elemento de Arma: "+.RandOpt_Ele_M$[.@i];
 					set .@ropt_id,.RandOpt_WEle[.@i];
 					set .@ropt_wele,1; // Define that an element was selected already
 					break;
@@ -497,7 +497,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					case 2:
 					mes .n$;
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Armor Element you want to use:";
+						mes "Selecione o Elemento de Armadura que você deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(.RandOpt_Ele_M$); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + "- "+.RandOpt_Ele_M$[.@l] + ( (.RandOpt_Ele_M$[.@l+1] != "")?":":"");
@@ -508,7 +508,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					} else // Random Selection
 						set .@i,rand(getarraysize(.RandOpt_Ele_M$));
 					
-					mes "Armor Element: "+.RandOpt_Ele_M$[.@i];
+					mes "Elemento de Armadura: "+.RandOpt_Ele_M$[.@i];
 					set .@ropt_id,.RandOpt_AEle[.@i];
 					set .@ropt_aele,1; // Define that an element was selected already
 					break;
@@ -517,7 +517,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					case 3:
 					mes .n$;
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Attribute you want to use:";
+						mes "Selecione o Atributo que você deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(.RandOpt_ATT_M$); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + "- "+.RandOpt_ATT_M$[.@l] + ( (.RandOpt_ATT_M$[.@l+1] != "")?":":"");
@@ -529,7 +529,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 						set .@t,rand(1,getarraysize(.RandOpt_ATT_M$));
 					
 					set .@i,.@t*3-3;
-					mes "Attribute: "+.RandOpt_ATT_M$[.@t-1];
+					mes "Atributo: "+.RandOpt_ATT_M$[.@t-1];
 					set .@ropt_id,.RandOpt_ATT[.@i];
 					set .@ropt_val,rand(.RandOpt_ATT[.@i+1],.RandOpt_ATT[.@i+2]);
 					break;
@@ -538,25 +538,25 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					case 4:
 					mes .n$;
 					if(.slot[.@e+18] == 1) { // Selectable Damage Type (Physical/Magical)
-						mes "Please select the damage type for your Random Option:";
+						mes "Selecione o tipo de dano para sua Opção Random:";
 						next;
-						set .@dmg_t$,( (select("- Physical:- Magical") == 1)?"PDMG":"MDMG");
+						set .@dmg_t$,( (select("- Físico:- Mágico") == 1)?"PDMG":"MDMG");
 						mes .n$;
 					
 					} else 
 						set .@dmg_t$,(rand(100) <= 50)?"PDMG":"MDMG";
 					
-					mes "Please select the damage category for your Random Option:";
+					mes "Selecione a categoria de dano para sua Opção Random:";
 					next;
 					// Damage Category
-					switch(select("- Damage vs Element:- Damage vs Race:- Damage vs Size/Class")) {
+					switch(select("- Dano vs Elemento:- Dano vs Raça:- Dano vs Size/Classe")) {
 						case 1: set .@cat_t$,"Ele"; break;
 						case 2: set .@cat_t$,"RC"; break;
 						case 3: set .@cat_t$,"SC"; break;
 					}
 					mes .n$;
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Enchantment you want to use:";
+						mes "Selecione o Encantamento que deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$")); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + "- "+getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$["+.@l+"]") + ( (getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$["+(.@l+1)+"]") != "")?":":"");
@@ -568,7 +568,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 						set .@t,rand(1,getarraysize(getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$")));
 						
 					set .@i,.@t*3-3;
-					mes "Damage Option: "+getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$["+(.@t-1)+"]");
+					mes "Opção de Dano: "+getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"_M$["+(.@t-1)+"]");
 					set .@ropt_id,getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"["+.@i+"]");
 					set .@ropt_val,rand(getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"["+(.@i+1)+"]"),getd(".RandOpt_"+.@dmg_t$+"_"+.@cat_t$+"["+(.@i+2)+"]"));
 					break;
@@ -577,9 +577,9 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					case 5:
 					mes .n$;
 					if(.slot[.@e+18] == 1) { // Selectable Defensive Type (Physical/Magical)
-						mes "Please select the defensive type for your Random Option:";
+						mes "Selecione o tipo de defesa para sua Opção Random:";
 						next;
-						switch(select("- Physical:- Magical:- Race/Size/Class")) {
+						switch(select("- Físico:- Mágico:- Raça/Size/Classe")) {
 							case 1: set .@def_t$,"RES_P"; break;
 							case 2: set .@def_t$,"RES_M"; break;
 							case 3: set .@def_t$,"RES_ETC"; break;
@@ -593,7 +593,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 						else if(.@ropt_r <= 99) set .@def_t$,"RES_ETC";
 					}
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Enchantment you want to use:";
+						mes "Selecione o Encantamento que deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(getd(".RandOpt_"+.@def_t$+"_M$")); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + "- "+getd(".RandOpt_"+.@def_t$+"_M$["+.@l+"]") + ( (getd(".RandOpt_"+.@def_t$+"_M$["+(.@l+1)+"]") != "")?":":"");
@@ -605,7 +605,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 						set .@t,rand(1,getarraysize(getd(".RandOpt_"+.@def_t$+"_M$")));
 					
 					set .@i,.@t*3-3;
-					mes "Defensive Option: "+getd(".RandOpt_"+.@def_t$+"_M$["+(.@t-1)+"]");
+					mes "Opção Defensiva: "+getd(".RandOpt_"+.@def_t$+"_M$["+(.@t-1)+"]");
 					set .@ropt_id,getd(".RandOpt_"+.@def_t$+"["+.@i+"]");
 					set .@ropt_val,rand(getd(".RandOpt_"+.@def_t$+"["+(.@i+1)+"]"),getd(".RandOpt_"+.@def_t$+"["+(.@i+2)+"]"));
 					break;
@@ -614,7 +614,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					case 6:
 					mes .n$;
 					if(.slot[.@e+19] == 1) { // Selectable Enchantment
-						mes "Please select the Enchantment you want to use:";
+						mes "Selecione o Encantamento que deseja usar:";
 						next;
 						for ( set .@l,0; .@l < getarraysize(.RandOpt_Spec_M$); set .@l,.@l + 1)
 							set .@ropt_m$,.@ropt_m$ + ( ((.RandOpt_Spec[(.@l+1)*3-3] == RDMOPT_BODY_INDESTRUCTIBLE && getiteminfo(.@id,2) != 4) || (.RandOpt_Spec[(.@l+1)*3-3] == RDMOPT_WEAPON_INDESTRUCTIBLE && getiteminfo(.@id,2) != 5) || (.RandOpt_Spec[(.@l+1)*3-3] == RDMOPT_DAMAGE_SIZE_PERFECT && getiteminfo(.@id,2) != 5) )?"":"- "+.RandOpt_Spec_M$[.@l]) + ( (.RandOpt_Spec_M$[.@l+1] != "")?":":"");
@@ -622,7 +622,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 						set .@t,select(.@ropt_m$);
 						mes .n$;
 						if(.RandOpt_Spec_Limit && .@ropt_spec_l[.@t-1] == 1) {
-							mes "I'm sorry, but you already chose this Random Option. Please select a different one.";
+							mes "Desculpe, mas você já escolheu esta Opção Random. Selecione uma diferente.";
 							continue;
 						}
 						
@@ -645,7 +645,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 					if(.RandOpt_Spec_Limit)
 						setarray .@ropt_spec_l[.@t-1],1;
 					set .@i,.@t*3-3;
-					mes "Defensive Option: "+.RandOpt_Spec_M$[.@t-1];
+					mes "Opção Defensiva: "+.RandOpt_Spec_M$[.@t-1];
 					set .@ropt_id,.RandOpt_Spec[.@i];
 					set .@ropt_val,rand(.RandOpt_Spec[.@i+1],.RandOpt_Spec[.@i+2]);
 					break;
@@ -665,7 +665,7 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 			delequip .@part;
 			getitem3 .@id,1,1,.@ref,0,.@c1,.@c2,.@c3,.@c4,.@OptID,.@OptVal,.@OptParam;
 			mes .n$;
-			mes "Your Random Options has been applied.";
+			mes "Suas Opções Random foram aplicadas.";
 			break;
 
 		// Reset Random Options
@@ -680,10 +680,10 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 				delequip .@part;
 				ME_Price .slot[.@e+22],.slot[.@e+23],2;
 				getitem2 .@id,1,1,.@ref,0,.@c1,.@c2,.@c3,.@c4;
-				mes "You're Random Options has been reset.";
+				mes "Suas Opções Random foram redefinidas.";
 				
 			} else 
-				mes "I'm sorry, but there is nothing to reset.";
+				mes "Desculpe, mas não há nada para redefinir.";
 		}
 		break;
 	}
@@ -692,50 +692,50 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 
 	case 2:
 	mes .n$;
-	mes "Please select about what you want to know more:";
+	mes "Selecione sobre o que você deseja saber mais:";
 	next;
-	switch(select("- Equipment:- Enchantment List:- Random Options List:- Nevermind")) {
+	switch(select("- Equipamento:- Lista de Encantamentos:- Lista de Opções Random:- Deixa para lá...")) {
 	
 		case 1: // Equipment
 		mes .n$;
-		mes "Each Equipment Slot has different settings.";
-		mes "Please select an Equipment Slot for further options:";
+		mes "Cada Slot de Equipamento tem configurações diferentes.";
+		mes "Selecione um Slot de Equipamento para mais opções:";
 		next;		
 		set .@c,select(.eq_menu$);
 		set .@e,.@c*24-24;
 		
 		mes .n$;
-		mes "Do you want to see the equipment settings or if there are limitations?";
+		mes "Você quer ver as configurações do equipamento ou se há limitações?";
 		next;
-		switch(select("- Equipment Settings:- Equipment Limitations:- Nevermind")) {
+		switch(select("- Configurações do Equipamento:- Limitações do Equipamento:- Deixa para lá...")) {
 			
 			case 1:
 			mes "["+.EQ_Name$[.@c-1]+"]";
-			mes "Enchantable: "+( (.slot[.@e+1] == 0)?"Disabled":"Enabled");
-			mes "Attribute Enchants: "+( (.slot[.@e+2] == 0)?"Disabled":"Enabled");
-			mes "Attribute Enchant Option: "+( (.slot[.@e+3] == 0)?"Random":"Selectable");
-			mes "Attribute Enchant Upgrade: "+( (.slot[.@e+4] == 0)?"Disabled":( (.slot[.@e+4] == 1)?"Enabled":"Refine Based Upgrade"));
-			mes "Status Enchants: "+( (.slot[.@e+5] == 0)?"Disabled":"Enabled");
-			mes "Status Enchant Option: "+( (.slot[.@e+6] == 0)?"Random":"Selectable");
-			mes "Status Enchant Upgrade: "+( (.slot[.@e+7] == 0)?"Disabled":"Enabled");
-			mes "Special Enchants: "+( (.slot[.@e+8] == 0)?"Disabled":"Enabled");
-			mes "Special Enchant Option: "+( (.slot[.@e+9] == 0)?"Random":"Selectable");
-			mes "Price for Enchanting: "+ ( (.slot[.@e+10] == 0)?"None":( (.slot[.@e+10] == 1)?.slot[.@e+11]+"x Zeny":( (.slot[.@e+10] == 2)?.slot[.@e+11]+"x Cash Points":"Item:")));
+			mes "Encantável: "+( (.slot[.@e+1] == 0)?"Desabilitado":"Habilitado");
+			mes "Atributos Encantados: "+( (.slot[.@e+2] == 0)?"Desabilitado":"Habilitado");
+			mes "Opção de Encantamento de Atributo: "+( (.slot[.@e+3] == 0)?"Random":"Selecionável");
+			mes "Atributo Encantar Atualização: "+( (.slot[.@e+4] == 0)?"Desabilitado":( (.slot[.@e+4] == 1)?"Habilitado":"Atualização Baseada em Refino"));
+			mes "Encantamentos de Status: "+( (.slot[.@e+5] == 0)?"Desabilitado":"Habilitado");
+			mes "Opção de Encantamento de Status: "+( (.slot[.@e+6] == 0)?"Random":"Selecionável");
+			mes "Status Encantar Atualização: "+( (.slot[.@e+7] == 0)?"Desabilitado":"Habilitado");
+			mes "Encantamentos Especiais: "+( (.slot[.@e+8] == 0)?"Desabilitado":"Habilitado");
+			mes "Opção de Encantamento Especial: "+( (.slot[.@e+9] == 0)?"Random":"Selecionável");
+			mes "Preço para Encantamento: "+ ( (.slot[.@e+10] == 0)?"None":( (.slot[.@e+10] == 1)?.slot[.@e+11]+"x Zeny":( (.slot[.@e+10] == 2)?.slot[.@e+11]+"x Cash Points":"Item:")));
 			if(.slot[.@e+10] >= 501 && getitemname(.slot[.@e+10]) != "null") // To prevent an warning in getitemname with invalid ID
 				mes " > "+.slot[.@e+11]+"x "+getitemname(.slot[.@e+10]);
-			mes "Enchant Reset: "+( (.slot[.@e+12] == 0)?"Disabled":"Enabled");
-			mes "Price for Resetting: "+ ( (.slot[.@e+13] == 0)?"None":( (.slot[.@e+13] == 1)?.slot[.@e+14]+"x Zeny":( (.slot[.@e+13] == 2)?.slot[.@e+14]+"x Cash Points":"Item:")));
+			mes "Redefinição de Encantamento: "+( (.slot[.@e+12] == 0)?"Desabilitado":"Habilitado");
+			mes "Preço para Redefinição: "+ ( (.slot[.@e+13] == 0)?"None":( (.slot[.@e+13] == 1)?.slot[.@e+14]+"x Zeny":( (.slot[.@e+13] == 2)?.slot[.@e+14]+"x Cash Points":"Item:")));
 			if(.slot[.@e+13] >= 501 && getitemname(.slot[.@e+13]) != "null") // To prevent an warning in getitemname with invalid ID
 				mes " > "+.slot[.@e+14]+"x  "+getitemname(.slot[.@e+13]);
-			mes "Enchant Reset Type: "+( (.slot[.@e+15] == 0)?"All at once":"Selectable");
-			mes "Random Option Enchantment: "+( (.slot[.@e+16] == 0)?"Disabled":"Enabled");
-			mes "Random Option Slots: "+( (.slot[.@e+17] == 0)?"Use every Slot":.slot[.@e+17]+"x Slots available");
-			mes "Random Option Type Options: "+( (.slot[.@e+18] == 0)?"Random":"Selectable");
-			mes "Random Option Type Enchantments: "+( (.slot[.@e+19] == 0)?"Random":"Selectable");
-			mes "Random Option Enchant Price: "+ ( (.slot[.@e+20] == 0)?"None":( (.slot[.@e+20] == 1)?.slot[.@e+21]+"x Zeny":( (.slot[.@e+20] == 2)?.slot[.@e+21]+"x Cash Points":"Item:")));
+			mes "Tipo de Redefinição de Encantamento: "+( (.slot[.@e+15] == 0)?"Tudo de uma vez":"Selecionável");
+			mes "Encantamento de Opção Random: "+( (.slot[.@e+16] == 0)?"Desabilitado":"Habilitado");
+			mes "Slots de Opções Random: "+( (.slot[.@e+17] == 0)?"Use todos os Slots":.slot[.@e+17]+"x Slots available");
+			mes "Opções de Tipo de Opção Random: "+( (.slot[.@e+18] == 0)?"Random":"Selecionável");
+			mes "Encantamentos de Tipo de Opção Random: "+( (.slot[.@e+19] == 0)?"Random":"Selecionável");
+			mes "Preço de Encantamento de Opção Random: "+ ( (.slot[.@e+20] == 0)?"None":( (.slot[.@e+20] == 1)?.slot[.@e+21]+"x Zeny":( (.slot[.@e+20] == 2)?.slot[.@e+21]+"x Cash Points":"Item:")));
 			if(.slot[.@e+20] >= 501 && getitemname(.slot[.@e+20]) != "null") // To prevent an warning in getitemname with invalid ID
 				mes " > "+.slot[.@e+21]+"x  "+getitemname(.slot[.@e+20]);
-			mes "Random Option Reset Price: "+ ( (.slot[.@e+22] == 0)?"None":( (.slot[.@e+22] == 1)?.slot[.@e+23]+"x Zeny":( (.slot[.@e+22] == 2)?.slot[.@e+23]+"x Cash Points":"Item:")));
+			mes "Preço de Redefinição de Opção Random: "+ ( (.slot[.@e+22] == 0)?"None":( (.slot[.@e+22] == 1)?.slot[.@e+23]+"x Zeny":( (.slot[.@e+22] == 2)?.slot[.@e+23]+"x Cash Points":"Item:")));
 			if(.slot[.@e+22] >= 501 && getitemname(.slot[.@e+22]) != "null") // To prevent an warning in getitemname with invalid ID
 				mes " > "+.slot[.@e+23]+"x  "+getitemname(.slot[.@e+22]);
 			break;
@@ -745,10 +745,10 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 			if(getarraysize(getd("."+.limit_v$[.@c-1])) > 0) {
 				for ( set .@a,0; .@a < getarraysize(getd("."+.limit_v$[.@c-1])); set .@a,.@a + 2) {
 					mes "^0000FF"+getitemname(getd("."+.limit_v$[.@c-1]+"["+.@a+"]"))+"["+getitemslots(getd("."+.limit_v$[.@c-1]+"["+.@a+"]"))+"]:^000000";
-					mes "^FF0000"+( (getd("."+.limit_v$[.@c-1]+"["+(.@a+1)+"]") == 0)?"Not-Enchantable":getd("."+.limit_v$[.@c-1]+"["+(.@a+1)+"]")+" Slots")+"^000000";
+					mes "^FF0000"+( (getd("."+.limit_v$[.@c-1]+"["+(.@a+1)+"]") == 0)?"Não-Encantável":getd("."+.limit_v$[.@c-1]+"["+(.@a+1)+"]")+" Slots")+"^000000";
 				}
 			} else 
-				mes "None";
+				mes "Nenhum";
 			break;
 			
 			case 3: // Nevermind
@@ -758,19 +758,19 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		
 		case 2: // Enchantment List
 		mes .n$;
-		mes "Each Enchantment type has their own chances of success for Upgrade and Random Enchantment.";
+		mes "Cada tipo de encantamento tem suas próprias chances de sucesso para atualização e Encantamento Random.";
 		mes " ";
-		mes "[Enchantment List]";
-		mes " > Attribute Enchants:";
+		mes "[Lista de Encantamentos]";
+		mes " > Atributos Encantados:";
 		for ( set .@l,0; .@l < getarraysize(.attr_n$); set .@l,.@l + 1)
 			if(.attr_e[.@l]) mes " - "+.attr_n$[.@l];
 		mes " ";
-		mes " > Status Enchants:";
+		mes " > Encantamentos de Status:";
 		for ( set .@l,0; .@l < getarraysize(.stats_n$); set .@l,.@l + 1)
 			if(.stats_e[.@l]) mes " - "+.stats_n$[.@l];
 		mes " ";
-		mes " > Special Enchants:";
-		mes "^FF0000Note: Can't be Upgraded!^000000";
+		mes " > Encantamentos Especiais:";
+		mes "^FF0000Nota: Não pode ser atualizado!^000000";
 		for ( set .@l,0; .@l < getarraysize(.special_n$); set .@l,.@l + 1)
 			if(.special_e[.@l]) mes " - "+.special_n$[.@l];
 		break;
@@ -778,56 +778,56 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 		// Random Options List
 		case 3:
 		mes .n$;
-		mes "Please select the Random Options you want the list of:";
+		mes "Selecione as Opções Random que deseja na lista:";
 		next;
-		switch(select("- Damage:- Defensive:- Attributes + Special")) {
+		switch(select("- Dano:- Defensivo:- Atributos + Especial")) {
 		
 			case 1:
-			mes "[- Weapon Elements]:";
+			mes "[- Elementos de Arma]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_Ele_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_Ele_M$[.@l];
 			mes " ";
-			mes "[- Physical/Magical Damage vs Element]:";
+			mes "[- Dano Físico/Mágico vs Elemento]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_PDMG_Ele_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_PDMG_Ele_M$[.@l];
 			next;
-			mes "[- Physical Race]:";
+			mes "[- Físico Raça]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_PDMG_RC_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_PDMG_RC_M$[.@l];
 			mes " ";
-			mes "[- Magical Race]:";
+			mes "[- Mágico Raça]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_MDMG_RC_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_MDMG_RC_M$[.@l];
 			next;
-			mes "[- Physical Size/Class]:";
+			mes "[- Físico Size/Classe]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_PDMG_SC_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_PDMG_SC_M$[.@l];
 			mes " ";
-			mes "[- Magical Size/Class]:";
+			mes "[- Mágico Size/Classe]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_MDMG_SC_M$); set .@l,.@l + 1)
 				mes "> "+.RandOpt_MDMG_SC_M$[.@l];
 			break;
 			
 			case 2:
-			mes "[Physical Defensive]:";
+			mes "[Defensiva Físico]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_RES_P_M$); set .@l,.@l + 1)
 				mes "- "+.RandOpt_RES_P_M$[.@l];
 			mes " ";
-			mes "[Magical Defensive]:";
+			mes "[Defensiva Mágico]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_RES_M_M$); set .@l,.@l + 1)
 				mes "- "+.RandOpt_RES_M_M$[.@l];
 			mes " ";
-			mes "[Race/Size/Class Defensive]:";
+			mes "[Defensiva Raça/Size/Classe]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_RES_ETC_M$); set .@l,.@l + 1)
 				mes "- "+.RandOpt_RES_ETC_M$[.@l];
 			break;
 			
 			case 3:
-			mes "[Attributes]:";
+			mes "[Atributos]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_ATT_M$); set .@l,.@l + 1)
 				mes "- "+.RandOpt_ATT_M$[.@l];
 			mes " ";
-			mes "[Special]:";
+			mes "[Especial]:";
 			for ( set .@l,0; .@l < getarraysize(.RandOpt_Spec_M$); set .@l,.@l + 1)
 				mes "- "+.RandOpt_Spec_M$[.@l];
 			break;
@@ -839,12 +839,12 @@ switch(select("- Select Equipment:- Information:"+ ( (.enchant_restrict)?"- Rest
 	
 	case 3: // Restricted Equipment via Shop
 	mes .n$;
-	mes "Please choose the Equipment Type you want to see the restricted equipments:";
+	mes "Selecione o Tipo de Equipamento que deseja ver os equipamentos restritos:";
 	next;
 	set .@o,select(.shop_m$) - 1;
 	mes .n$;
-	mes "I will now open the respective Shop.";
-	mes "^FF0000Note: You won't be able to buy anything from there. It's just for display.^000000";
+	mes "Agora vou abrir a respectiva Loja.";
+	mes "^FF0000Nota: Você não poderá comprar nada de lá. É apenas para exibição.^000000";
 	close2;
 	callshop ""+.shop_name$[.@o],1;
 	end;
@@ -863,21 +863,21 @@ end;
 			case 0: break;
 			case 1:
 			if(Zeny < getarg(1)) {
-				mes "You don't have enough Zeny for the Random Option Enchantment! You need "+getarg(1)+" Zeny.";
+				mes "Você não tem Zeny suficiente para o Encantamento de Opção Random! Você precisa de "+getarg(1)+" Zeny.";
 				close;
 			}
 			break;
 
 			case 2:
 			if(#CASHPOINTS < getarg(1)) {
-				mes "You don't have enough Cash Points for the Random Option Enchantment! You need "+getarg(1)+" Cash Points.";
+				mes "Você não tem Cash Points suficientes para o Encantamento de Opção Random! Você precisa de "+getarg(1)+" Cash Points.";
 				close;
 			}
 			break;
 
 			default:
 			if(countitem(getarg(0)) < getarg(1)) {
-				mes "You don't have enough "+getitemname(getarg(0))+" for the Random Option Enchantment! You need "+getarg(1)+" "+getitemname(getarg(0))+".";
+				mes "Você não tem o suficiente de "+getitemname(getarg(0))+" para o Encantamento de Opção Random! Você precisa de "+getarg(1)+" "+getitemname(getarg(0))+".";
 				close;
 			}
 			break;

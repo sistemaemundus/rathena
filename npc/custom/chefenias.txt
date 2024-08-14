@@ -11,7 +11,7 @@ prontera,143,206,3	script	Chefênia	3658,{
 	mes "^FF0000[Chefênia]^000000";
 	mes "Bem vindo, gostaria de ir para chefênia?";
 	mes "Vai lhe custar ^DAA52010.000.000^000000 Zeny";
-	mes "Mas, por enquanto o Alek deixou de graça...!";
+	mes "Mas, por enquanto, o Alek deixou de graça...";
 	switch(select("- Bora!:- Deixa pra depois..."))
 	{
 		case 1:
@@ -27,13 +27,21 @@ prontera,143,206,3	script	Chefênia	3658,{
 						warp "bossnia_01",119,158;
 						end;
 					case 2:
+						clear;
+						mes "^FF0000[Chefênia]^000000";
+						mes "Esse nível ainda está em construção, volte depois.";
+						close;
 						//Zeny -= 10000000;
-						warp "bossnia_02",41,198;
-						end;
+						//warp "bossnia_02",41,198;
+						//end;
 					case 3:
+						clear;
+						mes "^FF0000[Chefênia]^000000";
+						mes "Esse nível ainda está em construção, volte depois.";
+						close;
 						//Zeny -= 10000000;
-						warp "bossnia_03",179,48;
-						end;
+						//warp "bossnia_03",179,48;
+						//end;
 					case 4:
 						clear;
 						mes "^FF0000[Chefênia]^000000";
@@ -48,9 +56,7 @@ prontera,143,206,3	script	Chefênia	3658,{
 						mes "Tudo bem, até mais!";
 						close;
 				}
-//			}
-//			else
-//			{
+//			} else {
 //				clear;
 //				mes "^FF0000[Chefênia]^000000";
 //				mes "Está tentando me enganar?";

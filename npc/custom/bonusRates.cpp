@@ -34,33 +34,42 @@ prontera,139,177,5	script	Brambati	630,{
 							next;
 							mes "[Brambati]";
 							mes "E aí, qual vai querer?";
-							switch(select("Quero o 1º!:Quero o 2º!:Quero o 3º!:Quero o 4º!:Quero o 5º!:Quero o 6º!:Quero o 7º!:Quero o 8º!:Quero o 9º!:Ainda não decidi...")){
+							switch(select("Quero o Black!:Quero o Blue!:Quero o Cyan!:Quero o Foil!:Quero o Gold!:Quero o Green!:Quero o Pink!:Quero o Purple!:Quero o White!:Ainda não decidi...")){
 								case 1:
 									getitembound 840029,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 2:
 									getitembound 840030,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 3:
 									getitembound 840031,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 4:
 									getitembound 840032,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 5:
 									getitembound 840033,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 6:
 									getitembound 840034,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 7:
 									getitembound 840035,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 8:
 									getitembound 840036,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 9:
 									getitembound 840037,1,BOUND_CHAR;
+									@recompensa10 = 1;
 									break;
 								case 10:
 									clear;
@@ -71,7 +80,7 @@ prontera,139,177,5	script	Brambati	630,{
 							clear;
 							mes "[Brambati]";
 							mes "Obrigado, até a próxima!";
-							@recompensa10 = 1;
+							//@recompensa10 = 1;
 							end;
 						} else {
 							mes "[Brambati]";
