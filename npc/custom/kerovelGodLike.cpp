@@ -1,7 +1,7 @@
 //= Criado por Alek Emundus - @sistemaemundus
-//= Troca de Black Gemstone (7710) por itens Dark GodLike
-//= Te levará para Ayothaya Field (ayo_fild02 49, 62)
-//= Para farmar Black Gemstone (7710)
+//= Troca de Black Gemstone (840051) por itens Dark GodLike
+//= Também te levará para Ayothaya Field (ayo_fild02 49, 62)
+//= Para farmar Essência de Dark GodLike (840051)
 mall01,66,105,5	script	Kerovel Siannodel	494,{	
 	mes "[Kerovel Siannodel]";
 	mes "Gostaria de dar uma olhada no que tenho à propor?";
