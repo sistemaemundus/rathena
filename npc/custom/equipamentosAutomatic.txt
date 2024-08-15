@@ -1,6 +1,6 @@
 // Criado por Alek Emundus
 // NPC Equipamentos Automatic
-prontera,140,166,5	script	Equipamentos Automatic	89,{
+mall01,66,99,5	script	Equipamentos Automatic	89,{
 	mes "[Equipamentos Automatic]";
 	mes "Confira o que posso fazer...";
 	switch(select("- Loja Automatic.:- Encantar Automatic."))

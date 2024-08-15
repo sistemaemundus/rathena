@@ -569,3 +569,24 @@ Body:
           - Index: 0
             Item: BarMealTicket
             Amount: 50
+#= Itens Dark GodLike (Kerovel Siannodel)
+  - Name: itensDarkGodLike
+    Items:
+      - Index: 0
+        Item: Dark_God_armor
+        RequiredItems:
+          - Index: 0
+            Item: dark_godlike_essence
+            Amount: 50
+      - Index: 1
+        Item: Dark_God_manteau
+        RequiredItems:
+          - Index: 0
+            Item: dark_godlike_essence
+            Amount: 50
+      - Index: 2
+        Item: Dark_God_shoes
+        RequiredItems:
+          - Index: 0
+            Item: dark_godlike_essence
+            Amount: 50

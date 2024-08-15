@@ -459,3 +459,8 @@ Body:
     View: 2258
     Script: |
       bonus bAddMaxWeight,1000;
+#= Item para fazer o Dark GodLike (Essência de Dark GodLike) Pig_Potato
+  - Id: 840051
+    AegisName: dark_godlike_essence
+    Name: Essência de Dark GodLike
+    Type: Etc

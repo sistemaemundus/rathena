@@ -1,5 +1,5 @@
 // Criado por Alek Emundus
-prontera,164,170,4	script	Operador Grace	4_M_REPAIR,{
+mall01,66,103,5	script	Operador Grace	4_M_REPAIR,{
 	mes "[Operador Grace]";
 	mes "Ola.";
 	mes "Nos temos alguns equipamentos ^4d4dffGrace^000000 que podem ser obtidos com " + mesitemlink( 25723 ) + ".";
@@ -88,7 +88,7 @@ prontera,164,170,4	script	Operador Grace	4_M_REPAIR,{
 	end;
 }
 
-prontera,164,168,4	script	Rebellion	4_F_REBELLION3,{
+mall01,66,101,5	script	Rebellion	4_F_REBELLION3,{
 	mes "[Rebellion]";
 	mes "Voce trouxe armas danificadas? Voce gostaria de ver aquele criminoso da ciencia? Ele esta la. Quer que eu ligue para ele para voce?";
 	mes "Ou você tem negócios comigo? Posso trocar Weapon Modification Device e Armor Modification Modules.";
@@ -201,7 +201,7 @@ prontera,164,168,4	script	Rebellion	4_F_REBELLION3,{
 	end;
 }
 
-prontera,164,166,4	script	Elyumina	4_EP17_ELYUMINA,{
+mall01,66,99,5	script	Elyumina	4_EP17_ELYUMINA,{
 	if (checkweight(28136,2) == 0) {
 		cutin "ep171_elyumina03",0;
 		mes "[Elyumina]";
@@ -335,7 +335,7 @@ OnInit:
 	end;
 }
 
-prontera,164,164,4	script	RS26	4_SYS_MSG,{
+mall01,66,97,5	script	RS26	4_SYS_MSG,{
 	if(!checkweight(1201,1) || (MaxWeight - Weight) < 1000){
 		mes "Voce nao pode prosseguir com a conversa porque tem uma grande quantidade de itens.";
 		mes "Organize seus itens e tente novamente.";

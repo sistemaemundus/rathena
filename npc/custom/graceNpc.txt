@@ -1,4 +1,4 @@
-prontera,164,170,4	script	Operador Grace	4_M_REPAIR,{
+mall01,66,103,5	script	Operador Grace	4_M_REPAIR,{
 	mes "[Operador Grace]";
 	mes "Ola.";
 	mes "Nos temos alguns equipamentos ^4d4dffGrace^000000 que podem ser obtidos com " + mesitemlink( 25723 ) + ".";

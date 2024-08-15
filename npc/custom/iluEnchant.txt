@@ -1,4 +1,4 @@
-prontera,164,168,4	script	RS26	57,{
+mall01,66,101,5	script	RS26	57,{
 	if(!checkweight(1201,1) || (MaxWeight - Weight) < 1000){
 		mes "Voce nao pode prosseguir com a conversa porque tem uma grande quantidade de itens.";
 		mes "Organize seus itens e tente novamente.";
@@ -14,11 +14,11 @@ prontera,164,168,4	script	RS26	57,{
 		mes "^0000FF# Sou a mais recente tecnologia de holograma aperfeicoada para mostrar respostas e gestos naturais. #^000000";
 		next;
 		mes "[RS26]";
-		mes "Minha tecnologia sÃ³ pode ser encontrada em cidades futuras. Eu sou RS26, uma Regenschirm maquina robotica.";
+		mes "Minha tecnologia só pode ser encontrada em cidades futuras. Eu sou RS26, uma Regenschirm maquina robotica.";
 		npctalk "Rebellion : Oh, essa maquina e inutil sem um modulo.","Rebellion",bc_self;
 		next;
 		mes "[RS26]";
-		mes "Se vocÃª trouxer equipamento Illusion com Strengthening Modules, vou melhora-los como voce deseja.";
+		mes "Se você trouxer equipamento Illusion com Strengthening Modules, vou melhora-los como voce deseja.";
 		next;
 		mes "[RS26]";
 		mes "Como esses modulos funcionam com o equipamento padrao, eles nao destruirao os itens. No entanto, o numero de atualizacoes pode variar dependendo do equipamento.";

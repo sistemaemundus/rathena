@@ -96642,8 +96642,47 @@ Body:
 #    AegisName: MD_AIRBOAT_MOS
 #  - Id: 20891
 #    AegisName: MD_AIRBOAT_BOSS
-#  - Id: 20892
-#    AegisName: MD_SAKRAY
+  - Id: 20892 #= Custom by Alek Emundus - @sistemaemundus
+    AegisName: MD_SAKRAY
+    Name: Sombra Dark GodLike
+    Level: 80
+    Hp: 5134
+    BaseExp: 766
+    JobExp: 706
+    Attack: 336
+    Attack2: 37
+    Defense: 63
+    MagicDefense: 30
+    Str: 60
+    Agi: 38
+    Vit: 40
+    Int: 20
+    Dex: 73
+    Luk: 20
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 140
+    AttackDelay: 512
+    AttackMotion: 1152
+    DamageMotion: 672
+    Ai: 13
+    Modes:
+      Detector: true
+    Drops:
+      - Item: Enriched_Elunium
+        Rate: 500
+      - Item: Enriched_Oridecon
+        Rate: 500
+      - Item: dark_godlike_essence
+        Rate: 1000
+      - Item: Blacksmith_Blessing
+        Rate: 1
+        StealProtected: true
 #  - Id: 20893
 #    AegisName: MD_TIARA
 #  - Id: 20894

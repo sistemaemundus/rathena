@@ -29,6 +29,8 @@ Body:
     Element: Dark
     ElementLevel: 4
     Ai: 04
+    Modes:
+      Detector: true    
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -107,6 +109,8 @@ Body:
     Element: Neutral
     ElementLevel: 2
     Ai: 13
+    Modes:
+      Detector: true    
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
