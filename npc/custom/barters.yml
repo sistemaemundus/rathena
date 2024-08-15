@@ -189,6 +189,30 @@ Body:
           - Index: 0
             Item: Gold_Coin
             Amount: 50
+      - Index: 4
+        Item: randoserublue # Mochilinha Azul
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 25
+      - Index: 5
+        Item: randoserugreen # Mochilinha Verde
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 25
+      - Index: 6
+        Item: randoserured # Mochilinha Vermelha
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 25
+      - Index: 7
+        Item: randoseruyellow # Mochilinha Amarela
+        RequiredItems:
+          - Index: 0
+            Item: Gold_Coin
+            Amount: 25
 # Coisas novas 24/02/2024 - Alek
   - Name: itensIlusion
     Items:

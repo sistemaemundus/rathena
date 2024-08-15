@@ -22,6 +22,7 @@ ayo_dun01,0,0	monster	Leaf Cat	1586,104,5000
 ayo_dun01,0,0	monster	Ghoul	1036,48,5000
 ayo_dun01,0,0	monster	Whisper	1179,16,5000
 ayo_dun01,0,0	monster	Kraben	1587,8,5000
+ayo_dun01,0,0	monster	Sombra Dark GodLike	20892,20,5000
 
 //==================================================
 // ayo_dun02 - Inside Ancient Shrine
@@ -29,4 +30,5 @@ ayo_dun01,0,0	monster	Kraben	1587,8,5000
 ayo_dun02,0,0	monster	Tamruan	1584,116,5000
 ayo_dun02,0,0	monster	Whisper	1179,23,5000
 ayo_dun02,0,0	monster	Kraben	1587,23,5000
+ayo_dun02,0,0	monster	Sombra Dark GodLike	20892,30,5000
 ayo_dun02,150,90,15,30	boss_monster	Lady Tanee	1688,1,25200000,600000,0
