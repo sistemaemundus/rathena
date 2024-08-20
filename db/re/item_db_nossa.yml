@@ -81,6 +81,7 @@ Body:
     Weight: 200
     Defense: 10
     Slots: 1
+    View: 1996
     Locations:
       Head_Mid: true
     ArmorLevel: 1
@@ -459,8 +460,135 @@ Body:
     View: 2258
     Script: |
       bonus bAddMaxWeight,1000;
-#= Item para fazer o Dark GodLike (Essência de Dark GodLike) Pig_Potato
+#= Item custom para fazer o Dark GodLike (Essência de Dark GodLike) Pig_Potato
   - Id: 840051
     AegisName: dark_godlike_essence
     Name: Essência de Dark GodLike
     Type: Etc
+#= Adicionados 17/08 por Alek Emundus
+  - Id: 19446
+    AegisName: Injured_Eyepatch_JP_
+    Name: Injured Soldier's Eyepatch
+    Type: Armor
+    Weight: 300
+    Slots: 1
+    Jobs:
+      All: true
+    Locations:
+      Head_Mid: true
+    ArmorLevel: 1
+    EquipLevelMin: 99
+    View: 772
+    Script: |
+      bonus bAgi,10;
+      bonus bMaxHPrate,15;
+      bonus bAspdRate,15;
+#= Adicionado 19/08
+  - Id: 400308
+    AegisName: Exotic_traditional_Hat
+    Name: Touca Exótica
+    Type: Armor
+    View: 2269
+    Weight: 600
+    Slots: 1
+    Locations:
+      Head_Top: true
+    ArmorLevel: 1
+    EquipLevelMin: 100
+    Script: |
+      bonus bDef,12;
+      bonus bMdef,15;
+      bonus2 bSubClass,Class_Boss,20;
+      bonus2 bSubClass,Class_Normal,20;
+      .@r = getrefine();
+      bonus bHealPower,10;
+      if (.@r>=7) {
+         bonus bFlee2,10;
+         bonus bHealPower,15;
+      }
+      if (.@r>=9)
+         bonus bHealPower,15;
+  - Id: 400287
+    AegisName: Legacy_of_Wise_One_J
+    Name: Capacete de Intensificação
+    Type: Armor
+    View: 2260
+    Weight: 50
+    Slots: 1
+    Locations:
+      Head_Top: true
+    ArmorLevel: 1
+    EquipLevelMin: 100
+    Script: |
+      bonus bDelayrate,-20;
+      bonus bDef,10;
+      bonus bMdef,10;
+      bonus2 bSubClass,Class_Boss,20;
+      bonus2 bSubClass,Class_Normal,20;
+      .@r = getrefine();
+      if (.@r>=10) {
+         bonus2 bSubClass,RC_Player_Human,13;
+         bonus2 bSubClass,RC_Player_Doram,13;
+         bonus2 bMagicAddRace,RC_All,30;
+         bonus2 bAddRace,RC_All,30;
+      }
+      if (.@r>=12)
+         bonus bMaxHPrate,30;
+         bonus bMaxSPrate,30;
+  - Id: 410176
+    AegisName: Queen_Headphone
+    Name: Fones de Deviling
+    Type: Armor
+    View: 2276
+    Weight: 20
+    Locations:
+      Head_Mid: true
+    ArmorLevel: 1
+    EquipLevelMin: 100
+    Script: |
+      bonus bDelayrate,-10;
+      bonus bMatk,BaseLevel;
+      bonus bBaseAtk,BaseLevel;
+      bonus bDef,6;
+  - Id: 410025
+    AegisName: Magic_Heir_T
+    Name: Floating Artifact
+    Type: Armor
+    Buy: 20
+    Weight: 200
+    Defense: 10
+    View: 1996
+    Locations:
+      Head_Mid: true
+    ArmorLevel: 1
+    EquipLevelMin: 100
+    Refineable: false
+    Trade:
+      NoDrop: true
+      NoSell: true
+    Script: |
+      bonus bAtk,(BaseLevel*1);
+      bonus bMatk,(BaseLevel*1);
+      bonus bMdef,5;
+      bonus bHPGainValue,150;
+      bonus bSPGainValue,15;
+      bonus bMagicHPGainValue,150;
+      bonus bMagicSPGainValue,15;
+  - Id: 840052
+    AegisName: caixa_penitente
+    Name: Caixa Penitente
+    Type: Usable
+    Buy: 20
+    Weight: 100
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      TradePartner: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      getgroupitem(IG_POENITENTIA_BOX);

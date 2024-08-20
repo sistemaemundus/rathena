@@ -36139,3 +36139,18 @@ Body:
     Script: |
       bonus bAllStats,10;
       bonus2 bExpAddRace,RC_All,100;
+  - Combos: # Injured_Eyepatch_JP_ (19446) com B_Seyren_Card (4357)
+      - Combo:
+          - Injured_Eyepatch_JP_ # 19446
+          - B_Seyren_Card # 4357
+    Script: |
+      bonus bAllStats,10;
+      bonus2 bExpAddRace,RC_All,100;
+      bonus bSpeedAddRate,100;
+      autobonus "{ bonus bBaseAtk,1000; }",20,5000,BF_NORMAL,"{ showscript \"SINTA MINHA FURIAAAAA!\"; active_transform 1646,5000;}";
+  - Combos: 
+      - Combo:
+          - Exotic_traditional_Hat
+          - Bacsojin_Card
+    Script: |
+      bonus bHealPower,60;

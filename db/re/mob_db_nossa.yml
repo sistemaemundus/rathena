@@ -24,6 +24,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Small
     Race: Insect
     Element: Dark
@@ -65,6 +66,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Small
     Race: Formless
     Element: Neutral
@@ -104,6 +106,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Medium
     Race: Brute
     Element: Neutral
@@ -145,6 +148,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Small
     Race: Plant
     Element: Poison
@@ -186,6 +190,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Medium
     Race: Brute
     Element: Fire
@@ -223,6 +228,7 @@ Body:
     AttackRange: 1
     SkillRange: 0
     ChaseRange: 12
+    AttackDelay: 512
     Size: Medium
     Race: Brute
     Element: Ghost
@@ -240,3 +246,123 @@ Body:
       - Item: EP18_Phantom_Wolf_Card
         Rate: 1
         StealProtected: true
+#= Custom MVPs MD_SAKRAY & MD_TIARA
+  - Id: 21087
+    AegisName: MD_SAKRAY2
+    Name: Sakrai Caido
+    Level: 240
+    Hp: 1835856994
+    BaseExp: 2447809
+    JobExp: 1713466
+    Attack: 9115
+    Attack2: 3168
+    Defense: 862
+    MagicDefense: 92
+    MagicResistance: 288
+    Resistance: 445
+    Str: 355
+    Agi: 221
+    Vit: 371
+    Int: 240
+    Dex: 260
+    Luk: 69
+    AttackRange: 3
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 140
+    AttackDelay: 512
+    AttackMotion: 1152
+    DamageMotion: 672
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      Mvp: true
+    Drops:
+      - Item: Mine_As
+        Rate: 5000
+      - Item: caixa_penitente
+        Rate: 100
+      - Item: MD_Sakray_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20893
+    AegisName: MD_TIARA
+    Name: Princesa Tiara
+    Level: 240
+    Hp: 1311066424
+    BaseExp: 1748088
+    JobExp: 1223662
+    Attack: 7190
+    Attack2: 4302
+    Defense: 836
+    MagicDefense: 99
+    MagicResistance: 400
+    Resistance: 430
+    Str: 278
+    Agi: 185
+    Vit: 358
+    Int: 333
+    Dex: 244
+    Luk: 75
+    AttackRange: 9
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Undead
+    Element: Undead
+    ElementLevel: 4
+    WalkSpeed: 140
+    AttackDelay: 512
+    AttackMotion: 1152
+    DamageMotion: 672
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      Mvp: true
+    Drops:
+      - Item: Mine_As
+        Rate: 6000
+      - Item: caixa_penitente
+        Rate: 100
+      - Item: MD_Tiara_Card
+        Rate: 1
+        StealProtected: true
+#= Varmundt's Mansion
+  - Id: 20630
+    AegisName: EP17_2_BETA_BASIC_NG
+    Name: Broken Beta
+    Level: 145
+    Hp: 261170
+    BaseExp: 6497
+    JobExp: 6648
+    Attack: 1757
+    Attack2: 665
+    Defense: 349
+    MagicDefense: 81
+    Str: 104
+    Agi: 112
+    Vit: 68
+    Int: 67
+    Dex: 107
+    Luk: 48
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 512
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 1000

@@ -1,0 +1,16 @@
+//= Criado por Alek Emundus
+//= Aplica o Bônus do Combo Injured_Eyepatch_JP_ (19446) com B_Seyren_Card (4357)
+-	script	BerserkBonus -1,{
+    OnNPCDamageEvent:
+        if (countitem2(19446,1,0,0,4357,0,0,0) == getequipid(5)){
+			if (getstatus(Berserk) && ) {
+				//if (rand(100) < 20) {
+					dispbottom "Efeito ativado!";
+					bonus bBaseAtk,1000;
+					active_transform 4053,5000; 
+					specialeffect2 EF_BERSERK;
+				//}
+			}
+		}
+        //end;
+}

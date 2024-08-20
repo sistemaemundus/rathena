@@ -10,7 +10,7 @@ prontera,139,177,5	script	Brambati	630,{
 			mes "[Brambati]";
 			mes "Pois bem, caso você tenha selecionado 1x como suas rates individuais, você irá ganhar as seguintes recompensas:";
 			mes "No Base Level 10: Um cachecol especial!";
-			mes "No Base Level 99: Archangel Wing, "+mesitemlink(20500);
+			mes "No Base Level 99: Archangel Wing ^i[20500]";
 			next;
 			switch(select("Level 10:Level 99:Não, obrigado...")){
 				case 1: //Level 10
@@ -99,18 +99,25 @@ prontera,139,177,5	script	Brambati	630,{
 						end;
 					}
 				case 2: //Level 99
-					if(BaseLevel >=99 && @recompensa99 == 0){
-						getitembound 20500,1,BOUND_CHAR;
-						clear;
-						mes "[Brambati]";
-						mes "Obrigado, até a próxima!";
-						@recompensa99 = 1;
-						end;
-					} else {
+					if(individual_rate == 1 && @recompensa10 == 0){
+						if(BaseLevel >=99){
+							getitembound 20500,1,BOUND_CHAR;
+							clear;
 							mes "[Brambati]";
-							mes "Me parece que você não tem Base Level 99, ou já pegou sua recompensas...";
+							mes "Obrigado, até a próxima!";
+							@recompensa99 = 1;
+							end;
+						} else {
+							mes "[Brambati]";
+							mes "Me parece que você não tem os requisitos, ou já pegou sua recompensa...";
 							end;
 						}
+					} else {
+						clear;
+						mes "[Brambati]";
+						mes "Você não selecionou 1x...";
+						end;
+					}
 				case 3: //Não, obrigado...
 					clear;
 					mes "[Brambati]";

@@ -1,0 +1,21 @@
+//= Criado por Alek Emundus - @sistemaemundus
+//= Troca de Mine_As (1000367) por itens Poenitentia
+mall01,66,97,5	script	Senhora Penitente	803,{	
+	mes "[Senhora Penitente]";
+	mes "Posso trocar "+mesitemlink(1000367)+" por itens Poenitentia!";
+	switch(select("- Sim.:- Depois...:")){
+		case 1:
+			clear;
+			mes "[Senhora Penitente]";
+			mes "Aqui está!";
+			close2;
+			callshop "itensPoenitentia";
+			end;
+		case 2:
+			clear;
+			mes "[Senhora Penitente]";
+			mes "Ok, até a próxima!";
+			close2;
+			end;
+	}
+}

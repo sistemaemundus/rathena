@@ -8381,6 +8381,30 @@ Body:
         Dex: 1
       - Level: 49
         Luk: 1
+      - Level: 51
+        Str: 1
+      - Level: 52
+        Agi: 1
+      - Level: 54
+        Vit: 1
+      - Level: 56
+        Int: 1
+      - Level: 57
+        Dex: 1
+      - Level: 59
+        Luk: 1
+      - Level: 61
+        Str: 1
+      - Level: 62
+        Agi: 1
+      - Level: 64
+        Vit: 1
+      - Level: 66
+        Int: 1
+      - Level: 67
+        Dex: 1
+      - Level: 69
+        Luk: 1
   - Jobs:
       Super_Baby_E: true
     BaseASPD:
@@ -8453,6 +8477,30 @@ Body:
       - Level: 47
         Dex: 1
       - Level: 49
+        Luk: 1
+      - Level: 51
+        Str: 1
+      - Level: 52
+        Agi: 1
+      - Level: 54
+        Vit: 1
+      - Level: 56
+        Int: 1
+      - Level: 57
+        Dex: 1
+      - Level: 59
+        Luk: 1
+      - Level: 61
+        Str: 1
+      - Level: 62
+        Agi: 1
+      - Level: 64
+        Vit: 1
+      - Level: 66
+        Int: 1
+      - Level: 67
+        Dex: 1
+      - Level: 69
         Luk: 1
   - Jobs:
       Kagerou: true

@@ -1,0 +1,31 @@
+prontera,178,192,5	script	sapateiro	2185,{
+    mes "Ola faço sapato";
+    next;
+    mes "me ve um certo itens ai para faze o sapato";
+    mes "preciso:";
+    mes mesitemlink(2407)+" e "+mesitemlink(6152)+ "x10";
+    next;
+    mes "Voce tem?";
+    switch(select("sim:não")){
+        case 1:
+            if( countitem(2407) >= 1 && countitem(6152) >= 10){
+                delitem 2407,1 ;
+                delitem 6152,10;
+                getitem  22071,1;
+                mes "brigado e aqui esta seu sapato";
+                close2;
+                end;
+                }
+                else{
+                    clear;
+                    mes "VOCE N TEM TODOS OS ITENS";
+                    close2;
+                    end;
+                    }
+        case 2:
+            clear;
+            mes "ate mais";
+            close2;
+            end;
+    }
+}
