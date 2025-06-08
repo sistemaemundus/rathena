@@ -1354,7 +1354,7 @@ nameless_n,259,213,4	duplicate(Teletransportadora)	Teletransportadora#nam	123
 niflheim,205,179,4	duplicate(Teletransportadora)	Teletransportadora#nif	123
 pay_arche,42,134,4	duplicate(Teletransportadora)	Teletransportadora#arc	123
 payon,182,108,4	duplicate(Teletransportadora)	Teletransportadora#pay	123
-prontera,159,192,4	duplicate(Teletransportadora)	Teletransportadora#prt	123
+prontera,157,187,4	duplicate(Teletransportadora)	Teletransportadora#prt	123
 prt_fild05,279,223,6	duplicate(Teletransportadora)	Teletransportadora#cul	123
 rachel,135,116,4	duplicate(Teletransportadora)	Teletransportadora#rac	123
 splendide,205,153,4	duplicate(Teletransportadora)	Teletransportadora#spl	123

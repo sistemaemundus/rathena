@@ -15,6 +15,8 @@
 //= 1.4 More accurate spawns [Playtester]
 //= 1.5 Corrected MVP spawn variance. [L0ne_W0lf]
 //============================================================
+//= Adicionado 3º piso, por Alek Emundus
+//============================================================
 
 //==================================================
 // ein_dun01 - Mine Dungeon
@@ -34,3 +36,18 @@ ein_dun02,0,0	monster	Obsidian	1615,40,5000
 ein_dun02,0,0	monster	Old Stove	1617,30,5000
 ein_dun02,0,0	monster	Teddy Bear	1622,30,5000
 ein_dun02,0,0,0,0	boss_monster	RSX-0806	1623,1,7500000,600000,0
+
+//==================================================
+// ein_dun03 - Mine Dungeon F3
+//==================================================
+ein_dun03,0,0	monster	Poisonous	20592,35
+ein_dun03,0,0	monster	Toxious	20593,35
+ein_dun03,0,0	monster	Green Mineral	20594,40
+ein_dun03,0,0	monster	Red Mineral	20595,40
+ein_dun03,0,0	monster	White Mineral	20596,40
+ein_dun03,0,0	monster	Purple Mineral	20597,40
+ein_dun03,0,0	monster	Jewelry Ant	20598,20
+ein_dun03,0,0	monster	Jewel	20600,3
+ein_dun03,0,0	monster	White Porcellio	20602,22
+ein_dun03,0,0	monster	Abyssman	20603,20
+ein_dun03,0,0	boss_monster	Jewel Ungoliant	20601,1,7500000,600000,0

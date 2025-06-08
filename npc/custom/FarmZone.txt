@@ -1,24 +1,27 @@
 //= Modificado & traduzido por Alek Emundus
 
-prontera,164,170,4	script	Farm Zone	660,{
+prontera,164,169,4	script	Farm Zone	660,{
 function	RandomizeItem;
 
 while( 1 ){
-mes "Como posso te ajudar?";
-switch( select( "- Informacao:- Farmar Itens" )){
+	mes "[Farm Zone]";
+	mes "Como posso te ajudar?";
+switch( select( "- Informação:- Farmar Itens" )){
 Case 1:
-	mes "Isso e uma Farm Zone.";
-	mes "Voce pode Cacar Monstros dentro desta sala.";
+	clear;
+	mes "[Farm Zone]";
+	mes "Isso é uma Farm Zone.";
+	mes "Você pode Caçar Monstros dentro desta sala.";
 	mes "Cada monstro lhe dara itens aleatorios.";
 	next;
-	mes "Mas ha algumas condicoes..";
-	mes "Voce so pode entrar ^FF0000uma vez a cada "+.RoomCleanMin+" minutos por 1 vez.^000000";
-	mes "E maximo de ^FF0000"+.MaxPlayers+" Players por "+.RoomCleanMin+" Minutos.^000000";
-	mes "Limite maximo de farm ^FF0000"+.MaxItemLimit+"^000000";
+	mes "Mas há algumas condições..";
+	mes "Você so pode entrar ^FF0000uma vez a cada "+.RoomCleanMin+" minutos por vez.^000000";
+	mes "E máximo de ^FF0000"+.MaxPlayers+" Players por "+.RoomCleanMin+" Minutos.^000000";
+	mes "Limite máximo de farm: ^FF0000"+.MaxItemLimit+"^000000";
 	next;
-	mes "Acontecera a ^FF0000Limpa da Salag^000000 de tempo em tempo...";
-	mes "Todos os jogadores serao expulsos, sera seu azar se vocÃª encontrar isso.";
-	mes "O atraso ainda sera aplicado mesmo que voce entre por apenas 1 segundo..";
+	mes "Acontecerá a ^FF0000Limpa da Sala^000000 de tempo em tempo...";
+	mes "Todos os jogadores serão expulsos, será seu azar se acontecer com você lá dentro...";
+	mes "^FF0000O atraso ainda será aplicado mesmo que você entre por apenas 1 segundo..^000000";
 	next;
 	break;
 
@@ -30,12 +33,12 @@ Case 2:
 		mes "Espere por ^FF0000"+.@min+" Minutos^000000.";
 		close;
 	}else if( getarraysize( .Hunter ) >= .MaxPlayers ){
-		mes "Atualmente esta lotada, volte depois.";
+		mes "Atualmente a sala está lotada, volte depois.";
 		close;
 	}else{
 		warp .Map$,0,0;
 		set .Hunter[getarraysize( .Hunter )],strcharinfo(0);
-		set #HuntRoomDelay,gettimetick(2) + ( .DelayMin * 60 );
+		set #HuntRoomDelay,gettimetick(2) + ( .DelayMin * 5 );
 		set #FarmHunt,0;
 		end;
 		}
@@ -46,13 +49,13 @@ OnInit:
 // Maximum Player can join per X Minutes.
 set .MaxPlayers,10;
 // Adding X Minutes of Delay before can go in again.
-set .DelayMin,30;
+set .DelayMin,5;
 // Maximum Hunt Limit per round inside the Zone.
 set .MaxItemLimit,200;
 // Map that will be used in thos Zone.
 set .Map$,"ordeal_1-1";
 // Clear Map Every X Minutes.
-set .RoomCleanMin,15;
+set .RoomCleanMin,5;
 // Mapflag Initialization
 setmapflag .Map$,mf_nogo;
 setmapflag .Map$,mf_nomobloot;
@@ -62,16 +65,16 @@ setmapflag .Map$,mf_nochat;
 setmapflag .Map$,mf_novending;
 setmapflag .Map$,mf_nocommand,60;
 setmapflag .Map$,mf_nogo;
-setmapflag .Map$,mf_nojobexp;
-setmapflag .Map$,mf_nobaseexp;
+//setmapflag .Map$,mf_nojobexp;
+//setmapflag .Map$,mf_nobaseexp;
 
 while( 1 ){
 	killmonster .Map$,"All";
 	mapwarp .Map$,"prontera",155,181;
-	monster .Map$,0,0,"[ Farm Zone ] Resident",-1,1000,strnpcinfo(0)+"::OnNormalKill";
+	monster .Map$,0,0,"[ Farm Zone ] Resident",-1,300,strnpcinfo(0)+"::OnNormalKill";
 	monster .Map$,0,0,"[ Farm Zone ] Guardian",-3,5,strnpcinfo(0)+"::OnBossKill";
 	deletearray .Hunter,getarraysize( .Hunter );
-	announce "[ Farm Zone ] : Farming Zone limpa, outros 10 jogadores podem se juntar.",bc_blue;
+	announce "[ Farm Zone ] : Farm Zone limpa, outros 10 jogadores podem se juntar.",bc_blue;
 	sleep ( .RoomCleanMin * 60000 );
 	mapannounce .Map$,"[ Farm Zone ] : Mapa limpo... Todos players foram expulsos.",0;
 	killmonster .Map$,"All";
@@ -83,14 +86,14 @@ OnNormalKill:
 RandomizeItem( 0,rand(1,5) );
 monster .Map$,0,0,"--ja--",-1,1,strnpcinfo(0)+"::OnNormalKill";
 set #FARMCOIN, #FARMCOIN + 1;
-dispbottom "[Farm Zone] 1 FarmCoin ganha, total: "+#FARMCOIN;
+dispbottom "[ Farm Zone ] : 1 FarmCoin ganha, total: "+#FARMCOIN;
 end;
 
 OnBossKill:
 RandomizeItem( 1,rand(1,3) );
 monster .Map$,0,0,"--ja--",-3,1,strnpcinfo(0)+"::OnBossKill";
 set #FARMCOIN, #FARMCOIN + 10;
-dispbottom "[Farm Zone] 10 FarmCoin ganha, total: "+#FARMCOIN;
+dispbottom "[ Farm Zone ] : 10 FarmCoin ganha, total: "+#FARMCOIN;
 end;
 
 // Function that used to Generate Random Items
@@ -109,7 +112,7 @@ for( set .@i,1; .@i <= getarg(1); set .@i,.@i + 1 ){
 deletearray .ItemList,getarraysize( .ItemList );
 dispbottom "[ Farm Zone ] : Farmou "+#FarmHunt+" / "+.MaxItemLimit+" Itens";
 if( #FarmHunt >= .MaxItemLimit ){
-	message strcharinfo(0),"Chegou ao limite , podera entrar novamente depois.";
+	message strcharinfo(0),"Chegou ao limite, poderá entrar novamente depois.";
 	sleep2 2000;
 	warp "prontera",155,181;
 	}

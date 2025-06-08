@@ -16,7 +16,7 @@
 //= Traduzido por Alek Emundus
 //= Removido custo de itens
 
-prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
+prontera,144,179,5	script	A Senhora das Cartas#eAcustom	78,{
 
 	set .zenycost,200000;    // base cost of the card remover services (in Zeny)
 	set .percardcost,25000;  // cost per card of the card remover services (in Zeny)
@@ -24,12 +24,12 @@ prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
 
 	disable_items;
 	mes "[A Senhora das Cartas]";
-	mes "Bom dia jovem. Eu tenho o poder de remover cartas que voce colocou em seu equipamento. O que voce acha?";
+	mes "Bom dia jovem. Eu tenho o poder de remover cartas que você colocou em seu equipamento. O que você acha?";
 	next;
-	switch(select("Sim, seria.:O que voce cobra?:Nao, obrigado!")) {
+	switch(select("- Sim, seria legal!:- O que você cobra?:- Não, obrigado!")) {
 	case 1:
 		mes "[A Senhora das Cartas]";
-		mes "Muito bem. Qual item eu deveria examinar pra voce?";
+		mes "Muito bem. Qual item eu deveria examinar pra você?";
 		next;
 
 		setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -41,35 +41,35 @@ prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
 		set .@part, .@indices[ select(.@menu$) ];
 		if(!getequipisequiped(.@part)) {
 			mes "[A Senhora das Cartas]";
-			mes "Jovem... Voce nao esta usando nada que eu possa remover cartas.";
+			mes "Jovem... você não está usando nada que eu possa remover cartas.";
 			close;
 		}
 		if(getequipcardcnt(.@part) == 0) {
 			mes "[A Senhora das Cartas]";
-			mes "Jovem... Nao tem cartas neste item. Nao posso fazer nada quanto a isso, sinto muito.";
+			mes "Jovem... Não tem cartas neste item. Não posso fazer nada quanto a isso, sinto muito.";
 			close;
 		}
 		set .@cardcount,getequipcardcnt(.@part);
 		
 		if (!checkweight(1202,(.@cardcount+1))) { 
-			mes "^3355FFSo um minuto!";
-			mes "Eu nao posso fornecer os meus servicos pra voce";
-			mes "porque voce esta carregando muito peso...";
-			mes "Coloque seus itens extras no seu Storage";
+			mes "^3355FFSó um minuto!";
+			mes "Eu não posso fornecer os meus servicos pra você";
+			mes "porque você esta carregando muito peso...";
+			mes "Coloque seus itens extras no seu @Storage";
 			mes "E retorne pra falar comigo de novo!";
 			close;
 		}
 		mes "[A Senhora das Cartas]";
-		mes "Este item tem " + .@cardcount + " cartas nele. Para fazer minha magica vou precisar de " + (.zenycost+(.@cardcount * .percardcost)) + " Zeny.";
+		mes "Este item tem " + .@cardcount + " cartas nele. Para fazer minha mágica vou precisar de " + (.zenycost+(.@cardcount * .percardcost)) + " Zeny.";
 		next;
-		if(select("Muito bom, pode fazer!.:Deixa pra depois...") == 2) {
+		if(select("- Muito bom, pode fazer!:- Deixa pra depois...") == 2) {
 			mes "[A Senhora das Cartas]";
-			mes "Tudo bem! Volte quando precisar dos mseus servicos.";
+			mes "Tudo bem! Volte quando precisar dos meus serviços.";
 			close;
 		}
 		if((zeny < (.zenycost+(.@cardcount * .percardcost)))) {
 			mes "[A Senhora das Cartas]";
-			mes "Parece que voce nao tem Zeny o suficiente, me desculpe mas tera que voltar depois.";
+			mes "Parece que você não tem Zeny o suficiente, me desculpe mas terá que voltar depois.";
 			close;
 		}
 		/*mes "[A Senhora das Cartas]";
@@ -87,7 +87,7 @@ prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
 			set .@failtype,2;
 		}*/
 		mes "[A Senhora das Cartas]";
-		mes "Muito bem, eu vou comecar.";
+		mes "Muito bem, eu vou começar.";
 		set Zeny, Zeny - (.zenycost+(.@cardcount * .percardcost));
 		//delitem 1000,1; //Star_Crumb
 		//delitem 715,1; //Yellow_Gemstone
@@ -136,7 +136,7 @@ prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
 		next;
 		successremovecards .@part;
 		mes "[A Senhora das Cartas]";
-		mes "O processo foi um sucesso! Aqui esta suas cartas e seu item.";
+		mes "O processo foi um sucesso! Aqui está suas cartas e seu item.";
 		close;
 	case 2:
 		mes "[A Senhora das Cartas]";
@@ -144,7 +144,7 @@ prontera,139,173,5	script	A Senhora das Cartas#eAcustom	78,{
 		close;
 	case 3:
 		mes "[A Senhora das Cartas]";
-		mes "Tudo bem, volte quando precisar dos meus servicos.";
+		mes "Tudo bem, volte quando precisar dos meus serviços.";
 		close;
 	}
 }

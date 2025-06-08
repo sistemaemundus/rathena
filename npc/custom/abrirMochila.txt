@@ -1,0 +1,16 @@
+-	script	AbrirMochila	-1,{
+
+	OnInit:
+		bindatcmd "mochila",strnpcinfo(3) + "::OnAtcommand";
+		end;
+
+	OnAtcommand:
+		// Se nenhum dos itens estiver equipado, termina.
+		if (!(isequipped(840047) || isequipped(840048) || isequipped(840049) || isequipped(840050))) {
+			message strcharinfo(0), "Necessita estar com uma das Mochilinhas equipadas para usar este comando.";
+			end;
+		}
+		message strcharinfo(0), "Mochilinha aberta!";
+		openstorage2 2, STOR_MODE_GET|STOR_MODE_PUT;
+		end;
+}

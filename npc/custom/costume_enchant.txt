@@ -24,20 +24,20 @@
 //= by Vegas (https://rathena.org/board/profile/53497-vegas/)
 //= Topic: https://rathena.org/board/topic/115174-runen-enchanter-npc-for-custom-upper-middle-lower/
 //============================================================
-prontera,164,166,4	script	Costume Enchanter	101,{
+prontera,164,166,4	script	Encantador de Costume	101,{
 
 disable_items;
 mes .n$;
-mes "Hello, "+strcharinfo(0)+"!";
-mes "If you like I can enchant your costume equipment with any enchantment I have in store";
-mes ( (.enchant_cost[0] > 0)?"in exchange for "+.enchant_cost[1]+"x "+getitemname(.enchant_cost[0])+ ( (.enchant_cost_m == 1)?", but the higher the enchantment level, the more it costs.":""):"for free")+".";
-mes "I can also reset an Enchantment "+ ((.enchant_reset[0] > 0)?", but I require "+.enchant_reset[1]+"x "+getitemname(.enchant_reset[0]):"for free")+".";
+mes "Olá, "+strcharinfo(0)+"!";
+mes "Se você quiser, posso encantar seu equipamento costume com qualquer encantamento que eu tenha em estoque!";
+mes ( (.enchant_cost[0] > 0)?"Em troca de "+.enchant_cost[1]+"x "+getitemname(.enchant_cost[0])+ ( (.enchant_cost_m == 1)?", mas quanto maior o nível de encantamento, mais custa.":""):"de graça")+".";
+mes "Também posso redefinir um encantamento "+ ((.enchant_reset[0] > 0)?", mas eu preciso de "+.enchant_reset[1]+"x "+getitemname(.enchant_reset[0]):"de graça")+".";
 next;
-switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
+switch(select("- Encantar Costumes!:- Resetar Encantamentos!:- Deixa para lá...")) {
 	
 	case 1:
 	mes .n$;
-	mes "Please select the Costume you want me to enchant:";
+	mes "Por favor selecione o costume que você quer que eu encante:";
 	for ( set .@s,0; .@s < getarraysize(.equip_slot); set .@s,.@s + 1) {
 		switch(.equip_slot[.@s]) {
 			case EQI_COSTUME_HEAD_TOP: set .@c_slot$,"Top Headgear"; break;
@@ -53,58 +53,58 @@ switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
 		}
 		set .@c_m$,.@c_m$ + ((getequipid(.equip_slot[.@s]) != -1)?.@c_slot$ + " - "+getitemname(getequipid(.equip_slot[.@s])):"") + ( (.equip_slot[.@s+1] != 0)?":":"");
 	}
-	set .@c_m$,.@c_m$ + ":- Cancel";
+	set .@c_m$,.@c_m$ + ":- Cancelar";
 	set .@c,select(.@c_m$);
 	if(.@c > getarraysize(.equip_slot)) close;
 	set .@part,.equip_slot[.@c-1];
 	next;
 	mes .n$;
 	if(getequipid(.@part) == -1) {
-		mes "It looks like you don't have any costume equipped on there.";
+		mes "Parece que você não tem nenhum costume equipado aí.";
 		close;
 	}
 	set .@hg,getequipid(.@part); // Saving Item ID
 	set .@ref,getequiprefinerycnt(.@part); 	// Saving Refine Level, if there is one
 	set .@card1,getequipcardid(.@part,0); // Save Item ID of Card Slot 1
-	mes "Selected Costume: "+getitemname(getequipid(.@part));
+	mes "Costume Selecionado: "+getitemname(getequipid(.@part));
 	if(getequipcardid(.@part,3) != 0) {
-		mes "But it looks like you already have an enchantment in this costume.";
+		mes "Mas parece que você já tem um encantamento nesse costume.";
 		close;
 	}
 	if(.enchant_type == 1) { // Selectable Enchantment
-		mes "Now please select the Enchantment:";
+		mes "Agora selecione o Encantamento:";
 		next;
 		for ( set .@e,0; .@e < getarraysize(.enchant_id); set .@e,.@e + 3)
 			set .@e_m$,.@e_m$ + "> "+getitemname(.enchant_id[.@e])+ ( (.enchant_id[.@e+3] != 0)?":":"");
 		set .@rune,select(.@e_m$)*3-3;
 		mes .n$;
-		mes "Selected Enchantment: "+getitemname(.enchant_id[.@rune]);
-		mes "Proceed?";
-		if(select("- Yes:- No") - 1) close;
+		mes "Encantamento Selecionado: "+getitemname(.enchant_id[.@rune]);
+		mes "Continuar?";
+		if(select("- Sim!:- Não...") - 1) close;
 		
 	} else // Random Enchantment
 		set .@rune,rand(getarraysize(.enchant_id)/3)*3-3;
 		
 	next;
 	mes .n$;
-	mes "Selected Enchantment: "+getitemname(.enchant_id[.@rune]);
+	mes "Encantamento Selecionado: "+getitemname(.enchant_id[.@rune]);
 	if(.enchant_cost[0] > 0) {
-		mes "Price for Enchanting:";
+		mes "Preço para Encantar:";
 		if(.enchant_cost_m == 1)
 			mes (.enchant_cost[1]*.enchant_id[.@rune+2])+"x "+getitemname(.enchant_cost[0]);
 		else
 			mes .enchant_cost[1]+"x "+getitemname(.enchant_cost[0]);
 	}
 	if(.enchant_ch == 1)
-		mes "Enchantment Chance: "+.enchant_id[.@rune+1];
-	mes "Proceed?";
-	if(select("- Yes:- No") - 1) close;
+		mes "Chance do Encantamento: "+.enchant_id[.@rune+1];
+	mes "Continuar?";
+	if(select("- Sim!:- Não...") - 1) close;
 	next;
 	mes .n$;
 	if(.enchant_cost[0] > 0)
 		if( (.enchant_cost_m == 1 && countitem(.enchant_cost[0]) < (.enchant_cost[1]*.enchant_id[.@rune+2]) ) || (.enchant_cost_m == 0 && countitem(.enchant_cost[0]) < .enchant_cost[1]) ) {
-			mes "It looks like you don't have enough "+getitemname(.enchant_cost[0])+"!";
-			mes "You need at least "+( (.enchant_cost_m == 1)?(.enchant_cost[1]*.enchant_id[.@rune+2]):.enchant_cost[1]);
+			mes "Parece que você não tem o suficiente "+getitemname(.enchant_cost[0])+"!";
+			mes "Você precisa de pelo menos "+( (.enchant_cost_m == 1)?(.enchant_cost[1]*.enchant_id[.@rune+2]):.enchant_cost[1]);
 			close;
 		}
 	if(.enchant_cost[0] > 0) {
@@ -118,19 +118,19 @@ switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
 		set .@r,100-.enchant_id[.@rune+1];
 		if(rand(100) < .@r) {
 			getitem2 .@hg,1,1,.@ref,0,.@card1,0,0,0;
-			mes "I'm sorry, the enchantment failed.";
+			mes "Desculpe, o encantamento falhou.";
 			close;
 		}
 	}
 	getitem2 .@hg,1,1,.@ref,0,.@card1,0,0,.enchant_id[.@rune];
-	mes "The enchantment was a success.";
-	mes "See ya next time.";
+	mes "O encantamento foi um sucesso.";
+	mes "Até a próxima.";
 	enable_items;
 	break;
 
 	case 2:
 	mes .n$;
-	mes "Please select the Costume you want me to reset the enchantment!";
+	mes "Selecione o costume que você quer que eu reinicie o encantamento!";
 	for ( set .@s,0; .@s < getarraysize(.equip_slot); set .@s,.@s + 1) {
 		switch(.equip_slot[.@s]) {
 			case EQI_COSTUME_HEAD_TOP: set .@c_slot$,"Top Headgear"; break;
@@ -146,26 +146,26 @@ switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
 		}
 		set .@c_m$,.@c_m$ + ((getequipid(.equip_slot[.@s]) != -1)?.@c_slot$ + " - "+getitemname(getequipid(.equip_slot[.@s])):"") + ( (.equip_slot[.@s+1] != 0)?":":"");
 	}
-	set .@c_m$,.@c_m$ + ":- Cancel";
+	set .@c_m$,.@c_m$ + ":- Cancelar.";
 	set .@c,select(.@c_m$);
 	if(.@c > getarraysize(.equip_slot)) close;
 	set .@part,.equip_slot[.@c-1];
 	next;
 	mes .n$;
 	if(getequipcardid(.@part,3) == 0) {
-		mes "It looks like you don't have any enchantment in this costume.";
+		mes "Parece que você não tem nenhum encantamento nesse costume.";
 		close;
 	}
 	set .@hg,getequipid(.@part); // Saving Item ID
 	set .@ref,getequiprefinerycnt(.@part); 	// Saving Refine Level, if there is one
 	set .@card1,getequipcardid(.@part,0); // Save Item ID of Card Slot 1
-	mes "Selected Costume: "+getitemname(getequipid(.@part));
+	mes "Costume Selecionado: "+getitemname(getequipid(.@part));
 	if(.enchant_reset[0] > 0 && countitem(.enchant_reset[0]) < .enchant_reset[1]) {
-		mes "But you don't have the required Items to reset the enchantment!";
+		mes "Mas você não tem os itens necessários para reiniciar o encantamento!";
 		close;
 	}
-	mes "Proceed?";
-	if(select("- Yes:- No") - 1) close;
+	mes "Continuar?";
+	if(select("- Sim!:- Não...") - 1) close;
 	next;
 	if(.enchant_reset[0]) 
 		delitem .enchant_reset[0],.enchant_reset[1];
@@ -173,8 +173,8 @@ switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
 	getitem2 .@hg,1,1,.@ref,0,.@card1,0,0,0;
 	equip .@hg;
 	mes .n$;
-	mes "The enchantment has been reseted.";
-	mes "See ya next time.";
+	mes "O encantamento foi reiniciado.";
+	mes "Até a próxima.";
 	break;
 	
 	case 3: break;
@@ -182,7 +182,7 @@ switch(select("- Enchant Costumes:- Reset Enchantment:- Nevermind")) {
 end;
 
 OnInit:
-set .n$,"[Costume Enchanter]";
+set .n$,"[Encantador de Costume]";
 // Enter here every Costume Slot, which you want to be enchantable
 // Valid Entries:
 // - EQI_COSTUME_HEAD_TOP
@@ -225,6 +225,6 @@ setarray .enchant_id[0],
 						4759,50,6;
 // Price for reseting:
 // To disable the price, put 0 as values
-setarray .enchant_reset[0],671,10; // Item ID,Amount
+setarray .enchant_reset[0],671,1; // Item ID,Amount
 end;
 }

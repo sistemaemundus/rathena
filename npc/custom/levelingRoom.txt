@@ -1,9 +1,26 @@
 // Criado por Alek Emundus
 // Leveling Area
 
--	script	Ouro	-1,{
+-	script	Leveling	-1,{
 	OnThisMobDeath:
-		getitem 969,1;
+	.@exp_rate_multiplier = #exp_rate_multiplier;
+	.@jexp_rate_multiplier = #jexp_rate_multiplier;
+
+	.@base_exp = getmonsterinfo(killedrid, MOB_BASEEXP) * .@exp_rate_multiplier;
+	.@job_exp = getmonsterinfo(killedrid, MOB_JOBEXP) * .@jexp_rate_multiplier;
+
+	// Debug messages to track values
+	//dispbottom "[Debug] Base EXP: " + .@base_exp;
+	//dispbottom "[Debug] Job EXP: " + .@job_exp;
+
+	if (.@base_exp > 0 || .@job_exp > 0) {
+		// Use getcharid(0) to specify the character ID
+		getexp2(.@base_exp, .@job_exp);
+	} else {
+		dispbottom "[Error] Experience values are zero.";
+	}
+		//getitem 969,1;
+	set #LevelingPoints, #LevelingPoints + 1;
 	end;
 }
 
@@ -71,55 +88,63 @@ prontera,145,199,5	script	Leveling Area	64,{
 }
 
 // Leveling Area 1 - Nível 1 a 40
-06guild_01,0,0	monster	Poring	1002,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_01,0,0	monster	Fabre	1184,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_01,0,0	monster	Picky	1049,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_01,0,0	monster	Poring	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_01,0,0	monster	Fabre	1184,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Picky	1049,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_01,0,0	monster	Drops	1113,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_01,0,0	monster	Lunatic	1063,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_01,0,0	monster	Creamy	1018,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Lunatic	1063,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Creamy	1018,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_01,0,0	monster	Peco-Peco	1019,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_01,0,0	monster	Caramel	1103,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_01,0,0	monster	Skeleton	1076,5,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_01,0,0	monster	Skeleton	1076,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_01,0,0	monster	Myst Case	1249,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_01,0,0	monster	Dokebi	1407,5,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 2 - Nível 40 a 75
-06guild_02,0,0	monster	Marina	1141,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Poring,50	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+
+/*06guild_02,0,0	monster	Marina	1141,5,1000,1000,"Ouro::OnThisMobDeath"
 06guild_02,0,0	monster	Wolf	1013,5,1000,1000,"Ouro::OnThisMobDeath"
 06guild_02,0,0	monster	Aster	1266,5,1000,1000,"Ouro::OnThisMobDeath"
 06guild_02,0,0	monster	Phen	1158,5,1000,1000,"Ouro::OnThisMobDeath"
-06guild_02,0,0	monster	Horong	1129,5,1000,1000,"Ouro::OnThisMobDeath"
+06guild_02,0,0	monster	Horong	1129,5,1000,1000,"Ouro::OnThisMobDeath"*/
 //06guild_02,0,0	monster	Rideword	1195,5,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 3 - Nível 75 a 99
-06guild_03,0,0	monster	Zerom	1178,20,1000,1000,"Ouro::OnThisMobDeath"
-06guild_03,0,0	monster	Goat	1372,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_03,0,0	monster	Poring,80	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_03,0,0	monster	Zerom	1178,20,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_03,0,0	monster	Goat	1372,10,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_03,0,0	monster	Parasite	1500,20,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 4 - Nível 99 a 125
-06guild_04,0,0	monster	Anacondaq	1030,10,1000,1000,"Ouro::OnThisMobDeath"
-06guild_04,0,0	monster	Gargoyle	1253,10,1000,1000,"Ouro::OnThisMobDeath"
-06guild_04,0,0	monster	Alice	1275,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_04,0,0	monster	Poring,100	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_04,0,0	monster	Anacondaq	1030,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_04,0,0	monster	Gargoyle	1253,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_04,0,0	monster	Alice	1275,10,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_04,0,0	monster	Scythe Solder	3488,20,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 5 - Nível 125 a 150
-06guild_05,0,0	monster	Acidus	1713,10,1000,1000,"Ouro::OnThisMobDeath"
-06guild_05,0,0	monster	Banshee	1867,10,1000,1000,"Ouro::OnThisMobDeath"
+06guild_05,0,0	monster	Poring,130	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_05,0,0	monster	Acidus	1713,10,1000,1000,"Ouro::OnThisMobDeath"
+//06guild_05,0,0	monster	Banshee	1867,10,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_05,0,0	monster	Pitaya	20661,10,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_05,0,0	monster	Charleston 1 	3122,5,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_05,0,0	monster	Aries	20677,5,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 6 - Nível 150 a 175
-06guild_06,0,0	monster	Big Bell	2917,25,1000,1000,"Ouro::OnThisMobDeath"
+06guild_06,0,0	monster	Poring,160	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_06,0,0	monster	Big Bell	2917,25,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_06,0,0	monster	Chaos Hunter Fly	20527,10,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_06,0,0	monster	Twin Caput	20366,5,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 7 - Nível 175 a 200
-06guild_07,0,0	monster	Excavator Robot	3153,35,1000,1000,"Ouro::OnThisMobDeath"
+06guild_07,0,0	monster	Poring,180	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_07,0,0	monster	Excavator Robot	3153,35,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_07,0,0	monster	Trentini	3232,15,1000,1000,"Ouro::OnThisMobDeath"
 
 // Leveling Area 8 - Nível 200 a 250
-06guild_08,0,0	monster	Explorer Robot Turbo	3249,35,1000,1000,"Ouro::OnThisMobDeath"
+06guild_08,0,0	monster	Poring,230	1002,50,1000,1000,"Leveling::OnThisMobDeath"
+//06guild_08,0,0	monster	Explorer Robot Turbo	3249,35,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_08,0,0	monster	Ranger Cecil	3217,15,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_08,0,0	monster	Rune Knight Seyren	3219,15,1000,1000,"Ouro::OnThisMobDeath"
 //06guild_08,0,0	monster	Brutal Murderer	20937,5,1000,1000,"Ouro::OnThisMobDeath"

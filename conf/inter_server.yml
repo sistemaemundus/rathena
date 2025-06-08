@@ -43,6 +43,9 @@ Body:
   - ID: 1
     Name: "Storage2"
     Table: storage2
+  - ID: 2
+    Name: "Mochila"
+    Table: mochila
 
 Footer:
   Imports:

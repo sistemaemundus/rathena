@@ -84,7 +84,7 @@ prontera,160,133,2	script	YuPi#pront	102,{
 	close;
 }
 
-prontera,149,202,2	script	YuNa#pront	700,{
+prontera,147,196,2	script	YuNa#pront	700,{
 	mes "[YuNa]";
 	mes "Behold...";
 	mes "Mighty Odin!";

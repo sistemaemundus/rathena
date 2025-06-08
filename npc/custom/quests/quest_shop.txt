@@ -26,7 +26,7 @@
 //	callfunc "qshop"{,<shop ID>{,<shop ID>{,...}}};
 //  ADD YOUR NPC HERE
 //============================================================
-prontera,143,178,4	script	Quest Shop#1	998,{ callfunc "qshop"; }
+prt_in,30,106,5	script	Quest Shop#1	998,{ callfunc "qshop"; }
 // prontera,165,203,6	script	Quest Shop#2	998,{ callfunc "qshop",1,2; }	// call the shop 1 and 2 defined below
 // etc.. Add your Shop NPCs 'Quest Shop#XXX' here
 //============================================================
@@ -45,7 +45,7 @@ OnInit:
 
 	set .Announce,1;	// Announce quest completion? (1: yes / 0: no)
 	set .ShowSlot,1;	// Show item slots? (2: all equipment / 1: if slots > 0 / 0: never)
-	set .ShowID,0;  	// Show item IDs? (1: yes / 0: no)
+	set .ShowID,1;  	// Show item IDs? (1: yes / 0: no)
 	set .ShowZeny,0;	// Show Zeny cost, if any? (1: yes / 0: no)
 	set .MaxStack,100;	// Max number of quest items purchased at one time.
 
@@ -55,7 +55,7 @@ OnInit:
 // -----------------------------------------------------------
 
 	setarray .Points$[0],
-		"#CASHPOINTS", "Cash Points";
+		"#QUESTPOINT", "Quest Points";
 
 
 //=====================================================================================

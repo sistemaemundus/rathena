@@ -48,9 +48,9 @@ OnTalk:
 	.@cid = getcharid(0);
 	.@size = query_sql("SELECT `id`, `build_name`, `eaj_class`, `base_level`, `job_level`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `pow`, `sta`, `wis`, `spl`, `con`, `crt`, `status_point`, `skill_point`, `trait_point` FROM `ero_buildmanager` WHERE `cid` = "+.@cid, .@id, .@build_name$, .@eaj_class, .@base_level, .@job_level, .@str, .@agi, .@vit, .@int, .@dex, .@luk, .@pow, .@sta, .@wis, .@spl, .@con, .@crt, .@status_point, .@skill_point, .@trait_point);
 	switch (select(
-		(.@size <= 0) ? "" : "Switch Build",
-		(.max_build && .@size >= .max_build) ? "" : "Save Build",
-		(.@size <= 0) ? "" : "Delete"
+		(.@size <= 0) ? "" : "- Trocar Build",
+		(.max_build && .@size >= .max_build) ? "" : "- Salvar Build",
+		(.@size <= 0) ? "" : "- Delete"
 	)) {	
 		case 1:
 			for (.@i = 0; .@i < .@size; .@i++)
@@ -58,12 +58,12 @@ OnTalk:
 			if (.@size > 1)
 				.@index = select(.@menu$) - 1;
 			mes "[" + .@build_name$[.@index]+"]";
-			mes "Class: " + jobname(roclass(.@eaj_class[.@index]))+" ("+.@base_level[.@index]+"/"+.@job_level[.@index]+")";
-			mes "Status Point: " + F_InsertComma(.@status_point[.@index]);
-			mes "Skill Point: " + F_InsertComma(.@skill_point[.@index]);
+			mes "Classe: " + jobname(roclass(.@eaj_class[.@index]))+" ("+.@base_level[.@index]+"/"+.@job_level[.@index]+")";
+			mes "Pontos de Status: " + F_InsertComma(.@status_point[.@index]);
+			mes "Pontos de Skill: " + F_InsertComma(.@skill_point[.@index]);
 			if (checkre(0))
-				mes "Trait Point: " + F_InsertComma(.@trait_point[.@index]);
-			mes "- - - - - - STATS - - - - - -";
+				mes "Pontos de Trait: " + F_InsertComma(.@trait_point[.@index]);
+			mes "- - - - - - STATUS - - - - - -";
 			mes sprintf("STR ^ff9933[%03d]^000000 AGI ^ff9933[%03d]^000000 VIT ^ff9933[%03d]^000000", .@str[.@index], .@agi[.@index], .@vit[.@index]);
 			mes sprintf("INT ^ff9933[%03d]^000000 DEX ^ff9933[%03d]^000000 LUK ^ff9933[%03d]^000000", .@int[.@index], .@dex[.@index], .@luk[.@index]);
 			if (checkre(0)) {
@@ -71,15 +71,15 @@ OnTalk:
 				mes sprintf("POW ^ff9933[%03d]^000000 STA ^ff9933[%03d]^000000 WIS ^ff9933[%03d]^000000", .@pow[.@index], .@sta[.@index], .@wis[.@index]);
 				mes sprintf("SPL ^ff9933[%03d]^000000 CON ^ff9933[%03d]^000000 CRT ^ff9933[%03d]^000000", .@spl[.@index], .@con[.@index], .@crt[.@index]);
 			}
-			if (select("Load", "Cancel") == 2) 
+			if (select("- Carregar", "- Cancelar") == 2) 
 				break;
 			clear;
 			if (BaseLevel < .@base_level[.@index] || JobLevel < .@job_level[.@index]) {
-				mes "You're required to be at least " + .@base_level[.@index]+"/"+.@job_level[.@index] + " to load this build.";
+				mes "Você precisa ter pelo menos " + .@base_level[.@index]+"/"+.@job_level[.@index] + " para carregar essa build.";
 				close;
 			}
 			if (.check_weight_limit && Weight && Weight >= (20000 + (.@str[.@index] * 300))) {
-				mes "Your selected build have insufficient STR to handle your current inventory items ("+F_InsertComma(Weight/10)+"/"+F_InsertComma((20000 + (.@str[.@index] * 300)) / 10)+").";
+				mes "A build selecionada não tem STR o suficiente para carregar os itens do seu inventário atual ("+F_InsertComma(Weight/10)+"/"+F_InsertComma((20000 + (.@str[.@index] * 300)) / 10)+").";
 				close;
 			}
 			resetstatus;
@@ -115,21 +115,21 @@ OnTalk:
 			SkillPoint = .@skill_point[.@index];
 			if (checkre(0))
 				TraitPoint = .@trait_point[.@index];
-			mes "Build loaded.";
+			mes "Build carregada.";
 			specialeffect2 EF_ANGEL2;
 			break;
 		case 2:
-			mes "Enter a name for your build?";
+			mes "Qual o nome da sua build?";
 			input .@build_name$;
 			.@build_name$ = replacestr(.@build_name$, ":", "");
 			clear;
 			mes "["+.@build_name$+"]";
-			mes "Class: " +jobname(roclass(eaclass()))+" ("+BaseLevel+"/"+JobLevel+")";
-			mes "Status Point: " + F_InsertComma(StatusPoint);
-			mes "Skill Point: " + F_InsertComma(SkillPoint);
+			mes "Classe: " +jobname(roclass(eaclass()))+" ("+BaseLevel+"/"+JobLevel+")";
+			mes "Pontos de Status: " + F_InsertComma(StatusPoint);
+			mes "Pontos de Skill: " + F_InsertComma(SkillPoint);
 			if (checkre(0))
-				mes "Trait Point: " + F_InsertComma(TraitPoint);
-			mes "- - - - - - STATS - - - - - -";
+				mes "Pontos de Trait: " + F_InsertComma(TraitPoint);
+			mes "- - - - - - STATUS - - - - - -";
 			mes sprintf("STR ^ff9933[%03d]^000000 AGI ^ff9933[%03d]^000000 VIT ^ff9933[%03d]^000000", readparam(bStr), readparam(bAgi), readparam(bVit));
 			mes sprintf("INT ^ff9933[%03d]^000000 DEX ^ff9933[%03d]^000000 LUK ^ff9933[%03d]^000000", readparam(bInt), readparam(bDex), readparam(bLuk));
 			if (checkre(0)) {
@@ -137,7 +137,7 @@ OnTalk:
 				mes sprintf("POW ^ff9933[%03d]^000000 STA ^ff9933[%03d]^000000 WIS ^ff9933[%03d]^000000", readparam(bPow), readparam(bSta), readparam(bWis));
 				mes sprintf("SPL ^ff9933[%03d]^000000 CON ^ff9933[%03d]^000000 CRT ^ff9933[%03d]^000000", readparam(bSpl), readparam(bCon), readparam(bCrt));
 			}
-			if (select("Save", "Cancel") == 2) 
+			if (select("- Salvar", "- Cancelar") == 2) 
 				break;
 			
 			if (checkre(0))
@@ -146,19 +146,19 @@ OnTalk:
 				.@sql$ = "INSERT INTO `ero_buildmanager` (`aid`, `cid`, `build_name`, `eaj_class`, `base_level`, `job_level`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `status_point`, `skill_point`, `created`) VALUES ("+.@aid+", "+.@cid+", '"+escape_sql(.@build_name$)+"', "+eaclass()+", "+BaseLevel+", "+JobLevel+", "+readparam(bStr)+", "+readparam(bAgi)+", "+readparam(bVit)+", "+readparam(bInt)+", "+readparam(bDex)+", "+readparam(bLuk)+", "+StatusPoint+", "+SkillPoint+", NOW())";
 			query_sql(.@sql$);
 			clear;
-			mes "Build '"+.@build_name$+"' has been created.";
+			mes "Sua build '"+.@build_name$+"' foi criada.";
 			break;
 		case 3:
 			for (.@i = 0; .@i < .@size; .@i++)
 				.@menu$ = .@menu$ + .@build_name$[.@i] + ":";
 			.@index = select(.@menu$) - 1;
 			mes "["+.@build_name$[.@index]+"]";
-			mes "Class: " +jobname(roclass(.@eaj_class[.@index]))+" ("+.@base_level[.@index]+"/"+.@job_level[.@index]+")";
-			mes "Status Point: " + F_InsertComma(.@status_point[.@index]);
-			mes "Skill Point: " + F_InsertComma(.@skill_point[.@index]);
+			mes "Classe: " +jobname(roclass(.@eaj_class[.@index]))+" ("+.@base_level[.@index]+"/"+.@job_level[.@index]+")";
+			mes "Pontos de Status: " + F_InsertComma(.@status_point[.@index]);
+			mes "Pontos de Skill: " + F_InsertComma(.@skill_point[.@index]);
 			if (checkre(0))
-				mes "Trait Point: " + F_InsertComma(.@trait_point[.@index]);
-			mes "- - - - - - STATS - - - - - -";
+				mes "Pontos de Traits: " + F_InsertComma(.@trait_point[.@index]);
+			mes "- - - - - - STATUS - - - - - -";
 			mes sprintf("STR ^ff9933[%03d]^000000 AGI ^ff9933[%03d]^000000 VIT ^ff9933[%03d]^000000", .@str[.@index], .@agi[.@index], .@vit[.@index]);
 			mes sprintf("INT ^ff9933[%03d]^000000 DEX ^ff9933[%03d]^000000 LUK ^ff9933[%03d]^000000", .@int[.@index], .@dex[.@index], .@luk[.@index]);
 			if (checkre(0)) {
@@ -166,10 +166,10 @@ OnTalk:
 				mes sprintf("POW ^ff9933[%03d]^000000 STA ^ff9933[%03d]^000000 WIS ^ff9933[%03d]^000000", .@pow[.@index], .@sta[.@index], .@wis[.@index]);
 				mes sprintf("SPL ^ff9933[%03d]^000000 CON ^ff9933[%03d]^000000 CRT ^ff9933[%03d]^000000", .@spl[.@index], .@con[.@index], .@crt[.@index]);
 			}
-			if (select("Confirm Delete", "Cancel") == 2) 
+			if (select("- Confirmar exclusão", "- Cancelar") == 2) 
 				break;
 			clear;
-			mes "Build deleted.";
+			mes "Build deletada.";
 			query_sql("DELETE FROM `ero_buildmanager` WHERE `id` = "+.@id[.@index]+" LIMIT 1");
 			break;
 	}

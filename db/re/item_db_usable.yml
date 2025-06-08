@@ -59369,7 +59369,12 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      getgroupitem(IG_STATER_A_BOX);
+      getitem 32252,1;
+      getitem 22215,1;
+      getitem 20953,1;
+      getitem 15410,1;
+      getitem 12781,1;
+      callfunc ("caixasBooster",1);
   - Id: 100046
     AegisName: Boost_Atk_Box
     Name: Attacker Booster Armor Crate

@@ -30,7 +30,7 @@
 //= The idea about the shop display is inspired by sader's enchanter.
 //= There is also a version without Random Options Support available > mystic_enchanter_no_ropt.txt
 //============================================================
-prontera,147,166,5	script	Encantador Místico	4_M_MOCASS1,{
+vip_lounge,77,146,5	script	Encantador Místico	4_M_MOCASS1,{
 function ME_Price;
 
 disable_items;

@@ -1,6 +1,6 @@
 // Criado pelo Alek Emundus
 // Muda a classe expandida para as novas
-prontera,154,196,6	script	Novas Classes Expandidas	403,{
+prontera,159,193,4	script	Novas Classes Expandidas	403,{
 	mes "[Novas Classes Expandidas]";
 	mes "Olá, gostaria de expandir seu poder mais ainda?";
 	switch(select("- Sim, por favor!:- Agora não, obrigado!")) {

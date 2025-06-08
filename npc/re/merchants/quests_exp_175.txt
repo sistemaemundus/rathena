@@ -88,3 +88,6 @@ einbech,149,257,4	script	Site manager Elmen#extdq0	4_TOWER_16,{
 		end;
 	}
 }
+
+//= Duplicata em @guia - Criado por Alek Emundus
+mall01,73,107,4	duplicate(Site manager Elmen#extdq0)	Site Manager Elmen#guia	4_TOWER_16

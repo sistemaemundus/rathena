@@ -29,9 +29,10 @@ Body:
     Race: Insect
     Element: Dark
     ElementLevel: 4
-    Ai: 04
+    Ai: 21
     Modes:
-      Detector: true    
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -72,6 +73,9 @@ Body:
     Element: Neutral
     ElementLevel: 2
     Ai: 02
+    Modes:
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200
@@ -113,7 +117,8 @@ Body:
     ElementLevel: 2
     Ai: 13
     Modes:
-      Detector: true    
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -154,6 +159,9 @@ Body:
     Element: Poison
     ElementLevel: 2
     Ai: 07
+    Modes:
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -196,6 +204,9 @@ Body:
     Element: Fire
     ElementLevel: 2
     Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -234,6 +245,9 @@ Body:
     Element: Ghost
     ElementLevel: 2
     Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
     Drops:
       - Item: Ep18_Amethyst_Fragment
         Rate: 200    
@@ -359,10 +373,1634 @@ Body:
     Race: Formless
     Element: Neutral
     ElementLevel: 2
-    Ai: 05
+    Ai: 26
     Modes:
       Detector: true
       Aggressive: true
     Drops:
       - Item: BarMealTicket
         Rate: 1000
+  - Id: 20640
+    AegisName: EP17_2_OMEGA_CLEANER
+    Name: Cleaning Robot
+    Level: 130
+    Hp: 182967
+    BaseExp: 6653
+    JobExp: 4657
+    Attack: 1110
+    Attack2: 589
+    Defense: 424
+    MagicDefense: 73
+    Str: 70
+    Agi: 68
+    Vit: 98
+    Int: 65
+    Dex: 97
+    Luk: 61
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Burnt_Parts
+        Rate: 1000
+      - Item: Mystery_Piece
+        Rate: 1000
+      - Item: Steel
+        Rate: 1000
+      - Item: Iron
+        Rate: 1000
+  - Id: 20683
+    AegisName: EP17_2_BOOKWORM
+    Name: Bookworm
+    Level: 141
+    Hp: 250264
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1696
+    Attack2: 830
+    Defense: 210
+    MagicDefense: 82
+    Str: 103
+    Agi: 89
+    Vit: 23
+    Int: 91
+    Dex: 107
+    Luk: 7
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Large
+    Race: Insect
+    Element: Earth
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Long_Limb
+        Rate: 1000
+      - Item: Colorful_Shell
+        Rate: 1000
+      - Item: Fluorescent_Liquid
+        Rate: 1000
+      - Item: Bookworm_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20684
+    AegisName: EP17_2_ROAMING_SPLBOOK
+    Name: Roaming Spellbook
+    Level: 144
+    Hp: 256849
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1838
+    Attack2: 892
+    Defense: 258
+    MagicDefense: 84
+    Str: 110
+    Agi: 147
+    Vit: 38
+    Int: 97
+    Dex: 153
+    Luk: 66
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 3
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Dustball
+        Rate: 1000
+      - Item: Old_Magic_Book
+        Rate: 1000
+      - Item: Fluorescent_Liquid
+        Rate: 1000
+      - Item: Roaming_Splbook_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20680
+    AegisName: EP17_2_HEART_HUNTER
+    Name: Heart Hunter Skirmisher
+    Level: 130
+    Hp: 180367
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1250
+    Attack2: 596
+    Defense: 334
+    MagicDefense: 73
+    Str: 80
+    Agi: 113
+    Vit: 68
+    Int: 67
+    Dex: 102
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Heart_Hunter_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20688
+    AegisName: EP17_2_BELLARE3
+    Name: Elite Bellare
+    Level: 143
+    Hp: 295508
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1795
+    Attack2: 664
+    Defense: 383
+    MagicDefense: 80
+    Str: 108
+    Agi: 121
+    Vit: 80
+    Int: 68
+    Dex: 113
+    Luk: 80
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 1
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Bellare3_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20689
+    AegisName: EP17_2_DOLOR3
+    Name: Spell Addicted Dolor
+    Level: 145
+    Hp: 299350
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1896
+    Attack2: 766
+    Defense: 376
+    MagicDefense: 83
+    Str: 113
+    Agi: 103
+    Vit: 77
+    Int: 80
+    Dex: 115
+    Luk: 67
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 1
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Dolor3_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20690
+    AegisName: EP17_2_PLASMA_Y
+    Name: Released Spell
+    Level: 144
+    Hp: 291046
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1637
+    Attack2: 1070
+    Defense: 180
+    MagicDefense: 87
+    Str: 97
+    Agi: 120
+    Vit: 12
+    Int: 120
+    Dex: 90
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Plasma_Y_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20685
+    AegisName: EP17_2_VENENUM3
+    Name: Sewage Venenum
+    Level: 142
+    Hp: 290128
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1656
+    Attack2: 721
+    Defense: 277
+    MagicDefense: 81
+    Str: 80
+    Agi: 97
+    Vit: 45
+    Int: 76
+    Dex: 96
+    Luk: 61
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Large
+    Race: Demon
+    Element: Dark
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Venenum3_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20686
+    AegisName: EP17_2_CRAMP
+    Name: Sewage Clamp
+    Level: 140
+    Hp: 285388
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1835
+    Attack2: 562
+    Defense: 254
+    MagicDefense: 77
+    Str: 113
+    Agi: 118
+    Vit: 38
+    Int: 56
+    Dex: 109
+    Luk: 66
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Brute
+    Element: Poison
+    ElementLevel: 1
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: EP17_2_Cramp_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20687
+    AegisName: EP17_2_WATERFALL
+    Name: Sewage Waterfall
+    Level: 141
+    Hp: 287897
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1575
+    Attack2: 906
+    Defense: 270
+    MagicDefense: 83
+    Str: 95
+    Agi: 111
+    Vit: 43
+    Int: 101
+    Dex: 96
+    Luk: 48
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Poison
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 650
+      - Item: Waterfall_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20691
+    AegisName: EP17_2_PLAGA3
+    Name: Spell Addicted Plaga
+    Level: 192
+    Hp: 2946697
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 4252
+    Attack2: 1715
+    Defense: 462
+    MagicDefense: 115
+    Str: 201
+    Agi: 177
+    Vit: 90
+    Int: 153
+    Dex: 186
+    Luk: 103
+    AttackRange: 2
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Large
+    Race: Demon
+    Element: Poison
+    ElementLevel: 3
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Plaga3_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20692
+    AegisName: EP17_2_SANARE3
+    Name: Mana Addicted Sanare
+    Level: 194
+    Hp: 2979073
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 3947
+    Attack2: 2184
+    Defense: 503
+    MagicDefense: 122
+    Str: 184
+    Agi: 168
+    Vit: 103
+    Int: 198
+    Dex: 162
+    Luk: 72
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Holy
+    ElementLevel: 2
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Sanare3_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20693
+    AegisName: EP17_2_PLASMA_R
+    Name: Strong Plasma
+    Level: 193
+    Hp: 2961272
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 3786
+    Attack2: 2154
+    Defense: 445
+    MagicDefense: 121
+    Str: 177
+    Agi: 201
+    Vit: 84
+    Int: 196
+    Dex: 170
+    Luk: 70
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 3
+    Ai: 26
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Plasma_R_Card
+        Rate: 1
+        StealProtected: true
+#= Adicionados 30/08
+  - Id: 20639
+    AegisName: EP17_2_BETA_GUARDS_NG
+    Name: Broken Guard Beta
+    Level: 186
+    Hp: 1909523
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 3165
+    Attack2: 1483
+    Defense: 522
+    MagicDefense: 110
+    Str: 152
+    Agi: 76
+    Vit: 112
+    Int: 134
+    Dex: 114
+    Luk: 98
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Wind
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Beta_Guards_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20641
+    AegisName: EP17_2_OMEGA_CLEANER_NG
+    Name: Broken Cleaning Robot
+    Level: 175
+    Hp: 1200685
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2765
+    Attack2: 1284
+    Defense: 475
+    MagicDefense: 103
+    Str: 140
+    Agi: 90
+    Vit: 100
+    Int: 121
+    Dex: 130
+    Luk: 64
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Omega_Cleaner_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20682
+    AegisName: EP17_2_HEART_HUNTER_H
+    Name: Heart Hunter Skirmisher
+    Level: 176
+    Hp: 1208485
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2644
+    Attack2: 1176
+    Defense: 500
+    MagicDefense: 102
+    Str: 110
+    Agi: 147
+    Vit: 38
+    Int: 97
+    Dex: 153
+    Luk: 87
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Dark
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Heart_Hunter_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20637
+    AegisName: EP17_2_BETA_ITEMKEEPER
+    Name: Broken Warehouse Manager
+    Level: 185
+    Hp: 1900983
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 3227
+    Attack2: 1514
+    Defense: 563
+    MagicDefense: 110
+    Str: 156
+    Agi: 98
+    Vit: 126
+    Int: 138
+    Dex: 143
+    Luk: 91
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+  - Id: 20633
+    AegisName: EP17_2_BETA_CLEANER_A
+    Name: Broken Cleaner
+    Level: 143
+    Hp: 147134
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1918
+    Attack2: 810
+    Defense: 344
+    MagicDefense: 82
+    Str: 116
+    Agi: 98
+    Vit: 67
+    Int: 87
+    Dex: 113
+    Luk: 76
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Burnt_Parts
+        Rate: 800
+      - Item: Iron
+        Rate: 650
+      - Item: Steel
+        Rate: 650
+      - Item: Beta_Cleaner_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20644
+    AegisName: EP17_2_MARC
+    Name: Boiling Water Marc
+    Level: 137
+    Hp: 132060
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1622
+    Attack2: 854
+    Defense: 407
+    MagicDefense: 81
+    Str: 101
+    Agi: 104
+    Vit: 90
+    Int: 97
+    Dex: 112
+    Luk: 67
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Fish
+    Element: Water
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Iron
+        Rate: 650
+      - Item: Steel
+        Rate: 650
+      - Item: EP17_2_Marc_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20645
+    AegisName: EP17_2_SWORD_FISH
+    Name: Boiling Water Swordfish
+    Level: 138
+    Hp: 133151
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1677
+    Attack2: 830
+    Defense: 414
+    MagicDefense: 81
+    Str: 104
+    Agi: 109
+    Vit: 92
+    Int: 93
+    Dex: 101
+    Luk: 70
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Fish
+    Element: Water
+    ElementLevel: 2
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Iron
+        Rate: 650
+      - Item: Steel
+        Rate: 650
+      - Item: EP17_2_Sword_Fish_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20646
+    AegisName: EP17_2_PIRANHA
+    Name: Boiling Water Piranha
+    Level: 138
+    Hp: 133024
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 1691
+    Attack2: 785
+    Defense: 408
+    MagicDefense: 80
+    Str: 105
+    Agi: 104
+    Vit: 90
+    Int: 87
+    Dex: 106
+    Luk: 73
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Large
+    Race: Fish
+    Element: Water
+    ElementLevel: 3
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Iron
+        Rate: 650
+      - Item: Steel
+        Rate: 650
+      - Item: EP17_2_Piranha_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20694
+    AegisName: EP17_2_PLASMA_R2
+    Name: Sharp Spell
+    Level: 193
+    Hp: 2960243
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 3643
+    Attack2: 2134
+    Defense: 421
+    MagicDefense: 121
+    Str: 170
+    Agi: 198
+    Vit: 76
+    Int: 194
+    Dex: 167
+    Luk: 67
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 3
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: BarMealTicket
+        Rate: 800
+      - Item: Zelunium_Ore
+        Rate: 650
+      - Item: Shadowdecon_Ore
+        Rate: 650
+      - Item: Plasma_R2_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20649
+    AegisName: EP17_2_PITAYA_R
+    Name: Pitaya
+    Level: 162
+    Hp: 648023
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2432
+    Attack2: 932
+    Defense: 351
+    MagicDefense: 92
+    Str: 132
+    Agi: 122
+    Vit: 63
+    Int: 90
+    Dex: 132
+    Luk: 90
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Plant
+    Element: Fire
+    ElementLevel: 1
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_R_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20650
+    AegisName: EP17_2_PITAYA_Y
+    Name: Pitaya
+    Level: 164
+    Hp: 658607
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2391
+    Attack2: 960
+    Defense: 434
+    MagicDefense: 94
+    Str: 128
+    Agi: 164
+    Vit: 90
+    Int: 92
+    Dex: 154
+    Luk: 67
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Plant
+    Element: Wind
+    ElementLevel: 1
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_Y_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20651
+    AegisName: EP17_2_PITAYA_B
+    Name: Pitaya
+    Level: 165
+    Hp: 662911
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2247
+    Attack2: 1043
+    Defense: 444
+    MagicDefense: 95
+    Str: 119
+    Agi: 162
+    Vit: 93
+    Int: 101
+    Dex: 143
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Plant
+    Element: Water
+    ElementLevel: 1
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_B_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20652
+    AegisName: EP17_2_PITAYA_V
+    Name: Pitaya
+    Level: 165
+    Hp: 665510
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2299
+    Attack2: 843
+    Defense: 525
+    MagicDefense: 92
+    Str: 122
+    Agi: 98
+    Vit: 120
+    Int: 78
+    Dex: 162
+    Luk: 87
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Plant
+    Element: Poison
+    ElementLevel: 1
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_V_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20653
+    AegisName: EP17_2_PITAYA_G
+    Name: Pitaya
+    Level: 166
+    Hp: 668381
+    BaseExp: 9100
+    JobExp: 6370
+    Attack: 2348
+    Attack2: 751
+    Defense: 490
+    MagicDefense: 91
+    Str: 124
+    Agi: 132
+    Vit: 108
+    Int: 67
+    Dex: 153
+    Luk: 89
+    AttackRange: 1
+    SkillRange: 0
+    ChaseRange: 12
+    AttackDelay: 1000
+    Size: Small
+    Race: Plant
+    Element: Earth
+    ElementLevel: 1
+    Ai: 05
+    Modes:
+      Detector: true
+      Aggressive: true
+    Drops:
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_G_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20648
+    AegisName: EP17_2_PITAYA_BOSS
+    Name: Boss Meow
+    Level: 168
+    Hp: 19298694
+    BaseExp: 643289
+    JobExp: 450302
+    Attack: 2731
+    Attack2: 1520
+    Defense: 462
+    MagicDefense: 103
+    Str: 144
+    Agi: 86
+    Vit: 98
+    Int: 153
+    Dex: 153
+    Luk: 98
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Small
+    Race: Plant
+    Element: Fire
+    ElementLevel: 3
+    WalkSpeed: 140
+    AttackDelay: 1000
+    AttackMotion: 1152
+    DamageMotion: 672
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      Mvp: true
+    Drops:
+      - Item: Yggdrasilberry
+        Rate: 1000
+      - Item: Jubilee
+        Rate: 650
+      - Item: Reptile_Tongue
+        Rate: 650
+      - Item: Pitaya_Boss_Card
+        Rate: 1
+        StealProtected: true
+#= Monstros de ein_dun03
+  - Id: 20592
+    AegisName: POISONOUS
+    Name: Poisonous
+    Level: 188
+    Hp: 2407086
+    BaseExp: 171935
+    JobExp: 120354
+    Attack: 3059
+    Attack2: 843
+    Defense: 248
+    MagicDefense: 68
+    Str: 145
+    Agi: 141
+    Vit: 77
+    Int: 67
+    Dex: 175
+    Luk: 11
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Formless
+    Element: Ghost
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Anodyne
+        Rate: 25
+      - Item: Old_Violet_Box
+        Rate: 1
+      - Item: Mould_Powder
+        Rate: 1500
+      - Item: Spawns
+        Rate: 1500
+      - Item: Air_Pollutant
+        Rate: 1500
+      - Item: Shadowdecon_Ore
+        Rate: 150
+      - Item: Ein_SOLIDDUST
+        Rate: 200
+      - Item: Poisonous_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20593
+    AegisName: TOXIOUS
+    Name: Toxious
+    Level: 188
+    Hp: 2407556
+    BaseExp: 171968
+    JobExp: 120378
+    Attack: 3039
+    Attack2: 823
+    Defense: 254
+    MagicDefense: 68
+    Str: 144
+    Agi: 143
+    Vit: 80
+    Int: 65
+    Dex: 168
+    Luk: 47
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Formless
+    Element: Poison
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Insect_Feeler
+        Rate: 25
+      - Item: Single_Cell
+        Rate: 1
+      - Item: Poison_Powder
+        Rate: 1500
+      - Item: Jubilee
+        Rate: 1500
+      - Item: Fluorescent_Liquid
+        Rate: 1500
+      - Item: Shadowdecon_Ore
+        Rate: 150
+      - Item: Ein_SOLIDDUST
+        Rate: 200
+      - Item: Toxious_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20594
+    AegisName: MINERAL_G
+    Name: Green Mineral
+    Level: 190
+    Hp: 2435702
+    BaseExp: 173979
+    JobExp: 121785
+    Attack: 3250
+    Attack2: 722
+    Defense: 287
+    MagicDefense: 68
+    Str: 153
+    Agi: 141
+    Vit: 96
+    Int: 54
+    Dex: 143
+    Luk: 68
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Gold
+        Rate: 1
+      - Item: Oridecon
+        Rate: 40
+      - Item: Emveretarcon
+        Rate: 400
+      - Item: Fragment_Of_Crystal
+        Rate: 1500
+      - Item: Zelunium_Ore
+        Rate: 150
+      - Item: Ein_RINDIUM
+        Rate: 100
+      - Item: Ein_EYEROCK
+        Rate: 150
+      - Item: Neo_Mineral_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20595
+    AegisName: MINERAL_R
+    Name: Red Mineral
+    Level: 190
+    Hp: 2435702
+    BaseExp: 173979
+    JobExp: 121785
+    Attack: 3250
+    Attack2: 722
+    Defense: 287
+    MagicDefense: 68
+    Str: 157
+    Agi: 134
+    Vit: 96
+    Int: 53
+    Dex: 138
+    Luk: 75
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Gold
+        Rate: 1
+      - Item: Oridecon
+        Rate: 40
+      - Item: Emveretarcon
+        Rate: 400
+      - Item: Fragment_Of_Crystal
+        Rate: 1500
+      - Item: Zelunium_Ore
+        Rate: 150
+      - Item: Ein_RINDIUM
+        Rate: 100
+      - Item: Ein_EYEROCK
+        Rate: 150
+      - Item: Neo_Mineral_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20596
+    AegisName: MINERAL_W
+    Name: White Mineral
+    Level: 190
+    Hp: 2435702
+    BaseExp: 173979
+    JobExp: 121785
+    Attack: 3250
+    Attack2: 722
+    Defense: 293
+    MagicDefense: 68
+    Str: 156
+    Agi: 138
+    Vit: 99
+    Int: 57
+    Dex: 139
+    Luk: 77
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Gold
+        Rate: 1
+      - Item: Oridecon
+        Rate: 40
+      - Item: Emveretarcon
+        Rate: 400
+      - Item: Fragment_Of_Crystal
+        Rate: 1500
+      - Item: Zelunium_Ore
+        Rate: 150
+      - Item: Ein_RINDIUM
+        Rate: 100
+      - Item: Ein_EYEROCK
+        Rate: 150
+      - Item: Neo_Mineral_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20597
+    AegisName: MINERAL_P
+    Name: Purple Mineral
+    Level: 190
+    Hp: 2435702
+    BaseExp: 173979
+    JobExp: 121785
+    Attack: 3250
+    Attack2: 722
+    Defense: 293
+    MagicDefense: 68
+    Str: 155
+    Agi: 122
+    Vit: 95
+    Int: 55
+    Dex: 141
+    Luk: 71
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Gold
+        Rate: 1
+      - Item: Oridecon
+        Rate: 40
+      - Item: Emveretarcon
+        Rate: 400
+      - Item: Fragment_Of_Crystal
+        Rate: 1500
+      - Item: Zelunium_Ore
+        Rate: 150
+      - Item: Ein_RINDIUM
+        Rate: 100
+      - Item: Ein_EYEROCK
+        Rate: 150
+      - Item: Neo_Mineral_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20598
+    AegisName: JEWELIANT
+    Name: Jewelry Ant
+    Level: 191
+    Hp: 2445656
+    BaseExp: 173979
+    JobExp: 121785
+    Attack: 3346
+    Attack2: 1053
+    Defense: 252
+    MagicDefense: 71
+    Str: 157
+    Agi: 144
+    Vit: 778
+    Int: 87
+    Dex: 166
+    Luk: 79
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Insect
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 250
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Colorful_Shell
+        Rate: 500
+      - Item: Jaws_Of_Ant
+        Rate: 1750
+      - Item: Olivine
+        Rate: 750
+      - Item: Long_Limb
+        Rate: 2250
+      - Item: Fluorescent_Liquid
+        Rate: 1250
+      - Item: Ein_UNDIUM
+        Rate: 300
+      - Item: Shadowdecon_Ore
+        Rate: 150
+      - Item: Jeweliant_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20600
+    AegisName: JEWEL
+    Name: Jewel
+    Level: 192
+    Hp: 100
+    BaseExp: 0
+    JobExp: 0
+    Attack: 193
+    Attack2: 193
+    Defense: 504
+    MagicDefense: 71
+    Str: 1
+    Agi: 1
+    Vit: 1
+    Int: 1
+    Dex: 1
+    Luk: 1
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Formless
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 1000
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Modes:
+      Aggressive: true
+      IgnoreMagic: true
+      IgnoreMelee: true
+      IgnoreMisc: true
+      IgnoreRanged: true
+      CastSensorIdle: true
+      CastSensorChase: true
+      ChangeChase: true
+      ChangeTargetMelee: true
+      ChangeTargetChase: true
+      IgnoreMisc: true
+      KnockbackImmune: true
+      Detector: true
+      StatusImmune: true
+    Drops:
+      - Item: Ein_UNDIUM
+        Rate: 250
+      - Item: Shadowdecon_Ore
+        Rate: 150
+      - Item: Ein_REDIUM
+        Rate: 300
+      - Item: Ein_RINDIUM
+        Rate: 300
+      - Item: Ein_ODIUM
+        Rate: 300
+      - Item: Ein_PURDIUM
+        Rate: 300
+      - Item: Ein_WHIDIUM
+        Rate: 300
+      - Item: Ein_DYNITE
+        Rate: 100
+  - Id: 20601
+    AegisName: JUNGOLIANT
+    Name: Jewel Ungoliant
+    Level: 197
+    Hp: 37847096
+    BaseExp: 2703364
+    JobExp: 1892355
+    Attack: 6303
+    Attack2: 3132
+    Defense: 345
+    MagicDefense: 90
+    Str: 295
+    Agi: 165
+    Vit: 123
+    Int: 288
+    Dex: 190
+    Luk: 64
+    AttackRange: 3
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Insect
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 140
+    AttackDelay: 1000
+    AttackMotion: 1152
+    DamageMotion: 672
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      Mvp: true
+    Drops:
+      - Item: Jaws_Of_Ant
+        Rate: 1750
+      - Item: Long_Limb
+        Rate: 2250
+      - Item: Ein_UNDIUM
+        Rate: 7500
+      - Item: Ein_UNDIUM
+        Rate: 2500
+      - Item: Shadowdecon
+        Rate: 50
+      - Item: Zelunium
+        Rate: 50
+      - Item: Ein_DYNITE
+        Rate: 8000
+      - Item: Jungoliant_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20602
+    AegisName: PORCELLIO_W
+    Name: White Porcellio
+    Level: 188
+    Hp: 2403326
+    BaseExp: 171666
+    JobExp: 120166
+    Attack: 2980
+    Attack2: 921
+    Defense: 200
+    MagicDefense: 69
+    Str: 141
+    Agi: 158
+    Vit: 53
+    Int: 75
+    Dex: 186
+    Luk: 75
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Small
+    Race: Insect
+    Element: Earth
+    ElementLevel: 4
+    WalkSpeed: 180
+    AttackDelay: 720
+    AttackMotion: 360
+    DamageMotion: 360
+    Ai: 02
+    Modes:
+      Looter: true
+    Drops:
+      - Item: Jubilee
+        Rate: 2500
+      - Item: Solid_Shell
+        Rate: 1000
+      - Item: Insect_Feeler
+        Rate: 500
+      - Item: Single_Cell
+        Rate: 1500
+      - Item: Zelunium_Ore
+        Rate: 150
+      - Item: Ein_ODIUM
+        Rate: 150
+      - Item: Fluorescent_Liquid
+        Rate: 15
+      - Item: Porcellio_W_Card
+        Rate: 1
+        StealProtected: true
+  - Id: 20603
+    AegisName: ABYSSMAN
+    Name: Abyssman
+    Level: 190
+    Hp: 2428577
+    BaseExp: 173470
+    JobExp: 121429
+    Attack: 3410
+    Attack2: 634
+    Defense: 197
+    MagicDefense: 67
+    Str: 161
+    Agi: 129
+    Vit: 51
+    Int: 45
+    Dex: 177
+    Luk: 53
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Brute
+    Element: Neutral
+    ElementLevel: 4
+    WalkSpeed: 50
+    AttackDelay: 648
+    AttackMotion: 480
+    DamageMotion: 360
+    Ai: 17
+    Drops:
+      - Item: Coal
+        Rate: 50
+      - Item: Lantern
+        Rate: 500
+      - Item: Old_Pick
+        Rate: 1500
+      - Item: Headlamp
+        Rate: 40
+      - Item: Shadowdecon_Ore
+        Rate: 1500
+      - Item: Ein_ODIUM
+        Rate: 1500
+      - Item: Ein_RUSTHELM
+        Rate: 1500
+      - Item: Abyss_Man_Card
+        Rate: 1
+        StealProtected: true
+# Treasure Box Devil Square
+  - Id: 30002
+    AegisName: CAIXA_SMOKE
+    Name: Caixa Smoke
+    Level: 99
+    Dex: 1199
+    Size: Small
+    Race: Formless
+    RaceGroups:
+      Treasure: true
+    Element: Neutral
+    ElementLevel: 1
+    Class: Event
+    Drops:
+      - Item: Gold_Coin
+        Rate: 10000
+        StealProtected: true
+      - Item: Gold_Coin
+        Rate: 7000
+        StealProtected: true
+      - Item: Gold_Coin
+        Rate: 6000
+        StealProtected: true
+      - Item: Gold_Coin
+        Rate: 5000
+        StealProtected: true
+      - Item: Gold_Coin
+        Rate: 2000
+        StealProtected: true
+      - Item: Gold_Coin
+        Rate: 1000
+        StealProtected: true

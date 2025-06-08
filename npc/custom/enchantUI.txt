@@ -1,8 +1,8 @@
 // Criado por Alek Emundus
 prontera,141,173,4	script	Aventureira Buuh	623,{
 	mes "[Aventureira Buuh]";
-	mes "O que voce gostaria de encantar?";
-	switch(select("- Head.:- Body.:- Robe.:- Shoes.:- Accessory 1.:- Accessory 2.:- Weapons.")) {
+	mes "O que você gostaria de encantar?";
+	switch(select("- Head.:- Body.:- Robe.:- Shoes.:- Accessory 1.:- Accessory 2.:- Weapons.:- Listar Itens Encantáveis.")) {
 		case 1: // Head
 			if ((countitem(420017) >= 1) || (countitem(420018) >= 1) || (countitem(420019) >= 1) || (countitem(420020) >= 1) || (countitem(420021) >= 1) || (countitem(420022) >= 1)) {
 				item_enchant 23;
@@ -10,7 +10,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Head pra encantar.";
+				mes "Você não tem nenhum Head pra encantar.";
 				end;
 			}
 		case 2: // Body
@@ -38,7 +38,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Body pra encantar.";
+				mes "Você não tem nenhum Body pra encantar.";
 				end;
 			}
 		case 3: // Robe
@@ -48,7 +48,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Robe pra encantar.";
+				mes "Você não tem nenhum Robe pra encantar.";
 				end;
 			}
 		case 4: // Shoes
@@ -61,7 +61,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Shoes pra encantar.";
+				mes "Você não tem nenhum Shoes pra encantar.";
 				end;
 			}
 		case 5: // Acessory 1
@@ -74,7 +74,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Acessory 1 pra encantar.";
+				mes "Você não tem nenhum Acessory 1 pra encantar.";
 				end;
 			}
 		case 6: // Acessory 2
@@ -87,7 +87,7 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhum Acessory 2 pra encantar.";
+				mes "Você não tem nenhum Acessory 2 pra encantar.";
 				end;
 			}
 		case 7: // Weapons
@@ -97,8 +97,62 @@ prontera,141,173,4	script	Aventureira Buuh	623,{
 			} else {
 				clear;
 				mes "[Aventureira Buuh]";
-				mes "Voce nao tem nenhuma Weapon pra encantar.";
+				mes "Você não tem nenhuma Weapon pra encantar.";
 				end;
 			}
+		case 8: // Listar Itens Encantáveis
+			clear;
+			mes "[Aventureira Buuh]";
+			mes "Aqui está a lista dos itens que posso encantar:";
+			next;
+			// Listar Head
+			setarray .@head_items[0], 420017, 420018, 420019, 420020, 420021, 420022;
+			mes "^FF0000Head:^000000";
+			for (.@i = 0; .@i < getarraysize(.@head_items); .@i++) {
+				mes mesitemlink(.@head_items[.@i]);
+			}
+			next;
+			// Listar Body
+			setarray .@body_items[0], 450177, 450178, 450169, 450170, 450171, 450172, 450173, 450174;
+			mes "^FF0000Body:^000000";
+			for (.@i = 0; .@i < getarraysize(.@body_items); .@i++) {
+				mes mesitemlink(.@body_items[.@i]);
+			}
+			next;
+			// Listar Robe
+			setarray .@robe_items[0], 480090, 480091;
+			mes "^FF0000Robe:^000000";
+			for (.@i = 0; .@i < getarraysize(.@robe_items); .@i++) {
+				mes mesitemlink(.@robe_items[.@i]);
+			}
+			next;
+			// Listar Shoes
+			setarray .@shoes_items[0], 470087, 470088, 470094;
+			mes "^FF0000Shoes:^000000";
+			for (.@i = 0; .@i < getarraysize(.@shoes_items); .@i++) {
+				mes mesitemlink(.@shoes_items[.@i]);
+			}
+			next;
+			// Listar Accessory 1
+			setarray .@accessory1_items[0], 490106, 490108, 490132, 490133, 490134, 490135, 490136, 490137;
+			mes "^FF0000Accessory 1:^000000";
+			for (.@i = 0; .@i < getarraysize(.@accessory1_items); .@i++) {
+				mes mesitemlink(.@accessory1_items[.@i]);
+			}
+			next;
+			// Listar Accessory 2
+			setarray .@accessory2_items[0], 490107, 490109, 490163;
+			mes "^FF0000Accessory 2:^000000";
+			for (.@i = 0; .@i < getarraysize(.@accessory2_items); .@i++) {
+				mes mesitemlink(.@accessory2_items[.@i]);
+			}
+			next;
+			// Listar Weapons
+			setarray .@weapon_items[0], 21063, 640031, 540041, 530023, 550054, 510050, 500044, 550055, 610035, 590036, 510051, 500045, 620016, 540042, 550056, 510052, 570028, 580028, 560030, 700050, 800009, 810005, 820004, 830006, 840004, 650019;
+			mes "^FF0000Weapons:^000000";
+			for (.@i = 0; .@i < getarraysize(.@weapon_items); .@i++) {
+				mes mesitemlink(.@weapon_items[.@i]);
+			}
+			end;
 	}
 }

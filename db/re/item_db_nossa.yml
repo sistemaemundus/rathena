@@ -591,4 +591,165 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      getgroupitem(IG_POENITENTIA_BOX);
+      callfunc "caixaPenitente",1;
+#= Caixa Beta, Streamer & Fundador
+  - Id: 840053
+    AegisName: caixaBeta
+    Name: Caixa Beta
+    Type: Usable
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      getitembound 840044,1,Bound_Char;
+      getitembound 840045,1,Bound_Char;
+      getitembound 840046,1,Bound_Char;
+      getitembound 12781,5,Bound_Char;
+      getitembound 23583,1,Bound_Char;
+      callfunc "caixasEspeciais",1;
+  - Id: 840054
+    AegisName: caixaStreamer
+    Name: Caixa Streamer
+    Type: Usable
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      getitembound 840044,1,Bound_Char;
+      getitembound 840045,1,Bound_Char;
+      getitembound 840046,1,Bound_Char;
+      getitembound 12781,5,Bound_Char;
+      getitembound 12221,50,Bound_Char;
+      getitembound 23583,1,Bound_Char;
+      callfunc "caixasEspeciais",1;
+  - Id: 22225
+    AegisName: Shoes_Of_Punishment_
+    Name: Shoes of Punishment
+    Type: Armor
+    Weight: 500
+    Defense: 15
+    Locations:
+      Shoes: true
+    ArmorLevel: 1
+    Slots: 1
+    EquipLevelMin: 100
+    Refineable: true
+    Script: |
+      bonus bMdef,15;
+      bonus bMatkRate,2;
+      bonus bMaxHPrate,3;
+      bonus bMaxSPrate,3;
+      bonus2 bSkillAtk,"AB_JUDEX",30;
+      bonus2 bMagicAddEle,Ele_Holy,2;
+      .@r = getrefine();
+      if (.@r>=5) {
+         bonus bMatkRate,3;
+         bonus bMaxHPrate,7;
+         bonus bMaxSPrate,7;
+         bonus2 bMagicAddEle,Ele_Holy,3;
+      }
+      if (.@r>=7) {
+         bonus bMatkRate,5;
+         bonus bMaxHPrate,10;
+         bonus bMaxSPrate,10;
+         bonus2 bMagicAddEle,Ele_Holy,5;
+      }
+  - Id: 480088                      #Item ID.
+    AegisName: Ultio_Cape_TW               #Server name to reference the item in scripts and lookups, should use no spaces.
+    Name: Capa Ultio-OS                    #Name in English for displaying as output.
+    Type: Armor                    #Item type. (Default: Etc)
+    Weight: 400                 #Item weight. Each 10 is 1 weight. (Default: 0)
+    Locations:
+      Garment: true               #Equipment's placement. (Default: None)
+    ArmorLevel: 1
+    Slots: 1
+    EquipLevelMin: 200           #Minimum required level to equip. (Default: 0)
+    Script: |                 #Script to execute when the item is used/equipped. (Default: null)
+      .@r = getrefine();
+      bonus bMatkRate,(.@r/2)*20;
+      bonus2 bMagicAddEle,Ele_Holy,(.@r/4)*3;
+      bonus2 bMagicAddEle,Ele_Neutral,(.@r/4)*3;
+      if(.@r>=9){
+        bonus bMatkRate,10;
+      }
+      if(.@r>=11){
+        bonus bDelayrate,-12;
+      }
+      if(.@r>=13){
+        bonus2 bIgnoreMdefClassRate,Class_Boss,10;
+      }
+  - Id: 300138
+    AegisName: H_B_Princess_Meer_Card
+    Name: Half Blood Princess Meer Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Top: true
+    Flags:
+      BuyingStore: true
+      DropEffect: CLIENT
+    Script: |
+      .@r = getrefine();
+      bonus bFixedCast,-1000;
+      bonus bAtkRate,.@r;
+      bonus bMatkRate,.@r;
+# Adicionado 04/06/2025, Caixas VIP
+  - Id: 758
+    AegisName: caixaVip7
+    Name: Caixa VIP 7d
+    Type: Usable
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      rentitem 601,604800;
+      rentitem 607,604800;
+      atcommand "@vip +7d "+strcharinfo(0)+"";
+  - Id: 759
+    AegisName: caixaVip15
+    Name: Caixa VIP 15d
+    Type: Usable
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      rentitem 601,1296000;
+      rentitem 607,1296000;
+      atcommand "@vip +15d "+strcharinfo(0)+"";
+  - Id: 760
+    AegisName: caixaVip30
+    Name: Caixa VIP 30d
+    Type: Usable
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      rentitem 601,2592000;
+      rentitem 607,2592000;
+      atcommand "@vip +1m "+strcharinfo(0)+"";

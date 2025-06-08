@@ -14598,7 +14598,7 @@ void pc_crimson_marker_clear(map_session_data *sd) {
 * Show version to player
 * @param sd: Player
 **/
-void pc_show_version(map_session_data *sd) {
+/*/void pc_show_version(map_session_data* sd) {
 	const char* svn = get_svn_revision();
 	char buf[CHAT_SIZE_MAX];
 
@@ -14612,7 +14612,7 @@ void pc_show_version(map_session_data *sd) {
 			sprintf(buf,"%s",msg_txt(sd,1296)); //Cannot determine SVN/Git version.
 	}
 	clif_displaymessage(sd->fd,buf);
-}
+}*/
 
 /**
  * Run bonus_script on player

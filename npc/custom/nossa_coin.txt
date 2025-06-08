@@ -8,6 +8,7 @@
 		bindatcmd "coins",strnpcinfo(3) + "::OnAtcommand";
 		end;
 	OnAtcommand:
-		dispbottom "Voce tem " + #CASHPOINTS + " Cash Points," + #NOSSACOIN + " NossaCoins e " + #FARMCOIN + " FarmCoins.";
+		//dispbottom "Você tem " + #CASHPOINTS + " Cash Points," + #NOSSACOIN + " NossaCoins e " + #FARMCOIN + " FarmCoins.";
+		message strcharinfo(0),"Você tem " + #CASHPOINTS + " Cash Points, " + #NOSSACOIN + " NossaCoins, " + #FARMCOIN + " FarmCoins e " + #LevelingPoints + " LevelingPoints.";
 		end;
 }
